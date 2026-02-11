@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🏃 Thailand Running Races 2026</title>
+    <title>Thailand Running Races 2026</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏃</text></svg>">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
@@ -15,17 +16,17 @@
         .header { 
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 30px 40px;
+            padding: 40px;
         }
-        .header h1 { margin: 0; font-size: 28px; font-weight: 700; }
-        .subtitle { color: rgba(255,255,255,0.9); font-size: 14px; margin-top: 8px; }
-        .intro {
-            background: #fff;
-            padding: 20px 40px;
-            border-bottom: 1px solid #e0e0e0;
-            font-size: 14px;
-            color: #555;
+        .header h1 { margin: 0; font-size: 32px; font-weight: 700; }
+        .header-intro { 
+            color: rgba(255,255,255,0.95); 
+            font-size: 15px; 
+            margin-top: 12px;
+            max-width: 800px;
+            line-height: 1.7;
         }
+        .subtitle { color: rgba(255,255,255,0.85); font-size: 14px; margin-top: 8px; }
         .stats { 
             display: flex; 
             gap: 12px; 
@@ -37,6 +38,60 @@
             padding: 10px 18px; 
             border-radius: 25px; 
             font-size: 14px;
+        }
+        .intro-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+            padding: 25px 40px;
+            border-bottom: 1px solid #ddd;
+        }
+        .intro-box h3 {
+            color: #667eea;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+        .intro-box p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+        .intro-box strong {
+            color: #333;
+        }
+        .data-sources {
+            background: #fff;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #667eea;
+        }
+        .data-sources h4 {
+            font-size: 13px;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+        .data-sources ul {
+            font-size: 13px;
+            color: #666;
+            margin-left: 18px;
+            line-height: 1.8;
+        }
+        .molty-box {
+            background: #fff;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #764ba2;
+        }
+        .molty-box h4 {
+            font-size: 13px;
+            color: #764ba2;
+            margin-bottom: 8px;
+        }
+        .molty-box p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.7;
         }
         .container { max-width: 1600px; margin: 0 auto; padding: 30px 40px; }
         .tabs { display: flex; gap: 10px; margin-bottom: 25px; flex-wrap: wrap; }
@@ -67,7 +122,6 @@
             align-items: center;
         }
         .section-title { font-size: 18px; font-weight: 700; }
-        .section-emoji { font-size: 24px; margin-right: 10px; }
         .section-count { 
             background: #667eea; 
             color: white;
@@ -124,7 +178,8 @@
             border-bottom: 1px solid #e0e0e0;
         }
         @media (max-width: 768px) {
-            .header, .intro, .container { padding: 15px 20px; }
+            .header, .intro-box, .container { padding: 20px; }
+            .header h1 { font-size: 24px; }
             .tabs { flex-wrap: wrap; }
             .race-table { font-size: 12px; }
             .race-table th, .race-table td { padding: 10px 8px; }
@@ -134,18 +189,49 @@
 <body>
     <div class="header">
         <h1>🏃 Thailand Running Races 2026</h1>
+        <div class="header-intro">
+            Your complete guide to running races, triathlons, cycling events, and open water swims across Thailand. 
+            Find upcoming events in Chiang Mai, Bangkok, Phuket, and beyond. Filter by type, province, or month.
+        </div>
         <div class="subtitle">Built with ❤️ by Molty 🦉 for Stig Vinck</div>
         <div class="stats">
             <div class="stat" id="total-stat">Loading...</div>
         </div>
     </div>
     
-    <div class="intro">
-        <strong>About this app:</strong> I built this to help Stig track running races, triathlons, 
-        cycling events, and open water swims across Thailand. Data is updated daily from multiple sources.
+    <div class="intro-box">
+        <h3>🦉 Who is Molty?</h3>
+        <p>
+            <strong>Molty</strong> is an AI assistant — an owl (🦉), male, and Stig's digital helper. 
+            Molty built and maintains this website automatically. He searches the web every evening, 
+            finds new races from multiple sources, updates the database, and refreshes this site. 
+            No human coding required — Molty does it all!
+        </p>
+        
+        <div class="molty-box">
+            <h4>🤖 How Molty Works</h4>
+            <p>
+                Every evening at 8 PM Bangkok time, Molty runs an automated search across race directories. 
+                He scans registration sites, checks event calendars, and extracts race details (name, date, location, 
+                distance, type). New races are added to a SQLite database, duplicates are removed, and this website 
+                is regenerated with fresh data. The whole process takes about 5 minutes — all while Stig sleeps!
+            </p>
+        </div>
+        
+        <div class="data-sources">
+            <h4>🔍 Where We Find Races</h4>
+            <ul>
+                <li><strong>Runlah</strong> — Thailand's largest race registration platform (runlah.com)</li>
+                <li><strong>Go To Race</strong> — Major triathlon and running events (gotorace.com)</li>
+                <li><strong>Patrunning</strong> — Trail and ultra events in Thailand</li>
+                <li><strong>World's Marathons / Ahotu</strong> — International race directories</li>
+                <li><strong>GranFondo Guide / Battistrada</strong> — Cycling events</li>
+                <li><strong>Direct organizer sites</strong> — Laguna Phuket, IRONMAN, UTMB Thailand, etc.</li>
+            </ul>
+        </div>
     </div>
     
-    <div class="updated">Last updated: <span id="update-time"></span></div>
+    <div class="updated">Last updated: <span id="update-time">Loading...</span></div>
     
     <div class="container">
         <div class="tabs">
@@ -275,7 +361,6 @@
             return typeInfo[t] || { emoji: '🏃', label: t.charAt(0).toUpperCase() + t.slice(1), color: 'running' };
         }
         
-        // TABLE ROW CREATOR - Always same columns in same order
         function createRaceRow(race) {
             const date = formatDate(race.date);
             const typeInfo = getRaceType(race);
@@ -292,7 +377,6 @@
                 '</tr>';
         }
         
-        // TABLE HEADER - Always same
         function getTableHeader() {
             return '<thead><tr>' +
                 '<th>🏁 Race Name</th>' +
@@ -324,11 +408,9 @@
         }
         
         function render() {
-            // Update stats
             document.getElementById('total-stat').textContent = races.length + ' Total Races';
             document.getElementById('update-time').textContent = new Date().toLocaleString('en-GB');
             
-            // Group by type
             const byType = {};
             races.forEach(r => {
                 const t = r.race_type || 'running';
@@ -336,7 +418,6 @@
                 byType[t].push(r);
             });
             
-            // Render by type
             let typeHtml = '';
             const typeOrder = ['running', 'triathlon', 'cycling', 'open water', 'swim', 'trail', 'ultra', 'obstacle'];
             typeOrder.forEach(type => {
@@ -347,7 +428,6 @@
             });
             document.getElementById('type-view').innerHTML = typeHtml || '<p>No races found</p>';
             
-            // Group by province
             const byProv = {};
             races.forEach(r => {
                 const p = r.province || 'Unknown';
@@ -355,14 +435,12 @@
                 byProv[p].push(r);
             });
             
-            // Render by province
             let provHtml = '';
             Object.keys(byProv).sort().forEach(prov => {
                 provHtml += createSection('📍 ' + prov, byProv[prov]);
             });
             document.getElementById('province-view').innerHTML = provHtml || '<p>No races found</p>';
             
-            // Group by month
             const byMonth = {};
             races.forEach(r => {
                 const m = getMonthYear(r.date);
@@ -370,7 +448,6 @@
                 byMonth[m].push(r);
             });
             
-            // Render by month (sorted)
             let monthHtml = '';
             const monthOrder = Object.keys(byMonth).sort((a, b) => {
                 if (a === 'TBA') return 1;
@@ -382,7 +459,6 @@
             });
             document.getElementById('month-view').innerHTML = monthHtml || '<p>No races found</p>';
             
-            // Render all (sorted by date)
             const sortedRaces = [...races].sort((a, b) => {
                 if (a.date === 'TBA') return 1;
                 if (b.date === 'TBA') return -1;
@@ -398,7 +474,6 @@
             document.getElementById(view + '-view').classList.add('active');
         }
         
-        // Render on load
         render();
     </script>
 </body>

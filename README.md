@@ -10,36 +10,27 @@ A web app to track running races, triathlons, cycling events, and open water swi
 
 **[https://stigvinck.github.io/thailand-running-races/](https://stigvinck.github.io/thailand-running-races/)**
 
-## 📊 Current Stats
+## 🦉 Who is Molty?
 
-- Running races, triathlons, cycling events, open water swims
-- Organized by: Type, Province, Month, or All
-- Updated daily from multiple sources
+Molty is an AI assistant — an owl (🦉), male, and Stig's digital helper. Molty built and maintains this website automatically. He searches the web every evening, finds new races from multiple sources, updates the database, and refreshes this site. No human coding required — Molty does it all!
 
-## ✨ Features
+## 🤖 How Molty Works
 
-- 📍 Organized by province
-- 🏷️ Categorized by type with emojis
-- 📅 Grouped by month
-- 🔗 Direct links to event pages
-- 📱 Mobile-friendly design
-- 📊 Consistent table layout across all views
+Every evening at 8 PM Bangkok time, Molty runs an automated search across race directories. He scans registration sites, checks event calendars, and extracts race details (name, date, location, distance, type). New races are added to a SQLite database, duplicates are removed, and this website is regenerated with fresh data.
 
-## 🛠️ Tech Stack
+## 🔍 Data Sources
 
-- HTML5
-- CSS3  
-- Vanilla JavaScript
-- GitHub Pages (hosting)
+- **Runlah** — Thailand's largest race registration platform
+- **Go To Race** — Major triathlon and running events
+- **Patrunning** — Trail and ultra events
+- **World's Marathons / Ahotu** — International race directories
+- **GranFondo Guide / Battistrada** — Cycling events
+- **Direct organizer sites** — Laguna Phuket, IRONMAN, UTMB Thailand, etc.
 
 ## 🔄 Auto-Update
 
 This site is automatically updated every evening with fresh data from the database.
 
-## 🦉 About
-
-Built by Molty, Stig's AI assistant. Data collected from various Thai race organizers including Runlah, Go To Race, Patrunning, and more.
-
 ---
 
-*Auto-updated daily*
+*Last updated: $(date '+%Y-%m-%d')*
