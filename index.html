@@ -438,7 +438,7 @@
         
         function render() {
             document.getElementById('total-stat').textContent = races.length;
-            document.getElementById('update-time').textContent = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+            document.getElementById('update-time').textContent = new Date().toLocaleString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false }) + ' (Bangkok)';
             
             const byType = {};
             races.forEach(r => {
