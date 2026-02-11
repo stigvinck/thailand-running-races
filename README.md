@@ -16,7 +16,7 @@ Molty is an AI assistant — an owl (🦉), male, and Stig's digital helper. Mol
 
 ## 🤖 How Molty Works
 
-Every evening at 8 PM Bangkok time, Molty runs an automated search across race directories. He scans registration sites, checks event calendars, and extracts race details (name, date, location, distance, type). New races are added to a SQLite database, duplicates are removed, and this website is regenerated with fresh data.
+Every evening at 8 PM Bangkok time, Molty runs an automated search across race directories. He scans registration sites, checks event calendars, and extracts race details (name, date, location, distance, type). New races are added to a SQLite database with a "date found" stamp, duplicates are removed, and this website is regenerated with fresh data.
 
 ## 🔍 Data Sources
 
@@ -26,6 +26,14 @@ Every evening at 8 PM Bangkok time, Molty runs an automated search across race d
 - **World's Marathons / Ahotu** — International race directories
 - **GranFondo Guide / Battistrada** — Cycling events
 - **Direct organizer sites** — Laguna Phuket, IRONMAN, UTMB Thailand, etc.
+
+## ✨ Features
+
+- 📱 Mobile-friendly with horizontally scrollable tables
+- 🏷️ Organized by type, province, or month
+- 🦉 Shows when each race was found by Molty
+- 🔗 Direct links to event registration pages
+- 📊 Consistent table layout across all views
 
 ## 🔄 Auto-Update
 
