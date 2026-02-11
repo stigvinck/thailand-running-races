@@ -39,7 +39,7 @@
             font-size: 14px;
         }
         .container { max-width: 1600px; margin: 0 auto; padding: 30px 40px; }
-        .tabs { display: flex; gap: 10px; margin-bottom: 25px; }
+        .tabs { display: flex; gap: 10px; margin-bottom: 25px; flex-wrap: wrap; }
         .tab { 
             padding: 12px 24px; 
             background: #fff; 
@@ -92,6 +92,7 @@
             padding: 14px 16px;
             border-bottom: 1px solid #f0f0f0;
             font-size: 14px;
+            vertical-align: top;
         }
         .race-table td:first-child { padding-left: 24px; }
         .race-table tr:hover { background: #fafafa; }
@@ -100,20 +101,33 @@
             border-radius: 6px; 
             font-size: 12px;
             font-weight: 600;
+            white-space: nowrap;
         }
         .tag.running { background: #e3f2fd; color: #1976d2; }
         .tag.triathlon { background: #e8f5e9; color: #388e3c; }
         .tag.cycling { background: #f3e5f5; color: #7b1fa2; }
         .tag.openwater { background: #e0f2f1; color: #00796b; }
+        .tag.swim { background: #e0f2f1; color: #00796b; }
         .tag.trail { background: #fff3e0; color: #f57c00; }
         .tag.ultra { background: #fce4ec; color: #c2185b; }
+        .tag.obstacle { background: #fce4ec; color: #c2185b; }
         .view { display: none; }
         .view.active { display: block; }
         .race-name a { color: #667eea; text-decoration: none; }
         .race-name a:hover { text-decoration: underline; }
+        .race-name { max-width: 400px; word-wrap: break-word; }
+        .updated { 
+            background: #fff; 
+            padding: 10px 40px; 
+            font-size: 12px; 
+            color: #888;
+            border-bottom: 1px solid #e0e0e0;
+        }
         @media (max-width: 768px) {
             .header, .intro, .container { padding: 15px 20px; }
             .tabs { flex-wrap: wrap; }
+            .race-table { font-size: 12px; }
+            .race-table th, .race-table td { padding: 10px 8px; }
         }
     </style>
 </head>
@@ -128,18 +142,22 @@
     
     <div class="intro">
         <strong>About this app:</strong> I built this to help Stig track running races, triathlons, 
-        cycling events, and open water swims across Thailand. This is a static snapshot of the database.
+        cycling events, and open water swims across Thailand. Data is updated daily from multiple sources.
     </div>
+    
+    <div class="updated">Last updated: <span id="update-time"></span></div>
     
     <div class="container">
         <div class="tabs">
-            <button class="tab active" onclick="showView('type')">📊 By Type</button>
-            <button class="tab" onclick="showView('province')">📍 By Province</button>
-            <button class="tab" onclick="showView('all')">📋 All Races</button>
+            <button class="tab active" onclick="showView('type', this)">🏷️ By Type</button>
+            <button class="tab" onclick="showView('province', this)">📍 By Province</button>
+            <button class="tab" onclick="showView('month', this)">📅 By Month</button>
+            <button class="tab" onclick="showView('all', this)">📋 All Races</button>
         </div>
         
         <div id="type-view" class="view active"></div>
         <div id="province-view" class="view"></div>
+        <div id="month-view" class="view"></div>
         <div id="all-view" class="view"></div>
     </div>
 
@@ -228,7 +246,7 @@
             'triathlon': { emoji: '🏊', label: 'Triathlon', color: 'triathlon' },
             'cycling': { emoji: '🚴', label: 'Cycling', color: 'cycling' },
             'open water': { emoji: '🌊', label: 'Open Water', color: 'openwater' },
-            'swim': { emoji: '🌊', label: 'Swim', color: 'openwater' },
+            'swim': { emoji: '🏊', label: 'Swim', color: 'swim' },
             'trail': { emoji: '⛰️', label: 'Trail', color: 'trail' },
             'ultra': { emoji: '🔥', label: 'Ultra', color: 'ultra' },
             'obstacle': { emoji: '💪', label: 'Obstacle', color: 'obstacle' }
@@ -238,13 +256,77 @@
             if (!dateStr || dateStr === 'TBA') return 'TBA';
             try {
                 const d = new Date(dateStr);
+                if (isNaN(d)) return dateStr;
                 return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
             } catch { return dateStr; }
+        }
+        
+        function getMonthYear(dateStr) {
+            if (!dateStr || dateStr === 'TBA') return 'TBA';
+            try {
+                const d = new Date(dateStr);
+                if (isNaN(d)) return 'TBA';
+                return d.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+            } catch { return 'TBA'; }
+        }
+        
+        function getRaceType(race) {
+            const t = race.race_type || 'running';
+            return typeInfo[t] || { emoji: '🏃', label: t.charAt(0).toUpperCase() + t.slice(1), color: 'running' };
+        }
+        
+        // TABLE ROW CREATOR - Always same columns in same order
+        function createRaceRow(race) {
+            const date = formatDate(race.date);
+            const typeInfo = getRaceType(race);
+            const name = race.event_url 
+                ? '<a href="' + race.event_url + '" target="_blank">' + race.name + '</a>' 
+                : race.name;
+            
+            return '<tr>' +
+                '<td class="race-name">' + name + '</td>' +
+                '<td>' + date + '</td>' +
+                '<td><span class="tag ' + typeInfo.color + '">' + typeInfo.emoji + ' ' + typeInfo.label + '</span></td>' +
+                '<td>' + (race.province || 'Unknown') + '</td>' +
+                '<td>' + (race.distance || '-') + '</td>' +
+                '</tr>';
+        }
+        
+        // TABLE HEADER - Always same
+        function getTableHeader() {
+            return '<thead><tr>' +
+                '<th>🏁 Race Name</th>' +
+                '<th>📅 Date</th>' +
+                '<th>🏷️ Type</th>' +
+                '<th>📍 Province</th>' +
+                '<th>📏 Distance</th>' +
+                '</tr></thead>';
+        }
+        
+        function createSection(title, racesList) {
+            if (racesList.length === 0) return '';
+            
+            let html = '<div class="section">' +
+                '<div class="section-header">' +
+                '<div class="section-title">' + title + '</div>' +
+                '<span class="section-count">' + racesList.length + ' races</span>' +
+                '</div>' +
+                '<table class="race-table">' + 
+                getTableHeader() + 
+                '<tbody>';
+            
+            racesList.forEach(race => {
+                html += createRaceRow(race);
+            });
+            
+            html += '</tbody></table></div>';
+            return html;
         }
         
         function render() {
             // Update stats
             document.getElementById('total-stat').textContent = races.length + ' Total Races';
+            document.getElementById('update-time').textContent = new Date().toLocaleString('en-GB');
             
             // Group by type
             const byType = {};
@@ -256,14 +338,14 @@
             
             // Render by type
             let typeHtml = '';
-            const typeOrder = ['running', 'triathlon', 'trail', 'ultra', 'cycling', 'open water', 'swim', 'obstacle'];
+            const typeOrder = ['running', 'triathlon', 'cycling', 'open water', 'swim', 'trail', 'ultra', 'obstacle'];
             typeOrder.forEach(type => {
                 if (byType[type]) {
-                    const info = typeInfo[type] || { emoji: '🏃', label: type, color: 'running' };
-                    typeHtml += createSection(info.emoji + ' ' + info.label, byType[type], info.color, type);
+                    const info = typeInfo[type] || { emoji: '🏃', label: type };
+                    typeHtml += createSection(info.emoji + ' ' + info.label, byType[type]);
                 }
             });
-            document.getElementById('type-view').innerHTML = typeHtml;
+            document.getElementById('type-view').innerHTML = typeHtml || '<p>No races found</p>';
             
             // Group by province
             const byProv = {};
@@ -276,47 +358,43 @@
             // Render by province
             let provHtml = '';
             Object.keys(byProv).sort().forEach(prov => {
-                provHtml += createSection('📍 ' + prov, byProv[prov], null, null, true);
+                provHtml += createSection('📍 ' + prov, byProv[prov]);
             });
-            document.getElementById('province-view').innerHTML = provHtml;
+            document.getElementById('province-view').innerHTML = provHtml || '<p>No races found</p>';
             
-            // Render all
-            document.getElementById('all-view').innerHTML = createSection('📋 All Races', races, null, null, true);
-        }
-        
-        function createSection(title, racesList, color, type, skipType = false) {
-            let html = '<div class="section"><div class="section-header">';
-            html += '<div class="section-title">' + title + '</div>';
-            html += '<span class="section-count">' + racesList.length + ' races</span></div>';
-            html += '<table class="race-table"><thead><tr>';
-            html += '<th>🏁 Race Name</th><th>📅 Date</th>';
-            if (!skipType) html += '<th>🏷️ Type</th>';
-            html += '<th>📍 Province</th><th>📏 Distance</th>';
-            html += '</tr></thead><tbody>';
-            
-            racesList.forEach(r => {
-                const date = formatDate(r.date);
-                const name = r.event_url ? '<a href="' + r.event_url + '" target="_blank">' + r.name + '</a>' : r.name;
-                const t = r.race_type || 'running';
-                const info = typeInfo[t] || { color: 'running' };
-                
-                html += '<tr>';
-                html += '<td class="race-name">' + name + '</td>';
-                html += '<td>' + date + '</td>';
-                if (!skipType) html += '<td><span class="tag ' + info.color + '">' + (typeInfo[t]?.emoji || '🏃') + ' ' + (typeInfo[t]?.label || t) + '</span></td>';
-                html += '<td>' + (r.province || 'Unknown') + '</td>';
-                html += '<td>' + (r.distance || '') + '</td>';
-                html += '</tr>';
+            // Group by month
+            const byMonth = {};
+            races.forEach(r => {
+                const m = getMonthYear(r.date);
+                if (!byMonth[m]) byMonth[m] = [];
+                byMonth[m].push(r);
             });
             
-            html += '</tbody></table></div>';
-            return html;
+            // Render by month (sorted)
+            let monthHtml = '';
+            const monthOrder = Object.keys(byMonth).sort((a, b) => {
+                if (a === 'TBA') return 1;
+                if (b === 'TBA') return -1;
+                return new Date(a) - new Date(b);
+            });
+            monthOrder.forEach(month => {
+                monthHtml += createSection('📅 ' + month, byMonth[month]);
+            });
+            document.getElementById('month-view').innerHTML = monthHtml || '<p>No races found</p>';
+            
+            // Render all (sorted by date)
+            const sortedRaces = [...races].sort((a, b) => {
+                if (a.date === 'TBA') return 1;
+                if (b.date === 'TBA') return -1;
+                return new Date(a.date) - new Date(b.date);
+            });
+            document.getElementById('all-view').innerHTML = createSection('📋 All Races', sortedRaces);
         }
         
-        function showView(view) {
+        function showView(view, btn) {
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-            event.target.classList.add('active');
+            btn.classList.add('active');
             document.getElementById(view + '-view').classList.add('active');
         }
         
