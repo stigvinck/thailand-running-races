@@ -401,6 +401,7 @@
                     <li class="source-item"><span class="source-name">Go To Race</span> <span class="source-url">gotorace.com</span> — Triathlons, duathlons, running events</li>
                     <li class="source-item"><span class="source-name">Ahotu</span> <span class="source-url">ahotu.com</span> — International race directory</li>
                     <li class="source-item"><span class="source-name">World's Marathons</span> <span class="source-url">worldsmarathons.com</span> — Global marathon calendar</li>
+                    <li class="source-item"><span class="source-name">Jog and Joy</span> <span class="source-url">jogandjoy.run</span> — Running events and community</li>
                 </ul>
             </div>
             
@@ -449,7 +450,6 @@
         </div>
     </div>
 
-    <script>
         let races = 
 [{"name":"Run Better Together 2026 แม่อายวิทยาคม","date":"2026-02-14","location":"สนามโรงเรียนแม่อายวิทยาคม ต.แม่อาย อ.แม่อาย","province":"Chiang Mai","race_type":"running","distance":"Unknown","event_url":"https://www.runlah.com/th/i8GRvNUe","date_found":"2026-02-11"},
 {"name":"Samoeng Mini Marathon ครั้งที่ 6","date":"2026-02-14","location":"โรงเรียนสะเมิงพิทยาคม","province":"Chiang Mai","race_type":"running","distance":"Unknown","event_url":"https://www.runlah.com/th/uT51f1K4","date_found":"2026-02-11"},
@@ -567,6 +567,7 @@
 {"name":"Chiangmai Thailand by UTMB 2026","date":"TBA","location":"Chiang Mai city & surrounding national parks, Chiang Mai","province":"Chiang Mai","race_type":"running","distance":"175K / 93K / 50K / 24K / 12K / 10K","event_url":"https://thailandbyutmb.com/","date_found":"2026-02-11"},
 {"name":"IRONMAN 70.3 Bangsaen 2026","date":"TBA","location":"Bangsaen Beach & Saen Suk, Mueang Chon Buri","province":"Chonburi","race_type":"triathlon","distance":"1.9 km swim / 90 km bike / 21.1 km run","event_url":"https://www.finishers.com/en/event/ironman-70-3-bangsaen-thailand","date_found":"2026-02-11"}]
 ;
+        let races = [];
         
         const typeInfo = {
             'running': { emoji: '🏃', label: 'Running', color: 'running' },
@@ -629,8 +630,140 @@
             return typeInfo[t] || { emoji: '🏃', label: t.charAt(0).toUpperCase() + t.slice(1), color: 'running' };
         }
         
+        // Thai to English town name mappings
+        const thaiToEnglish = {
+            'แม่อาย': 'Mae Ai',
+            'สะเมิง': 'Samoeng',
+            'สันนาเม็ง': 'Sanna Meng',
+            'สารภี': 'Saraphi',
+            'ดอยเต่า': 'Doi Tao',
+            'ดอยสะเก็ด': 'Doi Saket',
+            'หางดง': 'Hang Dong',
+            'สันทราย': 'San Sai',
+            'แม่ริม': 'Mae Rim',
+            'แม่แตง': 'Mae Taeng',
+            'จอมทอง': 'Chom Thong',
+            'แม่ออน': 'Mae On',
+            'เชียงดาว': 'Chiang Dao',
+            'ฝาง': 'Fang',
+            'แม่สาย': 'Mae Sai',
+            'เวียงชัย': 'Wiang Chai',
+            'ปากน้ำปราณ': 'Pak Nam Pran',
+            'หัวหิน': 'Hua Hin',
+            'สามร้อยยอด': 'Sam Roi Yot',
+            'ชะอำ': 'Cha-am',
+            'ปราณบุรี': 'Pran Buri',
+            'หนองแก': 'Nong Kae',
+            'เกาะช้าง': 'Koh Chang',
+            'เกาะสมุย': 'Koh Samui',
+            'ราไวย์': 'Rawai',
+            'ป่าตอง': 'Patong',
+            'กะทู้': 'Kathu',
+            'ฉลอง': 'Chalong',
+            'สาคู': 'Sakhu',
+            'ถลาง': 'Thalang',
+            'กะรน': 'Karon',
+            'กมลา': 'Kamala',
+            'เชิงทะเล': 'Choeng Thale',
+            'ไชยเชษฐ์': 'Chai Chet',
+            'อมก๋อย': 'Om Koi',
+            'ฮอด': 'Hot',
+            'แม่วาง': 'Mae Wang',
+            'สันป่าตอง': 'San Pa Tong',
+            'พร้าว': 'Phrao',
+            'เวียงป่าเป้า': 'Wiang Pa Pao',
+            'เชียงแสน': 'Chiang Saen',
+            'เชียงของ': 'Chiang Khong',
+            'เวียงแก่น': 'Wiang Kaen',
+            'ขุนตาล': 'Khun Tan',
+            'แม่จัน': 'Mae Chan',
+            'แม่ฟ้าหลวง': 'Mae Fa Luang',
+            'เทิง': 'Thoeng',
+            'พาน': 'Phan',
+            'ป่าแดด': 'Pa Daet',
+            'แม่ลาว': 'Mae Lao',
+            'สามแคว้': 'Sam Ngam',
+            'บ้านตึก': 'Ban Tuk',
+            'บ้านใหม่': 'Ban Mai',
+            'หนองหลวง': 'Nong Luang',
+            'ชุมแพ': 'Chum Phae',
+            'เขาสวนกวาง': 'Khao Suan Kwang',
+            'อุบลรัตน์': 'Ubolratana',
+            'น้ำพอง': 'Nam Phong',
+            'บ้านไผ่': 'Ban Phai',
+            'พล': 'Phon',
+            'ภูเวียง': 'Phu Wiang',
+            'ภูผาม่าน': 'Phu Pha Man',
+            'หนองเรือ': 'Nong Ruea',
+            'กระนวน': 'Kranuan',
+            'ซำสูง': 'Sam Sung',
+            'เขาสามร้อยยอด': 'Khao Sam Roi Yot',
+            'บางเหนียว': 'Bang Niao',
+            'กะทู้': 'Kathu',
+            'ปากน้ำ': 'Pak Nam',
+            'แหลมพรหมเทพ': 'Laem Phromthep',
+            'บ่อผุด': 'Bo Phut',
+            'หนองคาย': 'Nong Khai',
+            'บึงกุ่ม': 'Bueng Kum',
+            'บางเขน': 'Bang Khen',
+            'หลักสี่': 'Lak Si',
+            'ดอนเมือง': 'Don Mueang',
+            'สายไหม': 'Sai Mai',
+            'คลองสามวา': 'Khlong Sam Wa',
+            'มีนบุรี': 'Min Buri',
+            'ลาดกระบัง': 'Lat Krabang',
+            'หนองจอก': 'Nong Chok',
+            'บางนา': 'Bang Na',
+            'พระโขนง': 'Phra Khanong',
+            'สวนหลวง': 'Suan Luang',
+            'บางกะปิ': 'Bang Kapi',
+            'วังทองหลาง': 'Wang Thonglang',
+            'ห้วยขวาง': 'Huai Khwang',
+            'ดินแดง': 'Din Daeng',
+            'ราชเทวี': 'Ratchathewi',
+            'ปทุมวัน': 'Pathum Wan',
+            'บางรัก': 'Bang Rak',
+            'สาทร': 'Sathon',
+            'คลองเตย': 'Khlong Toei',
+            'ยานนาวา': 'Yan Nawa',
+            'วัฒนา': 'Watthana',
+            'คลองสาน': 'Khlong San',
+            'ธนบุรี': 'Thon Buri',
+            'บางกอกใหญ่': 'Bangkok Yai',
+            'บางกอกน้อย': 'Bangkok Noi',
+            'ภาษีเจริญ': 'Phasi Charoen',
+            'หนองแขม': 'Nong Khaem',
+            'ราษฎร์บูรณะ': 'Rat Burana',
+            'บางพลัด': 'Bang Phlat',
+            'ดุสิต': 'Dusit',
+            'พญาไท': 'Phaya Thai',
+            'จตุจักร': 'Chatuchak',
+            'บางซื่อ': 'Bang Sue',
+            'ลาดพร้าว': 'Lat Phrao',
+            'บึงกุ่ม': 'Bueng Kum',
+            'สะพานสูง': 'Saphan Sung',
+            'คันนายาว': 'Khan Na Yao',
+            'บางเขน': 'Bang Khen',
+            'สายไหม': 'Sai Mai',
+            'หลักสี่': 'Lak Si',
+            'ดอนเมือง': 'Don Mueang'
+        };
+        
+        function translateThaiToEnglish(text) {
+            if (!text) return text;
+            let result = text;
+            for (const [thai, english] of Object.entries(thaiToEnglish)) {
+                result = result.replace(new RegExp(thai, 'g'), english);
+            }
+            return result;
+        }
+        
         function extractTown(location, province) {
             if (!location) return '—';
+            
+            // First translate any Thai to English
+            location = translateThaiToEnglish(location);
+            
             if (province && location.includes(province)) {
                 const parts = location.split(province);
                 if (parts[0]) return parts[0].replace(/,\s*$/, '').trim() || '—';
