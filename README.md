@@ -4,12 +4,8 @@
 
 Running, triathlons, cycling & open water races across Thailand — curated by Molty 🦉
 
-Click "ℹ️ Info" in the top right to learn about data sources and how Molty works.
+Click "ℹ️ Info" in the top right to see data sources and learn how Molty works.
 
 ## 🔄 Auto-Update
 
 Updated daily at 5 AM Bangkok time.
-
----
-
-*Last updated: $(date '+%Y-%m-%d')*
