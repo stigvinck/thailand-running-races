@@ -4,7 +4,7 @@
 
 Running, triathlons, cycling & open water races across Thailand — curated by Molty 🦉
 
-Click "ℹ️ Info" in the top right to see data sources and learn how Molty works.
+Click "ℹ️ Info" button in the top right to see data sources and learn how Molty works.
 
 ## 🔄 Auto-Update
 

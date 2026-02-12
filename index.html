@@ -381,7 +381,76 @@
                 Every evening at around 5 AM Bangkok time:
             </p>
             <ol style="margin-left: 20px; line-height: 1.8; color: #555;">
+                <li><strong>Cleanup</strong> — Remove past races that have already happened</li>
+                <li><strong>Search</strong> — Scan Runlah, Go To Race, Patrunning, and 20+ other sources</li>
+                <li><strong>Extract</strong> — Pull out race details: name, date, location, type, distance</li>
+                <li><strong>Deduplicate</strong> — Check if race already exists</li>
+                <li><strong>Add new</strong> — Insert new races with "date found" timestamp</li>
+                <li><strong>Update</strong> — Refresh this website</li>
+            </ol>
+        </div>
+        
+        <div id="info-sources" class="info-section">
+            <h2>📚 Data Sources</h2>
+            <p>I search these sources every evening to find new races across Thailand.</p>
+            
+            <div class="source-category">
+                <div class="source-cat-header">🏃 Running & Multi-Sport Platforms</div>
+                <ul class="source-list">
+                    <li class="source-item"><span class="source-name">Runlah</span> <span class="source-url">runlah.com</span> — Thailand's largest race registration platform</li>
+                    <li class="source-item"><span class="source-name">Go To Race</span> <span class="source-url">gotorace.com</span> — Triathlons, duathlons, running events</li>
+                    <li class="source-item"><span class="source-name">Ahotu</span> <span class="source-url">ahotu.com</span> — International race directory</li>
+                    <li class="source-item"><span class="source-name">World's Marathons</span> <span class="source-url">worldsmarathons.com</span> — Global marathon calendar</li>
+                </ul>
+            </div>
+            
+            <div class="source-category">
+                <div class="source-cat-header">🏊 Triathlon & Swimming</div>
+                <ul class="source-list">
+                    <li class="source-item"><span class="source-name">Pho3nix Kids Thailand</span> <span class="source-url">pho3nixkidsthailand.com</span> — Kids triathlon series</li>
+                    <li class="source-item"><span class="source-name">Tridash Thailand</span> <span class="source-url">tridashthailand.com</span> — Sprint triathlon series</li>
+                    <li class="source-item"><span class="source-name">Oceanman</span> <span class="source-url">oceanmanswim.com</span> — Open water swimming</li>
+                    <li class="source-item"><span class="source-name">Laguna Phuket Triathlon</span> <span class="source-url">lagunaphukettri.com</span> — Asia's longest-running triathlon</li>
+                </ul>
+            </div>
+            
+            <div class="source-category">
+                <div class="source-cat-header">⛰️ Trail & Ultra</div>
+                <ul class="source-list">
+                    <li class="source-item"><span class="source-name">Patrunning</span> <span class="source-url">patrunning.com</span> — Thailand's trail running community</li>
+                    <li class="source-item"><span class="source-name">UTMB Thailand</span> <span class="source-url">thailandbyutmb.com</span> — Ultra-trail series</li>
+                </ul>
+            </div>
+            
+            <div class="source-category">
+                <div class="source-cat-header">🚴 Cycling</div>
+                <ul class="source-list">
+                    <li class="source-item"><span class="source-name">Gran Fondo World Tour</span> <span class="source-url">granfondoworldtour.com</span> — Gran Fondo events</li>
+                    <li class="source-item"><span class="source-name">Thailand Cycling Association</span> <span class="source-url">thaicycling.or.th</span> — Sanctioned races</li>
+                </ul>
+            </div>
+            
+            <div class="source-category">
+                <div class="source-cat-header">🦾 Obstacle Races</div>
+                <ul class="source-list">
+                    <li class="source-item"><span class="source-name">Spartan Race Thailand</span> <span class="source-url">th.spartan.com</span> — World's largest OCR</li>
+                    <li class="source-item"><span class="source-name">X-Race Asia</span> <span class="source-url">xraceasia.com</span> — Trail and obstacle races</li>
+                </ul>
+            </div>
+            
+            <div class="source-category">
+                <div class="source-cat-header">🏢 Organizers & Series</div>
+                <ul class="source-list">
+                    <li class="source-item"><span class="source-name">Bangkok Airways Boutique Series</span> <span class="source-url">bangkokairways.run</span> — Destination half marathons</li>
+                    <li class="source-item"><span class="source-name">Masters Tour Series</span> <span class="source-url">masterstourofchiangmai.com</span> — Masters cycling</li>
+                    <li class="source-item"><span class="source-name">Singha Park</span> <span class="source-url">singhapark.com</span> — Events in Chiang Rai</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
+    <script>
+        let races = 
 [{"name":"Run Better Together 2026 แม่อายวิทยาคม","date":"2026-02-14","location":"สนามโรงเรียนแม่อายวิทยาคม ต.แม่อาย อ.แม่อาย","province":"Chiang Mai","race_type":"running","distance":"Unknown","event_url":"https://www.runlah.com/th/i8GRvNUe","date_found":"2026-02-11"},
 {"name":"Samoeng Mini Marathon ครั้งที่ 6","date":"2026-02-14","location":"โรงเรียนสะเมิงพิทยาคม","province":"Chiang Mai","race_type":"running","distance":"Unknown","event_url":"https://www.runlah.com/th/uT51f1K4","date_found":"2026-02-11"},
 {"name":"Sannameng Healthy Hero 2026","date":"2026-02-14","location":"เทศบาลตำบลสันนาเม็ง","province":"Chiang Mai","race_type":"running","distance":"Unknown","event_url":"https://www.runlah.com/th/62CopI1k","date_found":"2026-02-11"},
@@ -498,75 +567,6 @@
 {"name":"Chiangmai Thailand by UTMB 2026","date":"TBA","location":"Chiang Mai city & surrounding national parks, Chiang Mai","province":"Chiang Mai","race_type":"running","distance":"175K / 93K / 50K / 24K / 12K / 10K","event_url":"https://thailandbyutmb.com/","date_found":"2026-02-11"},
 {"name":"IRONMAN 70.3 Bangsaen 2026","date":"TBA","location":"Bangsaen Beach & Saen Suk, Mueang Chon Buri","province":"Chonburi","race_type":"triathlon","distance":"1.9 km swim / 90 km bike / 21.1 km run","event_url":"https://www.finishers.com/en/event/ironman-70-3-bangsaen-thailand","date_found":"2026-02-11"}]
 ;
-                <li><strong>Search</strong> — Scan Runlah, Go To Race, Patrunning, and 20+ other sources</li>
-                <li><strong>Extract</strong> — Pull out race details: name, date, location, type, distance</li>
-                <li><strong>Deduplicate</strong> — Check if race already exists</li>
-                <li><strong>Add new</strong> — Insert new races with "date found" timestamp</li>
-                <li><strong>Update</strong> — Refresh this website</li>
-            </ol>
-        </div>
-        
-        <div id="info-sources" class="info-section">
-            <h2>📚 Data Sources</h2>
-            <p>I search these sources every evening to find new races across Thailand.</p>
-            
-            <div class="source-category">
-                <div class="source-cat-header">🏃 Running & Multi-Sport Platforms</div>
-                <ul class="source-list">
-                    <li class="source-item"><span class="source-name">Runlah</span> <span class="source-url">runlah.com</span> — Thailand's largest race registration platform</li>
-                    <li class="source-item"><span class="source-name">Go To Race</span> <span class="source-url">gotorace.com</span> — Triathlons, duathlons, running events</li>
-                    <li class="source-item"><span class="source-name">Ahotu</span> <span class="source-url">ahotu.com</span> — International race directory</li>
-                    <li class="source-item"><span class="source-name">World's Marathons</span> <span class="source-url">worldsmarathons.com</span> — Global marathon calendar</li>
-                </ul>
-            </div>
-            
-            <div class="source-category">
-                <div class="source-cat-header">🏊 Triathlon & Swimming</div>
-                <ul class="source-list">
-                    <li class="source-item"><span class="source-name">Pho3nix Kids Thailand</span> <span class="source-url">pho3nixkidsthailand.com</span> — Kids triathlon series</li>
-                    <li class="source-item"><span class="source-name">Tridash Thailand</span> <span class="source-url">tridashthailand.com</span> — Sprint triathlon series</li>
-                    <li class="source-item"><span class="source-name">Oceanman</span> <span class="source-url">oceanmanswim.com</span> — Open water swimming</li>
-                    <li class="source-item"><span class="source-name">Laguna Phuket Triathlon</span> <span class="source-url">lagunaphukettri.com</span> — Asia's longest-running triathlon</li>
-                </ul>
-            </div>
-            
-            <div class="source-category">
-                <div class="source-cat-header">⛰️ Trail & Ultra</div>
-                <ul class="source-list">
-                    <li class="source-item"><span class="source-name">Patrunning</span> <span class="source-url">patrunning.com</span> — Thailand's trail running community</li>
-                    <li class="source-item"><span class="source-name">UTMB Thailand</span> <span class="source-url">thailandbyutmb.com</span> — Ultra-trail series</li>
-                </ul>
-            </div>
-            
-            <div class="source-category">
-                <div class="source-cat-header">🚴 Cycling</div>
-                <ul class="source-list">
-                    <li class="source-item"><span class="source-name">Gran Fondo World Tour</span> <span class="source-url">granfondoworldtour.com</span> — Gran Fondo events</li>
-                    <li class="source-item"><span class="source-name">Thailand Cycling Association</span> <span class="source-url">thaicycling.or.th</span> — Sanctioned races</li>
-                </ul>
-            </div>
-            
-            <div class="source-category">
-                <div class="source-cat-header">🦾 Obstacle Races</div>
-                <ul class="source-list">
-                    <li class="source-item"><span class="source-name">Spartan Race Thailand</span> <span class="source-url">th.spartan.com</span> — World's largest OCR</li>
-                    <li class="source-item"><span class="source-name">X-Race Asia</span> <span class="source-url">xraceasia.com</span> — Trail and obstacle races</li>
-                </ul>
-            </div>
-            
-            <div class="source-category">
-                <div class="source-cat-header">🏢 Organizers & Series</div>
-                <ul class="source-list">
-                    <li class="source-item"><span class="source-name">Bangkok Airways Boutique Series</span> <span class="source-url">bangkokairways.run</span> — Destination half marathons</li>
-                    <li class="source-item"><span class="source-name">Masters Tour Series</span> <span class="source-url">masterstourofchiangmai.com</span> — Masters cycling</li>
-                    <li class="source-item"><span class="source-name">Singha Park</span> <span class="source-url">singhapark.com</span> — Events in Chiang Rai</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        let races = [];
         
         const typeInfo = {
             'running': { emoji: '🏃', label: 'Running', color: 'running' },
