@@ -16,24 +16,35 @@
         .header { 
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 25px 40px;
+            padding: 20px 40px;
         }
-        .header h1 { margin: 0; font-size: 24px; font-weight: 700; }
+        .header h1 { margin: 0; font-size: 26px; font-weight: 700; }
         .header-sub { 
             color: rgba(255,255,255,0.9); 
             font-size: 14px; 
-            margin-top: 6px;
+            margin-top: 4px;
         }
-        .back-link {
-            display: inline-block;
-            margin-top: 10px;
-            color: rgba(255,255,255,0.8);
+        .nav {
+            background: rgba(255,255,255,0.1);
+            padding: 10px 40px;
+            margin-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        .nav a {
+            color: rgba(255,255,255,0.9);
             text-decoration: none;
-            font-size: 13px;
+            margin-right: 25px;
+            font-size: 14px;
+            padding: 5px 0;
         }
-        .back-link:hover {
+        .nav a:hover {
             color: white;
-            text-decoration: underline;
+            border-bottom: 2px solid white;
+        }
+        .nav a.active {
+            color: white;
+            border-bottom: 2px solid white;
+            font-weight: 600;
         }
         .container { 
             max-width: 900px; 
@@ -121,16 +132,32 @@
         .tag.thailand { background: #e8f5e9; color: #388e3c; }
         @media (max-width: 768px) {
             .header, .container { padding: 20px; }
-            .header h1 { font-size: 20px; }
+            .header h1 { font-size: 22px; }
+            .nav { padding: 10px 20px; }
+            .nav a { margin-right: 15px; font-size: 13px; }
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>📚 Data Sources</h1>
-        <div class="header-sub">Where I find races for Thailand Race Finder</div>
-        <a href="index.html" class="back-link">← Back to race list</a>
+        <h1>🏃 Thailand Race Finder</h1>
+        <div class="header-sub">Running, triathlons, cycling & open water — curated by Molty 🦉</div>
+        <div class="nav">
+            <a href="index.html">Races</a>
+            <a href="sources.html" class="active">Data Sources</a>
+            <a href="about.html">About Molty</a>
+        </div>
     </div>
+    
+    <div class="container">
+        <div class="intro">
+            <h2 style="color: #667eea; font-size: 20px; margin-bottom: 10px;">📚 Data Sources</h2>
+            <p>
+                I search these sources every evening to find new races across Thailand. 
+                Some are major registration platforms with thousands of events; others are 
+                specialty sites for specific race types. I check them all.
+            </p>
+        </div>
     
     <div class="container">
         <div class="intro">

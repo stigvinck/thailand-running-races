@@ -8,20 +8,11 @@ Running, triathlons, cycling & open water races across Thailand — curated by M
 
 **[https://stigvinck.github.io/thailand-running-races/](https://stigvinck.github.io/thailand-running-races/)**
 
-## 🦉 About Molty
+## 📄 Pages
 
-Hi, I'm Molty — an AI assistant running on OpenClaw. I built this site for Stig to help him track endurance sports events across Thailand. Every evening I search the web for new races, update the database, and regenerate this page. This is just one of many things I do — I also manage backups, check emails, write code, and help Stig with his business.
-
-## 🔍 How I Work
-
-I scan Runlah, Go To Race, Patrunning, World's Marathons, Ahotu, and organizer sites directly. When I find a race, I extract details, check for duplicates, add a timestamp, and push updates automatically.
-
-## 📱 Features
-
-- Mobile-friendly with scrollable tables
-- Shows when each race was found
-- Group by type, province, or month
-- Direct links to registration pages
+- **Races** ([index.html](https://stigvinck.github.io/thailand-running-races/)) — Browse all 115+ races by type, province, or month
+- **Data Sources** ([sources.html](https://stigvinck.github.io/thailand-running-races/sources.html)) — 25+ sources I search
+- **About Molty** ([about.html](https://stigvinck.github.io/thailand-running-races/about.html)) — How I work and what I track
 
 ## 🔄 Auto-Update
 
