@@ -8,63 +8,90 @@
     :root {
       font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       color: #0f172a;
-      background: #f8fafc;
+      background: #e2e8f0;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
     }
     body {
       margin: 0;
-      padding: 24px 16px 64px;
-      background: #f8fafc;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      color: #0f172a;
+      display: flex;
     }
     .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      background: #fff;
-      border-radius: 16px;
-      padding: 32px 24px;
-      box-shadow: 0 10px 30px rgba(15,23,42,0.08);
+      flex: 1;
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      background: #ffffff;
+      padding: clamp(16px, 3vw, 48px) clamp(12px, 4vw, 72px) clamp(56px, 6vw, 96px);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
     header h1 {
-      margin: 0 0 8px;
-      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      letter-spacing: -0.02em;
     }
     header p {
       margin: 0;
       color: #475569;
-      font-size: 1rem;
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      max-width: 960px;
     }
     .controls {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       gap: 12px;
-      margin: 24px 0;
+      width: 100%;
     }
     .controls button {
-      flex: 1 1 140px;
-      padding: 10px 14px;
+      padding: 14px 18px;
       border-radius: 999px;
       border: 1px solid #cbd5f5;
       background: #fff;
       color: #0f172a;
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s ease;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+    }
+    .controls button:focus-visible {
+      outline: 3px solid rgba(14, 116, 144, 0.4);
+      outline-offset: 2px;
     }
     .controls button.active {
       background: #0f172a;
       color: #fff;
       border-color: #0f172a;
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.2);
+    }
+    #groups {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
     }
     .group {
-      margin-bottom: 32px;
       border: 1px solid #e2e8f0;
-      border-radius: 12px;
+      border-radius: 20px;
       overflow: hidden;
       background: #fff;
+      display: flex;
+      flex-direction: column;
     }
     .group-header {
-      padding: 16px 20px;
-      background: #f1f5f9;
+      padding: 18px 24px;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -73,25 +100,35 @@
     }
     .group-header h2 {
       margin: 0;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
+    }
+    .group-header span {
+      font-size: 0.95rem;
+      color: #475569;
+    }
+    .table-wrapper {
+      overflow-x: auto;
     }
     table {
       width: 100%;
+      min-width: 640px;
       border-collapse: collapse;
     }
     th, td {
       text-align: left;
-      padding: 12px 16px;
-      font-size: 0.93rem;
+      padding: 14px 20px;
+      font-size: 0.95rem;
     }
     th {
       background: #fff;
       color: #334155;
       border-bottom: 1px solid #e2e8f0;
       font-weight: 600;
+      white-space: nowrap;
     }
     td {
       border-bottom: 1px solid #f1f5f9;
+      vertical-align: top;
     }
     tr:last-child td {
       border-bottom: none;
@@ -103,9 +140,31 @@
     a:hover {
       text-decoration: underline;
     }
-    @media (max-width: 720px) {
-      body { padding: 16px 8px 40px; }
-      .container { padding: 24px 16px; }
+    @media (min-width: 1200px) {
+      body {
+        padding: 0;
+      }
+      .container {
+        padding-left: clamp(32px, 5vw, 96px);
+        padding-right: clamp(32px, 5vw, 96px);
+      }
+      .group {
+        border-radius: 24px;
+      }
+    }
+    @media (max-width: 900px) {
+      body {
+        display: block;
+      }
+      .container {
+        padding: 24px 16px 56px;
+      }
+      table {
+        min-width: 0;
+      }
+      .table-wrapper {
+        overflow: visible;
+      }
       table, thead, tbody, th, td, tr {
         display: block;
       }
@@ -114,7 +173,8 @@
       }
       tr {
         border-bottom: 1px solid #e2e8f0;
-        margin-bottom: 12px;
+        margin-bottom: 16px;
+        padding: 12px 0;
       }
       td {
         border: none;
@@ -125,7 +185,7 @@
         display: block;
         font-weight: 600;
         color: #475569;
-        margin-bottom: 2px;
+        margin-bottom: 4px;
       }
     }
   </style>
@@ -231,7 +291,11 @@
         });
         table.appendChild(tbody);
 
-        groupDiv.appendChild(table);
+        const tableWrapper = document.createElement('div');
+        tableWrapper.className = 'table-wrapper';
+        tableWrapper.appendChild(table);
+
+        groupDiv.appendChild(tableWrapper);
         groupsEl.appendChild(groupDiv);
       });
     };
