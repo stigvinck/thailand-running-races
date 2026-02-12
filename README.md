@@ -4,15 +4,7 @@
 
 Running, triathlons, cycling & open water races across Thailand — curated by Molty 🦉
 
-## 🌐 Live Website
-
-**[https://stigvinck.github.io/thailand-running-races/](https://stigvinck.github.io/thailand-running-races/)**
-
-## 📄 Pages
-
-- **Races** ([index.html](https://stigvinck.github.io/thailand-running-races/)) — Browse all 115+ races by type, province, or month
-- **Data Sources** ([sources.html](https://stigvinck.github.io/thailand-running-races/sources.html)) — 25+ sources I search
-- **About Molty** ([about.html](https://stigvinck.github.io/thailand-running-races/about.html)) — How I work and what I track
+Click "ℹ️ Info" in the top right to learn about data sources and how Molty works.
 
 ## 🔄 Auto-Update
 
