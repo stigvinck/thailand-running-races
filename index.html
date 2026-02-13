@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Thailand Running Race Finder</title>
+  <title>Southeast Asia Race Finder</title>
   <style>
     :root {
       font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -34,7 +34,7 @@
     header {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 14px;
       background: #f8fafc;
       border: 1px solid #e2e8f0;
       border-radius: 24px;
@@ -53,15 +53,44 @@
       font-size: clamp(1rem, 2vw, 1.1rem);
       max-width: 960px;
     }
+    header p strong {
+      color: #0f172a;
+    }
     .last-updated {
-      margin-top: 8px;
-      font-size: 0.85rem;
-      color: #64748b;
+      font-size: 0.9rem;
+      color: #475569;
       font-weight: 500;
     }
     .last-updated span {
       color: #0f172a;
       font-weight: 700;
+    }
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .stat-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 14px 18px;
+      flex: 1;
+      min-width: 180px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      box-shadow: inset 0 1px 0 rgba(148, 163, 184, 0.2);
+    }
+    .stat-card span {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #94a3b8;
+    }
+    .stat-card strong {
+      font-size: 1.35rem;
+      color: #0f172a;
     }
     .controls {
       display: grid;
@@ -79,179 +108,171 @@
       border: 1px solid #cbd5f5;
       background: #fff;
       color: #0f172a;
-      font-size: 1rem;
-      font-weight: 700;
+      font-weight: 600;
+      letter-spacing: 0.01em;
       cursor: pointer;
       transition: all 0.2s ease;
-      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
     }
-    .controls button:focus-visible {
-      outline: 3px solid rgba(14, 116, 144, 0.4);
-      outline-offset: 2px;
+    .controls button:hover {
+      border-color: #6366f1;
+      color: #4338ca;
+      transform: translateY(-1px);
     }
     .controls button.active {
-      background: #0f172a;
+      background: linear-gradient(120deg, #6366f1, #8b5cf6);
       color: #fff;
-      border-color: #0f172a;
-      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.2);
+      border-color: transparent;
+      box-shadow: 0 12px 20px rgba(99, 102, 241, 0.25);
     }
     #groups {
-      flex: 1;
       display: flex;
       flex-direction: column;
       gap: 24px;
     }
-    .group {
+    .group, .country-group {
+      background: #fff;
       border: 1px solid #e2e8f0;
       border-radius: 20px;
-      overflow: hidden;
-      background: #fff;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+      padding: clamp(12px, 2vw, 24px);
+      box-shadow: 0 18px 24px rgba(15, 23, 42, 0.06);
     }
     .group-header {
-      padding: 18px 24px;
-      background: #eef2ff;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-      border-bottom: 1px solid #e0e7ff;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #f1f5f9;
+      margin-bottom: 12px;
     }
     .group-header h2 {
       margin: 0;
-      font-size: 1.15rem;
-      font-weight: 700;
+      font-size: 1.3rem;
+      letter-spacing: -0.01em;
     }
     .group-header span {
       font-size: 0.95rem;
-      color: #475569;
-      font-weight: 600;
+      color: #64748b;
+    }
+    .province-group {
+      margin-top: 18px;
+      border: 1px solid #eef2ff;
+      border-radius: 18px;
+      padding: 16px;
+      background: #f8fafc;
+    }
+    .province-group:first-of-type {
+      margin-top: 0;
+    }
+    .province-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .province-header h3 {
+      margin: 0;
+      font-size: 1.05rem;
+      color: #1e293b;
+    }
+    .province-header span {
+      font-size: 0.85rem;
+      color: #64748b;
     }
     .table-wrapper {
+      width: 100%;
       overflow-x: auto;
-      position: relative;
-      padding-bottom: 24px;
-      -webkit-overflow-scrolling: touch;
+      border-radius: 16px;
+      border: 1px solid #e2e8f0;
     }
     table {
       width: 100%;
-      min-width: 640px;
       border-collapse: collapse;
+      min-width: 680px;
     }
-    th, td {
+    thead th {
       text-align: left;
-      padding: 14px 20px;
-      font-size: 0.95rem;
-    }
-    th {
-      background: #f1f5f9;
-      color: #334155;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #94a3b8;
+      padding: 16px;
+      background: #f8fafc;
       border-bottom: 1px solid #e2e8f0;
-      font-weight: 600;
-      white-space: nowrap;
     }
-    td {
+    tbody td {
+      padding: 18px 16px;
       border-bottom: 1px solid #f1f5f9;
-      vertical-align: top;
+      font-size: 0.95rem;
+      color: #0f172a;
     }
-    tr:last-child td {
+    tbody tr:last-child td {
       border-bottom: none;
     }
+    tbody tr:hover {
+      background: #f8fafc;
+    }
+    tbody a {
+      color: #4338ca;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    tbody a:hover {
+      text-decoration: underline;
+    }
     .race-type {
-      display: inline-flex;
-      align-items: center;
-      padding: 4px 10px;
+      padding: 6px 12px;
       border-radius: 999px;
       font-size: 0.85rem;
       font-weight: 600;
       text-transform: capitalize;
-      background: #e2e8f0;
-      color: #0f172a;
     }
-    .race-type.type-running {
-      background: #dbeafe;
-      color: #1d4ed8;
+    .type-running { background: rgba(59, 130, 246, 0.15); color: #1d4ed8; }
+    .type-triathlon { background: rgba(16, 185, 129, 0.18); color: #047857; }
+    .type-cycling { background: rgba(249, 115, 22, 0.18); color: #c2410c; }
+    .type-open-water, .type-swim { background: rgba(14, 165, 233, 0.2); color: #0369a1; }
+    .type-trail { background: rgba(34, 197, 94, 0.18); color: #15803d; }
+    .type-obstacle { background: rgba(239, 68, 68, 0.15); color: #b91c1c; }
+    .type-default { background: rgba(100, 116, 139, 0.15); color: #334155; }
+    .location-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
-    .race-type.type-triathlon {
-      background: #dcfce7;
-      color: #15803d;
-    }
-    .race-type.type-cycling {
-      background: #e0f2f1;
-      color: #00695c;
-    }
-    .race-type.type-swim {
-      background: #d9f2ff;
-      color: #0369a1;
-    }
-    .race-type.type-trail {
-      background: #fef3c7;
-      color: #b45309;
-    }
-    .race-type.type-open-water {
-      background: #fce7f3;
-      color: #be185d;
-    }
-    .race-type.type-obstacle {
-      background: #ede9fe;
-      color: #6b21a8;
-    }
-    a {
-      color: #0f62fe;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .table-wrapper::-webkit-scrollbar {
-      height: 6px;
-    }
-    .table-wrapper::-webkit-scrollbar-thumb {
-      background: #cbd5f5;
-      border-radius: 999px;
-    }
-    @media (min-width: 1200px) {
-      body {
-        padding: 0;
-      }
-      .container {
-        padding-left: clamp(32px, 5vw, 96px);
-        padding-right: clamp(32px, 5vw, 96px);
-      }
-      .group {
-        border-radius: 24px;
-      }
+    .region-line {
+      font-size: 0.85rem;
+      color: #64748b;
     }
     @media (max-width: 900px) {
-      body {
+      header {
+        border-radius: 20px;
+      }
+      .controls {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      }
+      thead {
+        display: none;
+      }
+      table, tbody, tr, td {
         display: block;
+        width: 100%;
       }
-      .container {
-        padding: 24px 16px 56px;
+      tbody tr {
+        margin-bottom: 16px;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 16px;
       }
-      table {
-        min-width: 720px;
+      tbody td {
+        border: none;
+        padding: 4px 0;
       }
-    }
-
-    @media (max-width: 600px) {
-      th, td {
-        padding: 12px 16px;
-        font-size: 0.9rem;
-      }
-      .table-wrapper::after {
-        content: '← swipe →';
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 4px;
-        text-align: center;
-        font-size: 0.85rem;
+      tbody td::before {
+        content: attr(data-label);
+        display: block;
+        font-size: 0.8rem;
+        text-transform: uppercase;
         color: #94a3b8;
-        pointer-events: none;
+        margin-bottom: 4px;
       }
     }
   </style>
@@ -259,14 +280,28 @@
 <body>
   <div class="container">
     <header>
-      <h1>Thailand Running Race Finder</h1>
-      <p>Quickly explore upcoming running events across Thailand by month, race category, or province.</p>
-      <div class="last-updated">Last updated: <span id="update-time">13 Feb 2026, 11:46 Bangkok time</span></div>
+      <h1>Southeast Asia Race Finder</h1>
+      <p>Molty scans trusted calendars and organizer portals across <strong>Thailand and Vietnam</strong> so Stig can see every confirmed 2026 endurance race – grouped by month, category, or <strong>Country → Province/Region</strong>.</p>
+      <div class="last-updated">Last updated: <span id="update-time">13 Feb 2026, 20:33 Bangkok time</span></div>
+      <div class="stats">
+        <div class="stat-card">
+          <span>Races tracked</span>
+          <strong id="stat-total">0</strong>
+        </div>
+        <div class="stat-card">
+          <span>Countries</span>
+          <strong id="stat-countries">0</strong>
+        </div>
+        <div class="stat-card">
+          <span>Newest find</span>
+          <strong id="stat-latest">—</strong>
+        </div>
+      </div>
     </header>
     <div class="controls">
       <button data-view="month" class="active">By Month</button>
       <button data-view="category">By Category</button>
-      <button data-view="province">By Province</button>
+      <button data-view="province">By Province/Region</button>
       <button data-view="all">All Races</button>
     </div>
     <section id="groups"></section>
@@ -274,1285 +309,1659 @@
   <script>
     const races = [
   {
-    "date": "2026-02-14",
-    "name": "Run Better Together 2026 แม่อายวิทยาคม",
+    "name": "Vietnam International Half Marathon 2026 (VIHM)",
+    "date": "2026-01-01",
+    "location": "Thien Quang Lake & downtown Hanoi",
+    "province": "Hanoi",
+    "country": "Vietnam",
     "race_type": "running",
+    "distance": "21K / 10K / 5K WA-AIMS certified course",
+    "event_url": "https://vietnaminternationalhalfmarathon.vn/cac-cu-ly-le-phi/",
+    "date_found": "2026-02-13"
+  },
+  {
+    "name": "HCMC Marathon 2026",
+    "date": "2026-01-11",
+    "location": "Le Duan & 30/4 Park, Ho Chi Minh City",
+    "province": "Ho Chi Minh City",
+    "country": "Vietnam",
+    "race_type": "running",
+    "distance": "42.195 km / 21 km / 10 km schedule published",
+    "event_url": "https://www.hcmcmarathon.com/race-info/",
+    "date_found": "2026-02-13"
+  },
+  {
+    "name": "Mang Den Ultra Trail 2026",
+    "date": "2026-01-16",
+    "location": "Mang Den Town, Kon Plong District",
+    "province": "Kon Tum",
+    "country": "Vietnam",
+    "race_type": "trail",
+    "distance": "15K / 25K / 50K / 70K / 100K",
+    "event_url": "https://actiup.net/en/event/mang-den-ultra-trail-2026",
+    "date_found": "2026-02-13"
+  },
+  {
+    "name": "VnExpress Marathon All-Star 2026",
+    "date": "2026-01-25",
+    "location": "Hoa Lac High-Tech Park, Hanoi",
+    "province": "Hanoi",
+    "country": "Vietnam",
+    "race_type": "running",
+    "distance": "42 km & 21 km qualifying standards",
+    "event_url": "https://vm.vnexpress.net/",
+    "date_found": "2026-02-13"
+  },
+  {
+    "name": "Vietnam Trail Marathon 2026",
+    "date": "2026-01-31",
+    "location": "Moc Chau Plateau",
+    "province": "Son La",
+    "country": "Vietnam",
+    "race_type": "trail",
+    "distance": "70K / 42K / 21K / 10K / 5K",
+    "event_url": "https://vietnamtrailseries.com/trail-marathon/",
+    "date_found": "2026-02-13"
+  },
+  {
+    "name": "Tết Run Miền Nam 2026",
+    "date": "2026-02-01",
+    "location": "Ho Chi Minh City",
+    "province": "Ho Chi Minh City",
+    "country": "Vietnam",
+    "race_type": "running",
+    "distance": "Single 21 km New Year run",
+    "event_url": "https://actiup.net/en/event/tet-run-mien-nam-2026",
+    "date_found": "2026-02-13"
+  },
+  {
+    "name": "Run Better Together 2026 แม่อายวิทยาคม",
+    "date": "2026-02-14",
     "location": "สนามโรงเรียนแม่อายวิทยาคม ต.แม่อาย อ.แม่อาย",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "Unknown",
     "event_url": "https://www.runlah.com/th/i8GRvNUe",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-14",
     "name": "Samoeng Mini Marathon ครั้งที่ 6",
-    "race_type": "running",
+    "date": "2026-02-14",
     "location": "โรงเรียนสะเมิงพิทยาคม",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "Unknown",
     "event_url": "https://www.runlah.com/th/uT51f1K4",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-14",
     "name": "Sannameng Healthy Hero 2026",
-    "race_type": "running",
+    "date": "2026-02-14",
     "location": "เทศบาลตำบลสันนาเม็ง",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "Unknown",
     "event_url": "https://www.runlah.com/th/62CopI1k",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-14",
     "name": "Run Better Together 2026 แม่อายวิทยาคม ก้าวด้วยใจ ก้าวไปด้วยกัน",
-    "race_type": "running",
+    "date": "2026-02-14",
     "location": "สนามโรงเรียนแม่อายวิทยาคม ต.แม่อาย อ.แม่อาย",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/i8GRvNUe",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-14",
     "name": "ซีนิค ฮาล์ฟมาราธอน ปราณบุรี 2026",
-    "race_type": "running",
+    "date": "2026-02-14",
     "location": "ปากน้ำปราณบีชพาร์ค ต.ปากน้ำปราณ อ.ปราณบุรี",
     "province": "Prachuap Khiri Khan",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/yJDeJcNt",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-14",
     "name": "Samoeng Mini marathon ครั้งที่ 6",
-    "race_type": "running",
+    "date": "2026-02-14",
     "location": "โรงเรียนสะเมิงพิทยาคม",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/uT51f1K4",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-14",
     "name": "ซิลเวอร์รันคลับ ครั้งที่ 4",
-    "race_type": "running",
+    "date": "2026-02-14",
     "location": "อุทยาน 100 ปี จุฬาลงกรณ์มหาวิทยาลัย",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/lkPM9KVw",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-15",
     "name": "CMU ATHLETIC EKIDEN RUN 2026",
-    "race_type": "running",
+    "date": "2026-02-15",
     "location": "ลานเนินพระพุทธศูนย์วิจัย สาธิตและฝึกอบรมการเกษตรแม่เหียะ (ไร่แม่เหียะ)",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "Ekiden relay",
     "event_url": "https://www.runlah.com/th/N4hXVh1W",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-15",
     "name": "Mae Kampong Mini Cross Country 2026",
-    "race_type": "running",
+    "date": "2026-02-15",
     "location": "Mae Kampong",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "Cross country",
     "event_url": "https://www.runlah.com/th/eINad7dE",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-15",
     "name": "เดินวิ่ง ฮอม ฮัก ปี 6",
-    "race_type": "running",
+    "date": "2026-02-15",
     "location": "โรงเรียนชุมชนบ้านอมก๋อย",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "Unknown",
     "event_url": "https://www.runlah.com/th/PuORlkGp",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-15",
     "name": "สารภีมินิมาราธอน ครั้งที่ 6",
-    "race_type": "running",
+    "date": "2026-02-15",
     "location": "สำนักงานเทศบาลตำบลสารภี อ.สารภี",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "Mini marathon",
     "event_url": "https://www.runlah.com/th/gXwIpyTn",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-15",
     "name": "Maesai Mountain Run 2026",
-    "race_type": "running",
+    "date": "2026-02-15",
     "location": "ลานที่ว่าการอำเภอแม่สาย",
     "province": "Chiang Rai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/GNyZkBc2",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-15",
     "name": "RUN FOR LOVE บอกรักที่หนองหลวง",
-    "race_type": "running",
+    "date": "2026-02-15",
     "location": "สวนสาธารณะหนองหลวง  อ.เวียงชัย",
     "province": "Chiang Rai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/BEQSXb4c",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-15",
     "name": "ศรีสุนทร ฮาล์ฟมาราธอน 2026",
-    "race_type": "running",
+    "date": "2026-02-15",
     "location": "อ่างเก็บน้ำบางเหนียวดำ",
     "province": "Phuket",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/qSp1BJ4w",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-15",
     "name": "KhonKaen21 2026",
-    "race_type": "running",
+    "date": "2026-02-15",
     "location": "ประตูเมืองขอนแก่น",
     "province": "Khon Kaen",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/NAi6pmeY",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-15",
     "name": "Minimal Trail 2026",
-    "race_type": "running",
+    "date": "2026-02-15",
     "location": "Mae Wa National Park, Thoen, Lampang",
     "province": "Lampang",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "11K / 34K / 52K / 102K",
     "event_url": "https://patrunning.com/events/minimal-trail-2026/",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-15",
     "name": "CMU ATHLETIC EKIDEN RUN 2026",
-    "race_type": "running",
+    "date": "2026-02-15",
     "location": "ลานเนินพระพุทธศูนย์วิจัย สาธิตและฝึกอบรมการเกษตรแม่เหียะ (ไร่แม่เหียะ) ",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/N4hXVh1W",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-15",
     "name": "KPI Democracy RUN 2026",
-    "race_type": "running",
+    "date": "2026-02-15",
     "location": "พิพิธภัณฑ์พระบาทสมเด็จพระปกเกล้าเจ้าอยู่หัว",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/9siYSagU",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-15",
     "name": "Run Alone ... But Not Lonely 2026",
-    "race_type": "running",
+    "date": "2026-02-15",
     "location": "สวนหลวง ร.9",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/kllfxqJQ",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-15",
     "name": "WAT RAJABOPIT RUN 2026",
-    "race_type": "running",
+    "date": "2026-02-15",
     "location": "วัดราชบพิธสถิตมหาสีมารามราชวรวิหาร",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/NOQhvSK5",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-15",
     "name": "เฮง เฮง มินิมาราธอน 2026",
-    "race_type": "running",
+    "date": "2026-02-15",
     "location": "สนามวชิรเบญจทัศ (สวนรถไฟ)",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/Iog4BM22",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-15",
     "name": "Saraphi Mini Marathon #6",
-    "race_type": "running",
+    "date": "2026-02-15",
     "location": "Saraphi Municipality Office",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "10K / 5K / 2K",
     "event_url": "https://www.runlah.com/en/gXwIpyTn",
     "date_found": "2026-02-13"
   },
   {
-    "date": "2026-02-21",
     "name": "เดิน-วิ่ง \"วิถีล้านนา\" เที่ยวชมเมืองเชียงใหม่",
-    "race_type": "running",
+    "date": "2026-02-21",
     "location": "ข่วงประตูท่าแพ",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "Unknown",
     "event_url": "https://www.runlah.com/th/AuatYBHd",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-21",
     "name": "เดิน-วิ่ง “วิถีล้านนา” เที่ยวชมเมืองเชียงใหม่",
-    "race_type": "running",
+    "date": "2026-02-21",
     "location": "ข่วงประตูท่าแพ",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/AuatYBHd",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-21",
     "name": "PHU WIANG ULTRA TRAIL 2026",
-    "race_type": "running",
+    "date": "2026-02-21",
     "location": "อุทยานแห่งชาติภูเวียง",
     "province": "Khon Kaen",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/docfksft",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-22",
     "name": "The Takeoff Run",
-    "race_type": "running",
+    "date": "2026-02-22",
     "location": "หาดไม้ขาว",
     "province": "Phuket",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/WzHGJtLA",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-22",
     "name": "บ้านเป็ดมินิมาราธอน 2026",
-    "race_type": "running",
+    "date": "2026-02-22",
     "location": "บึงหนองโคตร",
     "province": "Khon Kaen",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/q8TY6jlg",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-22",
     "name": "Plongsan Mini Marathon Run For Kids 2026",
-    "race_type": "running",
+    "date": "2026-02-22",
     "location": "โรงเรียนบ้านปล้องส้าน ต.ปล้อง อ.เทิง",
     "province": "Chiang Rai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/OZ7GIQLy",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-22",
     "name": "MEA SPARK RUN 2025",
-    "race_type": "running",
+    "date": "2026-02-22",
     "location": "การไฟฟ้านครหลวง วัดเลียบ",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/uEzSON5l",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-28",
     "name": "Discover Night Run 2026",
-    "race_type": "running",
+    "date": "2026-02-28",
     "location": "สวนเฉลิมพระเกียรติ 72 พรรษามหาราชินี (ลานมังกร)",
     "province": "Phuket",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/LWa2cF74",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-02-28",
     "name": "หมอออร์โธฯ ชวนก้าว ช่วย 13 โรงพยาบาล 2026 (Chiang Mai)",
-    "race_type": "running",
+    "date": "2026-02-28",
     "location": "Chiang Mai Provincial Administrative Organization Park (ศูนย์ราชการจังหวัดเชียงใหม่)",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "5K charity run",
     "event_url": "https://ortho.thai.run/event/ORTHO_CMI",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-01",
     "name": "วังหลวง มินิมาราธอน ครั้งที่ 2",
-    "race_type": "running",
+    "date": "2026-03-01",
     "location": "โรงเรียนบ้านวังหลวง อ.ดอยเต่า",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "Mini marathon",
     "event_url": "https://www.runlah.com/th/apMlTrrI",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-01",
     "name": "ซาเลเซียนหัวหินมินิมาราธอน 2026",
-    "race_type": "running",
+    "date": "2026-03-01",
     "location": "โรงเรียนหัวหินวิทยาลัย อ.หัวหิน",
     "province": "Prachuap Khiri Khan",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/0wu3mBdC",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-01",
     "name": "Pho3nix Kids Triathlon Thailand 2026 – Wellington College",
-    "race_type": "triathlon",
+    "date": "2026-03-01",
     "location": "Wellington College International School, Bangkok",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "triathlon",
     "distance": "Kids tri/duathlon distances 25-400m swim • 1-10K bike • 400m-3K run",
     "event_url": "https://pho3nixkidsthailand.com/wellington-college/",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-01",
     "name": "Ang Khang KOM Challenge 2026",
-    "race_type": "cycling",
+    "date": "2026-03-01",
     "location": "Wiang, Fang District, Chiang Mai",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "cycling",
     "distance": "40 km / 1,335 m+",
     "event_url": "https://www.cycloworld.cc/en/gran-fondo/thailand/ang-khang-kom-challenge/37597",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-01",
     "name": "Pho3nix Kids Triathlon 2026 - Wellington College",
-    "race_type": "triathlon",
+    "date": "2026-03-01",
     "location": "Wellington College International School, Bangkok",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "triathlon",
     "distance": "Sprint, Mini",
     "event_url": "https://www.gotorace.com/",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-01",
     "name": "ACT Run for Teacher 2026",
-    "race_type": "running",
+    "date": "2026-03-01",
     "location": "สวนพุทธมณฑล สาย 4",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/9FPu7DNN",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-01",
     "name": "Battle Run 2026 Rabit & Turtle",
-    "race_type": "running",
+    "date": "2026-03-01",
     "location": "สวนหลวง ร.9 ประตู 4 (ประตูดาวเรือง)",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/KEceSicy",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-01",
     "name": "DSRU Charity Run  2026",
-    "race_type": "running",
+    "date": "2026-03-01",
     "location": "มหาวิทยาลัยรามคำแหง (หัวหมาก)",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/lVuaHZpp",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-01",
     "name": "TikTok Shop Run Freshtival  2026",
-    "race_type": "running",
+    "date": "2026-03-01",
     "location": "CentralwOrld",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/tl1nRS8H",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-01",
     "name": "ชัก...อยากจะวิ่ง 7",
-    "race_type": "running",
+    "date": "2026-03-01",
     "location": "ศูนย์ราชการ ถนนแจ้งวัฒนะ ",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/fCH20dqq",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-01",
     "name": "ดงตาลรัน ครั้งที่ 7",
-    "race_type": "running",
+    "date": "2026-03-01",
     "location": "คณะวิศวกรรมศาสตร์ มหาวิทยาลัยเกษตรศาสตร์ บางเขน",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/dtr7",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-01",
     "name": "วิ่งด้วยกัน Run2Gether 2026",
-    "race_type": "running",
+    "date": "2026-03-01",
     "location": "สนามกีฬาแห่งชาติ สนามศุภชลาศัย",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/T8eBwCZR",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-07",
+    "name": "Brăh Yàng Trail Summit 2026",
+    "date": "2026-03-05",
+    "location": "Di Linh Highlands",
+    "province": "Lam Dong",
+    "country": "Vietnam",
+    "race_type": "trail",
+    "distance": "10K / 25K / 50K / 70K / 100K + Aquathlon Trail",
+    "event_url": "https://brahyangtrailsummit.vn/",
+    "date_found": "2026-02-13"
+  },
+  {
     "name": "ซิลเวอร์รันคลับ ครั้งที่ 5",
-    "race_type": "running",
+    "date": "2026-03-07",
     "location": "อุทยาน 100 ปี จุฬาลงกรณ์มหาวิทยาลัย",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/ONjBKQ2O",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-07",
     "name": "Khaoyai-Prachin Ultra 2026",
-    "race_type": "trail",
+    "date": "2026-03-07",
     "location": "King Mongkut’s University of Technology North Bangkok (Prachinburi Campus)",
     "province": "Prachin Buri",
+    "country": "Thailand",
+    "race_type": "trail",
     "distance": "100K / 60K",
     "event_url": "https://www.runlah.com/en/kpu2026",
     "date_found": "2026-02-13"
   },
   {
-    "date": "2026-03-08",
     "name": "ชุมแพมินิมาราธอน ครั้งที่ 1",
-    "race_type": "running",
+    "date": "2026-03-08",
     "location": "สำนักงานขนส่งจังหวัดขอนแก่น สาขาอำภอชุมแพ",
     "province": "Khon Kaen",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/hJ01fEyX",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-08",
     "name": "Fahsai Run ร่วมกันก้าว ชาวบริหาร 2026",
-    "race_type": "running",
+    "date": "2026-03-08",
     "location": "คณะบริหารธุรกิจ มหาวิทยาลัยเกษตรศาสตร์ บางเขน",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/fahsai2026",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-08",
     "name": "Run for love#15  Love is Sharing",
-    "race_type": "running",
+    "date": "2026-03-08",
     "location": "สวนสมเด็จพระนางเจ้าสิริกิติ์ฯ (จตุจักร)",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/15A6AOE1",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-08",
     "name": "วิ่งสร้างเมือง 2026 ตอน เพ็ท-ตัด-เพ็ท",
-    "race_type": "running",
+    "date": "2026-03-08",
     "location": "คณะสถาปัตยกรรมศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/dvp9K9va",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-14",
-    "name": "พาลูกวิ่งดะ Obstacle on the Beach 2026 : Survival Family",
+    "name": "Bac Ninh Legacy Marathon 2026",
+    "date": "2026-03-08",
+    "location": "Kinh Bac Cultural Center, Bac Ninh",
+    "province": "Bac Ninh",
+    "country": "Vietnam",
     "race_type": "running",
+    "distance": "42K / 21K / 10K / 5K",
+    "event_url": "https://legacymarathon.com/event/dau-chan-mien-quan-ho-2026/order",
+    "date_found": "2026-02-13"
+  },
+  {
+    "name": "Ha Giang Discovery Marathon & Ultra Trail 2026",
+    "date": "2026-03-13",
+    "location": "Meo Vac & Dong Van Karst Plateau",
+    "province": "Ha Giang",
+    "country": "Vietnam",
+    "race_type": "trail",
+    "distance": "Discovery 21/12/6 km + Trail 25/42/55/70 km",
+    "event_url": "https://actiup.net/en/event/ha-giang-discovery-marathon-2026",
+    "date_found": "2026-02-13"
+  },
+  {
+    "name": "พาลูกวิ่งดะ Obstacle on the Beach 2026 : Survival Family",
+    "date": "2026-03-14",
     "location": "Seapine Golf & Resort Huahin (Seapine Recreation Centre)  อ.หัวหิน",
     "province": "Prachuap Khiri Khan",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/8n1PcIGM",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-15",
     "name": "Patong Beach Run 2026",
-    "race_type": "running",
+    "date": "2026-03-15",
     "location": "Patong Beach",
     "province": "Phuket",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/caTH7xaF",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-15",
     "name": "TOAVH RUN Homes for Hornbills",
-    "race_type": "running",
+    "date": "2026-03-15",
     "location": "สวนหลวง ร.๙ – บึงหนองบอน",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/hH4H0kgB",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-20",
     "name": "Thailand Open Masters Swimming Championships 2026",
-    "race_type": "swim",
+    "date": "2026-03-20",
     "location": "Sports Authority of Thailand Swimming Pool",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "swim",
     "distance": "Masters meet (Mar 20-22)",
     "event_url": "https://www.thaiaquatics.or.th/Index/Competition",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-21",
     "name": "Muangthai Kids Triathlon 2026 – Sam Roi Yod",
-    "race_type": "triathlon",
+    "date": "2026-03-21",
     "location": "DPMRC4 Disaster Unit, Sam Roi Yod Beach, Prachuap Khiri Khan",
     "province": "Prachuap Khiri Khan",
+    "country": "Thailand",
+    "race_type": "triathlon",
     "distance": "Kids tri distances 75-150m swim / 2-13km bike / 1-3km run",
     "event_url": "https://www.gotorace.com/mtl2026-samroiyod/",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-21",
     "name": "Muangthai Triathlon Eco Hero Super Series 2026 – SAM ROI YOD",
-    "race_type": "triathlon",
+    "date": "2026-03-21",
     "location": "DPMRC4 Disaster Unit, Samroiyod Beach",
     "province": "Prachuap Khiri Khan",
+    "country": "Thailand",
+    "race_type": "triathlon",
     "distance": "Standard/Super: 1.5k swim / 40.7k bike / 10k run; Sprint: 0.75k/25.5k/5k; Duathlon: 5k/25.5k/5k; Kids tri",
     "event_url": "https://www.gotorace.com/mtl2026-samroiyod/",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-21",
     "name": "Ex-Run Night FUN 2025",
-    "race_type": "running",
+    "date": "2026-03-21",
     "location": "อาคารจักรพันธ์เพ็ญศิริ มหาวิทยาลัยเกษตรศาสตร์ บางเขน",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/BDETMYzn",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-21",
     "name": "ห้าหมูนี่ แชริตี้ รัน! 2026",
-    "race_type": "running",
+    "date": "2026-03-21",
     "location": "อุทยาน 100 ปี จุฬาลงกรณ์มหาวิทยาลัย",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/5W0JSSJS",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-22",
     "name": "ราไวย์ สบาย รัน 2026",
-    "race_type": "running",
+    "date": "2026-03-22",
     "location": "แหลมพรหมเทพ ต.ราไวย์ อ.เมือง",
     "province": "Phuket",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/nxlA98CJ",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-22",
     "name": "Muangthai Triathlon Eco Hero Super Series 2026 – Sam Roi Yod",
-    "race_type": "triathlon",
+    "date": "2026-03-22",
     "location": "DPMRC4 Disaster Unit, Sam Roi Yod Beach, Prachuap Khiri Khan",
     "province": "Prachuap Khiri Khan",
+    "country": "Thailand",
+    "race_type": "triathlon",
     "distance": "Standard 1.5/40.7/10 + Sprint 0.75/25.5/5 + Kids & Duathlon",
     "event_url": "https://www.gotorace.com/mtl2026-samroiyod/",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-22",
     "name": "KaChong Trail 2026",
-    "race_type": "running",
+    "date": "2026-03-22",
     "location": "Phraya Ratsadanupradit Mahison Phakdi Museum, Kantang District, Trang",
     "province": "Trang",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "38K / 21K / 7K",
     "event_url": "https://worldsmarathons.com/marathon/kachong-trail",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-22",
     "name": "วิ่งหนีหมอ มาทำบุญสร้างโบสต์วัดบัวผัน มินิมาราธอน ครั้งที่ 1",
-    "race_type": "running",
+    "date": "2026-03-22",
     "location": "วัดบัวผัน แขวงท่าข้าม เขตบางขุนเทียน",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/XOjNFMZ7",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-22",
     "name": "PALA RUN 5 : 2026",
-    "race_type": "running",
+    "date": "2026-03-22",
     "location": "PALA BEACH, T.PALA, A.BANCHANG",
     "province": "Rayong",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "Unknown",
     "event_url": "https://www.runlah.com/en/pala26",
-    "date_found": ""
+    "date_found": "2026-02-13"
   },
   {
-    "date": "2026-03-29",
-    "name": "นครหัวหินรัน 2026",
+    "name": "Danang International Marathon 2026",
+    "date": "2026-03-22",
+    "location": "Bien Dong Park & Vo Nguyen Giap, Da Nang",
+    "province": "Da Nang",
+    "country": "Vietnam",
     "race_type": "running",
+    "distance": "42K / 21K / 5K coastal course",
+    "event_url": "https://rundanang.com/en/",
+    "date_found": "2026-02-13"
+  },
+  {
+    "name": "Vietnam FesTRIval Lam Dong 2026",
+    "date": "2026-03-28",
+    "location": "Bau Trang Lake, Lam Dong",
+    "province": "Lam Dong",
+    "country": "Vietnam",
+    "race_type": "triathlon",
+    "distance": "70.3 / 56.5 / Sprint formats",
+    "event_url": "https://tatinta.com/en/hoat-dong-cong-dong/the-thao-cong-dong/vietnam-festrival-2026/36",
+    "date_found": "2026-02-13"
+  },
+  {
+    "name": "นครหัวหินรัน 2026",
+    "date": "2026-03-29",
     "location": "อ่างเก็บน้ำเขาเต่า อ.หัวหิน",
     "province": "Prachuap Khiri Khan",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/gJttR1x1",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-29",
     "name": "Oceanman Krabi 2026",
-    "race_type": "open water",
+    "date": "2026-03-29",
     "location": "Klong Muang Beach, Krabi",
     "province": "Krabi",
+    "country": "Thailand",
+    "race_type": "open water",
     "distance": "10K / 5K / 2K / 500m kids / 3x500m relay",
     "event_url": "https://oceanmanswim.com/krabi-thailand/",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-29",
     "name": "Black & White and Run 2026",
-    "race_type": "running",
+    "date": "2026-03-29",
     "location": "สวนหลวง ร.9",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/mA3Jdbg5",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-03-29",
     "name": "วิ่งให้โอกาส 2026",
-    "race_type": "running",
+    "date": "2026-03-29",
     "location": "Bangkok World สวนสยาม",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/trF13AuN",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-04-04",
     "name": "ธัญญปุระ คัลเลอร์ รัน 2026",
-    "race_type": "running",
+    "date": "2026-04-04",
     "location": "ธัญญปุระ ภูเก็ต",
     "province": "Phuket",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/cfr26",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-04-05",
     "name": "สิงห์เหนือ เสือใต้ Run for Give Minimarathon 3 By ZENCELL",
-    "race_type": "running",
+    "date": "2026-04-05",
     "location": "สวนหลวง ร.9",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/16xDGa61",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-04-11",
     "name": "Laguna Phuket Sunset Beach Run 2026",
-    "race_type": "running",
+    "date": "2026-04-11",
     "location": "Xana Beach Club ลากูน่า",
     "province": "Phuket",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/gqsTMHYO",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-04-18",
-    "name": "Sawan Rim Rai Ultra Marathon 2026",
-    "race_type": "trail",
-    "location": "Sawan Park (Nong Somboon), Nakhon Sawan",
-    "province": "Nakhon Sawan",
-    "distance": "Ultra",
-    "event_url": "https://www.runlah.com/en/ums2026",
-    "date_found": ""
+    "name": "Aqua Warriors Halong Bay 2026",
+    "date": "2026-04-11",
+    "location": "Bai Chay, Ha Long Bay",
+    "province": "Quang Ninh",
+    "country": "Vietnam",
+    "race_type": "triathlon",
+    "distance": "T103 Enduro 2km swim / 80km bike / 21km run + Olympic & sprint formats",
+    "event_url": "https://aquawarriors.com.vn/",
+    "date_found": "2026-02-13"
   },
   {
-    "date": "2026-04-19",
+    "name": "Sawan Rim Rai Ultra Marathon 2026",
+    "date": "2026-04-18",
+    "location": "Sawan Park (Nong Somboon), Nakhon Sawan",
+    "province": "Nakhon Sawan",
+    "country": "Thailand",
+    "race_type": "trail",
+    "distance": "Ultra",
+    "event_url": "https://www.runlah.com/en/ums2026",
+    "date_found": "2026-02-13"
+  },
+  {
     "name": "Sakhu Trail Beach Run 2026",
-    "race_type": "running",
+    "date": "2026-04-19",
     "location": "สวนสาธารณะหาดในทอน",
     "province": "Phuket",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/jCwaloOJ",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-04-25",
     "name": "Masters Tour of Andaman 2026",
-    "race_type": "cycling",
+    "date": "2026-04-25",
     "location": "Natai Beach Resort (Andaman coast)",
     "province": "Phang Nga",
+    "country": "Thailand",
+    "race_type": "cycling",
     "distance": "Stage race: ITT prologue + ~60km + ~80km road stages",
     "event_url": "https://masterstourofchiangmai.com/",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-04-26",
     "name": "เดิน-วิ่งขึ้นดอยตามรอยพระครูบาเจ้าศรีวิชัย 2026",
-    "race_type": "running",
+    "date": "2026-04-26",
     "location": "อนุสาวรีย์ครูบาเจ้าศรีวิชัย",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "Trail/Up mountain",
     "event_url": "https://www.runlah.com/th/s1A1pfbg",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-04-26",
     "name": "Doisuthep Run 2026",
-    "race_type": "running",
+    "date": "2026-04-26",
     "location": "Kruba Srivichai Monument, Chiang Mai",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "11K hill run",
     "event_url": "https://www.runlah.com/en/s1A1pfbg",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-04-30",
     "name": "Amazean Jungle Thailand by UTMB 2026",
-    "race_type": "running",
+    "date": "2026-04-30",
     "location": "Betong Mongkollit Tunnel, Betong, Yala",
     "province": "Yala",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "147K / 102K / 55K / 27.9K / 15.8K + fun run",
     "event_url": "https://thailand.go.th/event-detail/amazean-jungle-thailand-by-utmb",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-05-03",
     "name": "ศิริราช เดิน-วิ่ง ครั้งที่ 18",
-    "race_type": "running",
+    "date": "2026-05-03",
     "location": "โรงพยาบาลศิริราช",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/siriraj18",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-05-03",
     "name": "XRACE OCEAN 2026",
-    "race_type": "obstacle",
+    "date": "2026-05-03",
     "location": "Chai Chet Resort, Koh Chang",
     "province": "Trat",
+    "country": "Thailand",
+    "race_type": "obstacle",
     "distance": "Ocean obstacle race",
     "event_url": "https://xraceasia.com/event/xrace-ocean-2026/",
     "date_found": "2026-02-12"
   },
   {
-    "date": "2026-05-10",
     "name": "Suanpruek99 10-Hour UltraMarathon 2025",
-    "race_type": "running",
+    "date": "2026-05-10",
     "location": "สวนนวมินทร์ภิรมย์ เขตบึงกุ่ม",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/ultra10hrs2026",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-05-10",
     "name": "หัวหินมาราธอน 2026 (ครั้งที่ 6)",
-    "race_type": "running",
+    "date": "2026-05-10",
     "location": "วัดเขาไกรลาศ ต.หนองแก อ.หัวหิน",
     "province": "Prachuap Khiri Khan",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/huahin2026",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-05-10",
     "name": "Hua Hin Marathon 2026",
-    "race_type": "City marathon",
+    "date": "2026-05-10",
     "location": "Wat Khao Krailart, Nong Kae, Hua Hin",
     "province": "Prachuap Khiri Khan",
+    "country": "Thailand",
+    "race_type": "City marathon",
     "distance": "42.195 km / 21 km / 10.5 km / 5 km",
     "event_url": "https://www.runlah.com/en/huahin2026",
     "date_found": "2026-02-12"
   },
   {
-    "date": "2026-05-17",
+    "name": "IRONMAN Vietnam 2026",
+    "date": "2026-05-10",
+    "location": "Bien Dong Park, Da Nang",
+    "province": "Da Nang",
+    "country": "Vietnam",
+    "race_type": "triathlon",
+    "distance": "3.8 km swim / 180 km bike / 42.2 km run",
+    "event_url": "https://www.ironman.com/races/im-vietnam",
+    "date_found": "2026-02-13"
+  },
+  {
+    "name": "IRONMAN 70.3 Da Nang 2026",
+    "date": "2026-05-10",
+    "location": "Bien Dong Park, Da Nang",
+    "province": "Da Nang",
+    "country": "Vietnam",
+    "race_type": "triathlon",
+    "distance": "1.9 km swim / 90 km bike / 21.1 km run",
+    "event_url": "https://www.ironman.com/races/im703-danang",
+    "date_found": "2026-02-13"
+  },
+  {
     "name": "Rama 8",
-    "race_type": "running",
+    "date": "2026-05-17",
     "location": "ลานเอนกประสงค์ใต้สะพานพระราม 8",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/GscLTnfV",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-05-17",
     "name": "Supersports 10 Mile Run 2026 Presented by Under Armour",
-    "race_type": "running",
+    "date": "2026-05-17",
     "location": "centralwOrld",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/YJyQXR1o",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-05-17",
     "name": "การท่าเรือ มินิมาราธอน ครั้งที่ 13 2569",
-    "race_type": "running",
+    "date": "2026-05-17",
     "location": "การท่าเรือแห่งประเทศไทย",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/1vSvhan9",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-05-24",
     "name": "Bangkok Airways Trat Half Marathon 2026",
-    "race_type": "running",
+    "date": "2026-05-24",
     "location": "Trat Provincial Stadium, Bang Phra, Mueang Trat District",
     "province": "Trat",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "21.1K / 10K / 5K + kids dash",
     "event_url": "https://www.ahotu.com/event/bangkok-airways-trat-half-marathon",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-05-24",
     "name": "ชมพูฟ้ารันนิ่ง 2026",
-    "race_type": "running",
+    "date": "2026-05-24",
     "location": "โรงเรียนสวนกุหลาบวิทยาลัย",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/UxiqBsuB",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-05-30",
     "name": "สามร้อยยอด รัน ฟัน เฟส 2026",
-    "race_type": "running",
+    "date": "2026-05-30",
     "location": "ชายหาดสามร้อยยอด",
     "province": "Prachuap Khiri Khan",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/9nJgVAgK",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-05-31",
     "name": "Amazing Phrae Marathon 2026",
-    "race_type": "running",
+    "date": "2026-05-31",
     "location": "Sam Wai Market, Phrae Municipality",
     "province": "Phrae",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "42K / 21K / 10K / 5K",
     "event_url": "https://www.runlah.com/en/kr7N8F8T",
     "date_found": "2026-02-13"
   },
   {
-    "date": "2026-06-13",
     "name": "Laguna Phuket Marathon 2026",
-    "race_type": "running",
+    "date": "2026-06-13",
     "location": "Laguna Grove, Laguna Phuket",
     "province": "Phuket",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/JSDWUMpK",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-06-21",
     "name": "Bangkok Airways Samui Half Marathon 2026",
-    "race_type": "running",
+    "date": "2026-06-21",
     "location": "Phru Chaweng Lake, Bo Phut, Ko Samui District",
     "province": "Surat Thani",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "21.1K / 10K / 5K + kids dash",
     "event_url": "https://www.ahotu.com/event/bangkok-airways-samui-half-marathon",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-07-05",
     "name": "Chiang Mai Half Marathon 2026",
-    "race_type": "running",
+    "date": "2026-07-05",
     "location": "7th Infantry Division Camp, Mae Rim",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "21K/10K/5K",
     "event_url": "https://www.runlah.com/en/eF2t2Iut",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-08-01",
     "name": "AKHA Trail 2026",
-    "race_type": "running",
+    "date": "2026-08-01",
     "location": "โรงเรียนบ้านผาฮี้",
     "province": "Chiang Rai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/6l88DHgy",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-08-16",
     "name": "Wangpong Trail 2026",
-    "race_type": "trail",
+    "date": "2026-08-16",
     "location": "Ban Khlong Nam Khan School, Sap Peub, Wang Pong",
     "province": "Phetchabun",
+    "country": "Thailand",
+    "race_type": "trail",
     "distance": "Unknown",
     "event_url": "https://www.runlah.com/en/wpt2026",
-    "date_found": ""
+    "date_found": "2026-02-13"
   },
   {
-    "date": "2026-08-22",
     "name": "UBR PEAK Challenge 2026",
-    "race_type": "running",
+    "date": "2026-08-22",
     "location": "วัดพระบาทภูพานคำ อ.อุบลรัตน์",
     "province": "Khon Kaen",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/zbTXfy6r",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-08-23",
     "name": "Bangkok Airways Sukhothai Half Marathon 2026",
-    "race_type": "running",
+    "date": "2026-08-23",
     "location": "Sukhothai Historical Park, Mueang Kao, Mueang Sukhothai District",
     "province": "Sukhothai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "21.1K / 10K / 5K + kids dash",
     "event_url": "https://www.ahotu.com/event/bangkok-airways-sukhothai-half-marathon",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-08-30",
     "name": "Pho3nix Kids Triathlon Thailand 2026 – Pattana Sports Resort",
-    "race_type": "triathlon",
+    "date": "2026-08-30",
     "location": "Pattana Sports Resort, Si Racha, Chonburi",
     "province": "Chonburi",
+    "country": "Thailand",
+    "race_type": "triathlon",
     "distance": "Kids tri & duathlon sets (25-400m swim / 1-10km bike / 0.4-3km run by age)",
     "event_url": "https://pho3nixkidsthailand.com/pattana-sports/",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-09-05",
     "name": "Chiang Mai Night Run 2026",
-    "race_type": "running",
+    "date": "2026-09-05",
     "location": "Chiang Mai Zoo (Doi Suthep)",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "22K / 10K / 5K",
     "event_url": "https://www.jogandjoy.com/thailand-running-calender",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-09-07",
     "name": "Jungle Trail Khao Eto 2026",
-    "race_type": "trail",
+    "date": "2026-09-07",
     "location": "Khao Ito Forest Park, Noen Hom, Mueang Prachinburi District",
     "province": "Prachin Buri",
+    "country": "Thailand",
+    "race_type": "trail",
     "distance": "50K / 30K / 20K / 10K",
     "event_url": "https://www.ahotu.com/event/jungle-trail-khao-eto",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-09-27",
     "name": "Bangkok Airways Chiang Mai Half Marathon 2026",
-    "race_type": "running",
+    "date": "2026-09-27",
     "location": "Royal Park Rajapruek, Chiang Mai",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "21.1K / 10K / 5K / 800m Kids",
     "event_url": "https://www.ahotu.com/event/Bangkok-Airways-Chiang-Mai-Half-Marathon",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-10-10",
     "name": "Nan Mountain Trail 2026",
-    "race_type": "trail",
+    "date": "2026-10-10",
     "location": "Prakit Vejchasak School, San Tha, Na Noi District",
     "province": "Nan",
+    "country": "Thailand",
+    "race_type": "trail",
     "distance": "100K / 60K / 30K / 20K / 9K",
     "event_url": "https://www.ahotu.com/event/nan-mountain-trail",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-10-16",
     "name": "Masters Tour of Chiang Mai 2026 (14th Edition)",
-    "race_type": "cycling",
+    "date": "2026-10-16",
     "location": "Chiang Mai",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "cycling",
     "distance": "4-day stage race (Oct 16-19)",
     "event_url": "https://masterstourofchiangmai.com/",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-11-01",
     "name": "THEP SADET TRAIL 2026",
-    "race_type": "running",
+    "date": "2026-11-01",
     "location": "องค์การบริหารส่วนตำบลเทพเสด็จ ต.เทพเสด็จ อ.ดอยสะเก็ด",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "Trail",
     "event_url": "https://www.runlah.com/th/eYQj8Vza",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-11-01",
     "name": "THEP SADET TRAIL 2026",
-    "race_type": "running",
+    "date": "2026-11-01",
     "location": "องค์การบริหารส่วนตำตลเทพเสด็จ ต.เทพเสด็จ อ.ดอยสะเก็ด",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "",
     "event_url": "https://www.runlah.com/en/eYQj8Vza",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-11-14",
     "name": "Pho3nix Kids Triathlon Thailand 2026 – Thanyapura Sports & Health Resort",
-    "race_type": "triathlon",
+    "date": "2026-11-14",
     "location": "Thanyapura Sports & Health Resort, Phuket",
     "province": "Phuket",
+    "country": "Thailand",
+    "race_type": "triathlon",
     "distance": "Kids tri & duathlon sets (25-400m swim / 1-10km bike / 0.4-3km run by age)",
     "event_url": "https://pho3nixkidsthailand.com/thanyapura-sports/",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-11-15",
     "name": "Laguna Phuket Triathlon 2026",
-    "race_type": "triathlon",
+    "date": "2026-11-15",
     "location": "Laguna Grove, Phuket",
     "province": "Phuket",
+    "country": "Thailand",
+    "race_type": "triathlon",
     "distance": "1.8K swim / 55K bike / 12K run (plus sprint & duathlon options)",
     "event_url": "https://www.lagunaphukettri.com/",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-11-15",
     "name": "Bangkok Marathon 2026",
-    "race_type": "Road marathon",
+    "date": "2026-11-15",
     "location": "Sanamchai Road, Phra Nakhon",
     "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "Road marathon",
     "distance": "42.195km, 21km, 10km, 5km",
     "event_url": "https://www.bkkmarathon.com/home",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-11-22",
     "name": "500 Thailand Ultra 2026",
-    "race_type": "Multi-day ultra stage race",
+    "date": "2026-11-22",
     "location": "Pai District Office, Pai, Mae Hong Son",
     "province": "Mae Hong Son",
+    "country": "Thailand",
+    "race_type": "Multi-day ultra stage race",
     "distance": "500 km / 300 km / 200 km / 100 km (7-day stage format)",
     "event_url": "https://www.500thailand.com/aboutus/",
     "date_found": "2026-02-12"
   },
   {
-    "date": "2026-12-13",
     "name": "Chiang Mai Gran Fondo (GFWT)",
-    "race_type": "cycling",
+    "date": "2026-12-13",
     "location": "Chiang Mai",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "cycling",
     "distance": "120K / 80K / 50K",
     "event_url": "https://www.granfondoworldtour.com/events",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2026-12-20",
     "name": "Chiang Mai Marathon 2026",
-    "race_type": "running",
+    "date": "2026-12-20",
     "location": "Tha Phae Gate, Chiang Mai",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "42K / 21K / 10K / 3K",
     "event_url": "https://www.ahotu.com/event/chiang-mai-marathon",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2027-01-08",
     "name": "Ultra Trail Chiang Mai - UTCM 200K",
-    "race_type": "running",
+    "date": "2027-01-08",
     "location": "Chiang Dao",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "200K",
     "event_url": "https://worldsmarathons.com/marathon/ultra-trail-chiang-mai",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2027-01-08",
     "name": "Ultra Trail Chiang Mai - UTCM 103K",
-    "race_type": "running",
+    "date": "2027-01-08",
     "location": "Chiang Dao",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "103K",
     "event_url": "https://worldsmarathons.com/marathon/ultra-trail-chiang-mai",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2027-01-08",
     "name": "Ultra Trail Chiang Mai - UTCM 76K",
-    "race_type": "running",
+    "date": "2027-01-08",
     "location": "Chiang Dao",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "76K",
     "event_url": "https://worldsmarathons.com/marathon/ultra-trail-chiang-mai",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2027-01-09",
     "name": "Ultra Trail Chiang Mai - UTCM 40K",
-    "race_type": "running",
+    "date": "2027-01-09",
     "location": "Chiang Dao",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "40K",
     "event_url": "https://worldsmarathons.com/marathon/ultra-trail-chiang-mai",
     "date_found": "2026-02-11"
   },
   {
-    "date": "2027-01-10",
     "name": "Ultra Trail Chiang Mai - UTCM 16K",
-    "race_type": "running",
+    "date": "2027-01-10",
     "location": "Chiang Dao",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "16K",
     "event_url": "https://worldsmarathons.com/marathon/ultra-trail-chiang-mai",
     "date_found": "2026-02-11"
   },
   {
-    "date": "TBA",
-    "name": "Songkhla Marathon 2026",
-    "race_type": "running",
-    "location": "Songkhla",
-    "province": "Songkhla",
-    "distance": "42.195km, 21km, 10km, 5km",
-    "event_url": "https://worldsmarathons.com/marathon/songkha-international-marathon",
-    "date_found": "2026-02-11"
-  },
-  {
-    "date": "TBA",
-    "name": "Korat Marathon 2026",
-    "race_type": "running",
-    "location": "Nakhon Ratchasima",
-    "province": "Nakhon Ratchasima",
-    "distance": "42.195km, 21km, 10km, 5km",
-    "event_url": "https://www.finishers.com/",
-    "date_found": "2026-02-11"
-  },
-  {
-    "date": "TBA",
     "name": "Bangsaen42 Chonburi Marathon 2026",
-    "race_type": "running",
+    "date": "TBA",
     "location": "Chonburi",
     "province": "Chonburi",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "42.195km",
     "event_url": "https://www.finishers.com/",
     "date_found": "2026-02-11"
   },
   {
-    "date": "TBA",
-    "name": "Marathon de Pattaya 2026",
-    "race_type": "running",
-    "location": "Pattaya",
-    "province": "Chonburi",
-    "distance": "42.195km, 21km, 10km",
-    "event_url": "https://www.finishers.com/",
-    "date_found": "2026-02-11"
-  },
-  {
-    "date": "TBA",
-    "name": "River Kwai International Half Marathon 2026",
-    "race_type": "running",
-    "location": "Kanchanaburi",
-    "province": "Kanchanaburi",
-    "distance": "21km",
-    "event_url": "https://worldsmarathons.com/",
-    "date_found": "2026-02-11"
-  },
-  {
-    "date": "TBA",
-    "name": "TNF 100 Thailand 2026",
-    "race_type": "running",
-    "location": "Khao Yai, Nakhon Ratchasima",
-    "province": "Nakhon Ratchasima",
-    "distance": "100km, 50km, 25km",
-    "event_url": "https://www.gotorace.com/tnf-100-thailand-2025/",
-    "date_found": "2026-02-11"
-  },
-  {
-    "date": "TBA",
-    "name": "Pho3nix Kids Triathlon Thailand 2026 – Samut Prakan Provincial Stadium",
-    "race_type": "triathlon",
-    "location": "Samut Prakan Provincial Stadium, Samut Prakan",
-    "province": "Samut Prakan",
-    "distance": "Kids tri & duathlon sets (25-400m swim / 1-10km bike / 0.4-3km run by age)",
-    "event_url": "https://pho3nixkidsthailand.com/",
-    "date_found": "2026-02-11"
-  },
-  {
-    "date": "TBA",
     "name": "Chiangmai Thailand by UTMB 2026",
-    "race_type": "running",
+    "date": "TBA",
     "location": "Chiang Mai city & surrounding national parks, Chiang Mai",
     "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
     "distance": "175K / 93K / 50K / 24K / 12K / 10K",
     "event_url": "https://thailandbyutmb.com/",
     "date_found": "2026-02-11"
   },
   {
-    "date": "TBA",
     "name": "IRONMAN 70.3 Bangsaen 2026",
-    "race_type": "triathlon",
+    "date": "TBA",
     "location": "Bangsaen Beach & Saen Suk, Mueang Chon Buri",
     "province": "Chonburi",
+    "country": "Thailand",
+    "race_type": "triathlon",
     "distance": "1.9 km swim / 90 km bike / 21.1 km run",
     "event_url": "https://www.finishers.com/en/event/ironman-70-3-bangsaen-thailand",
+    "date_found": "2026-02-11"
+  },
+  {
+    "name": "Korat Marathon 2026",
+    "date": "TBA",
+    "location": "Nakhon Ratchasima",
+    "province": "Nakhon Ratchasima",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "42.195km, 21km, 10km, 5km",
+    "event_url": "https://www.finishers.com/",
+    "date_found": "2026-02-11"
+  },
+  {
+    "name": "Marathon de Pattaya 2026",
+    "date": "TBA",
+    "location": "Pattaya",
+    "province": "Chonburi",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "42.195km, 21km, 10km",
+    "event_url": "https://www.finishers.com/",
+    "date_found": "2026-02-11"
+  },
+  {
+    "name": "Pho3nix Kids Triathlon Thailand 2026 – Samut Prakan Provincial Stadium",
+    "date": "TBA",
+    "location": "Samut Prakan Provincial Stadium, Samut Prakan",
+    "province": "Samut Prakan",
+    "country": "Thailand",
+    "race_type": "triathlon",
+    "distance": "Kids tri & duathlon sets (25-400m swim / 1-10km bike / 0.4-3km run by age)",
+    "event_url": "https://pho3nixkidsthailand.com/",
+    "date_found": "2026-02-11"
+  },
+  {
+    "name": "River Kwai International Half Marathon 2026",
+    "date": "TBA",
+    "location": "Kanchanaburi",
+    "province": "Kanchanaburi",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "21km",
+    "event_url": "https://worldsmarathons.com/",
+    "date_found": "2026-02-11"
+  },
+  {
+    "name": "Songkhla Marathon 2026",
+    "date": "TBA",
+    "location": "Songkhla",
+    "province": "Songkhla",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "42.195km, 21km, 10km, 5km",
+    "event_url": "https://worldsmarathons.com/marathon/songkha-international-marathon",
+    "date_found": "2026-02-11"
+  },
+  {
+    "name": "TNF 100 Thailand 2026",
+    "date": "TBA",
+    "location": "Khao Yai, Nakhon Ratchasima",
+    "province": "Nakhon Ratchasima",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "100km, 50km, 25km",
+    "event_url": "https://www.gotorace.com/tnf-100-thailand-2025/",
     "date_found": "2026-02-11"
   }
 ];
 
     const groupsEl = document.getElementById('groups');
     const buttons = document.querySelectorAll('.controls button');
+    const statTotal = document.getElementById('stat-total');
+    const statCountries = document.getElementById('stat-countries');
+    const statLatest = document.getElementById('stat-latest');
 
-    const formatDate = (dateStr) => {
-      if (!dateStr) return '';
-      const date = new Date(dateStr);
-      if (Number.isNaN(date)) return dateStr;
-      return date.toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
+    const parseDate = (value) => {
+      if (!value || value.toUpperCase() === 'TBA') return null;
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return null;
+      return date;
     };
 
-    const getMonthLabel = (dateStr) => {
-      const date = new Date(dateStr);
-      if (Number.isNaN(date)) return 'Unknown';
+    const formatDate = (value) => {
+      if (!value) return '—';
+      if (value.toUpperCase && value.toUpperCase() === 'TBA') return 'TBA';
+      const date = parseDate(value);
+      if (!date) return value;
+      return date.toLocaleDateString('en-US', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
+    };
+
+    const formatMonthLabel = (value) => {
+      const date = parseDate(value);
+      if (!date) return 'Unknown date';
       return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
     };
 
     const getRaceTypeClass = (type = '') => {
-      const value = (type || '').toLowerCase();
-      if (!value) return 'type-running';
+      const value = type.toLowerCase();
+      if (!value) return 'type-default';
       if (value.includes('tri')) return 'type-triathlon';
       if (value.includes('cycle') || value.includes('bike')) return 'type-cycling';
       if (value.includes('open water')) return 'type-open-water';
       if (value.includes('swim')) return 'type-swim';
-      if (value.includes('trail')) return 'type-trail';
+      if (value.includes('trail') || value.includes('ultra')) return 'type-trail';
       if (value.includes('obstacle')) return 'type-obstacle';
       return 'type-running';
     };
 
-    const groupRaces = (mode) => {
+    const getDateSortValue = (race) => {
+      const parsed = parseDate(race.date);
+      return parsed ? parsed.getTime() : Number.MAX_SAFE_INTEGER;
+    };
+
+    const getMonthBuckets = () => {
       const buckets = new Map();
-      const sorted = [...races].sort((a, b) => new Date(a.date) - new Date(b.date));
-
+      const sorted = [...races].sort((a, b) => getDateSortValue(a) - getDateSortValue(b));
       sorted.forEach((race) => {
-        let key;
-        if (mode === 'category') {
-          key = race.race_type || 'Other';
-        } else if (mode === 'province') {
-          key = race.province || 'Unknown';
-        } else if (mode === 'all') {
-          key = 'All Races';
-        } else {
-          key = getMonthLabel(race.date);
-        }
-
-        if (!buckets.has(key)) {
-          buckets.set(key, []);
-        }
+        const key = formatMonthLabel(race.date || '');
+        if (!buckets.has(key)) buckets.set(key, []);
         buckets.get(key).push(race);
       });
-
       return buckets;
     };
 
-    const render = (mode = 'month') => {
-      const buckets = groupRaces(mode);
-      groupsEl.innerHTML = '';
+    const getCategoryBuckets = () => {
+      const buckets = new Map();
+      const sorted = [...races].sort((a, b) => getDateSortValue(a) - getDateSortValue(b));
+      sorted.forEach((race) => {
+        const key = race.race_type || 'Other';
+        if (!buckets.has(key)) buckets.set(key, []);
+        buckets.get(key).push(race);
+      });
+      return buckets;
+    };
 
-      [...buckets.entries()].forEach(([label, items]) => {
+    const getProvinceBuckets = () => {
+      const countries = new Map();
+      const sorted = [...races].sort((a, b) => getDateSortValue(a) - getDateSortValue(b));
+      sorted.forEach((race) => {
+        const country = race.country || 'Unknown Country';
+        const province = race.province || 'Other / Unknown Region';
+        if (!countries.has(country)) countries.set(country, new Map());
+        const provinceMap = countries.get(country);
+        if (!provinceMap.has(province)) provinceMap.set(province, []);
+        provinceMap.get(province).push(race);
+      });
+      return countries;
+    };
+
+    const getAllBucket = () => {
+      return new Map([['All Races', [...races].sort((a, b) => getDateSortValue(a) - getDateSortValue(b))]]);
+    };
+
+    const buildTable = (items) => {
+      const table = document.createElement('table');
+      const thead = document.createElement('thead');
+      thead.innerHTML = `
+        <tr>
+          <th>Date</th>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Location</th>
+          <th>Distance</th>
+          <th>Date Found</th>
+        </tr>`;
+      table.appendChild(thead);
+
+      const tbody = document.createElement('tbody');
+      items.forEach((race) => {
+        const row = document.createElement('tr');
+        const nameCell = race.event_url
+          ? `<a href="${race.event_url}" target="_blank" rel="noopener">${race.name}</a>`
+          : race.name;
+        const regionParts = [race.province, race.country].filter(Boolean);
+        const regionLine = regionParts.length ? `<span class="region-line">${regionParts.join(' • ')}</span>` : '';
+        row.innerHTML = `
+          <td data-label="Date">${formatDate(race.date)}</td>
+          <td data-label="Name">${nameCell}</td>
+          <td data-label="Type"><span class="race-type ${getRaceTypeClass(race.race_type || '')}">${race.race_type || '—'}</span></td>
+          <td data-label="Location"><div class="location-cell">${race.location || ''}${regionLine}</div></td>
+          <td data-label="Distance">${race.distance || '—'}</td>
+          <td data-label="Date Found">${formatDate(race.date_found || '')}</td>`;
+        tbody.appendChild(row);
+      });
+      table.appendChild(tbody);
+      return table;
+    };
+
+    const renderProvinceView = () => {
+      groupsEl.innerHTML = '';
+      const countryBuckets = getProvinceBuckets();
+      countryBuckets.forEach((provinceMap, countryLabel) => {
+        const countryDiv = document.createElement('div');
+        countryDiv.className = 'country-group';
+        const totalRaces = [...provinceMap.values()].reduce((acc, arr) => acc + arr.length, 0);
+
+        const header = document.createElement('div');
+        header.className = 'group-header';
+        header.innerHTML = `<h2>${countryLabel}</h2><span>${totalRaces} race${totalRaces !== 1 ? 's' : ''}</span>`;
+        countryDiv.appendChild(header);
+
+        provinceMap.forEach((raceList, provinceLabel) => {
+          const provinceDiv = document.createElement('div');
+          provinceDiv.className = 'province-group';
+
+          const provinceHeader = document.createElement('div');
+          provinceHeader.className = 'province-header';
+          provinceHeader.innerHTML = `<h3>${provinceLabel}</h3><span>${raceList.length} race${raceList.length !== 1 ? 's' : ''}</span>`;
+          provinceDiv.appendChild(provinceHeader);
+
+          const wrapper = document.createElement('div');
+          wrapper.className = 'table-wrapper';
+          wrapper.appendChild(buildTable(raceList));
+          provinceDiv.appendChild(wrapper);
+
+          countryDiv.appendChild(provinceDiv);
+        });
+
+        groupsEl.appendChild(countryDiv);
+      });
+    };
+
+    const renderStandardView = (buckets) => {
+      groupsEl.innerHTML = '';
+      buckets.forEach((items, label) => {
         const groupDiv = document.createElement('div');
         groupDiv.className = 'group';
 
@@ -1561,55 +1970,57 @@
         header.innerHTML = `<h2>${label}</h2><span>${items.length} race${items.length !== 1 ? 's' : ''}</span>`;
         groupDiv.appendChild(header);
 
-        const table = document.createElement('table');
-        const thead = document.createElement('thead');
-        thead.innerHTML = `
-          <tr>
-            <th>Date</th>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Location</th>
-            <th>Distance</th>
-            <th>Date Found</th>
-          </tr>`;
-        table.appendChild(thead);
+        const wrapper = document.createElement('div');
+        wrapper.className = 'table-wrapper';
+        wrapper.appendChild(buildTable(items));
+        groupDiv.appendChild(wrapper);
 
-        const tbody = document.createElement('tbody');
-        items.forEach((race) => {
-          const row = document.createElement('tr');
-          const nameCellContent = race.event_url
-            ? `<a href="${race.event_url}" target="_blank" rel="noopener">${race.name}</a>`
-            : race.name;
-          const raceTypeLabel = race.race_type || '—';
-          const raceTypeClass = getRaceTypeClass(race.race_type);
-          row.innerHTML = `
-            <td data-label="Date">${formatDate(race.date)}</td>
-            <td data-label="Name">${nameCellContent}</td>
-            <td data-label="Type"><span class="race-type ${raceTypeClass}">${raceTypeLabel}</span></td>
-            <td data-label="Location">${race.location || ''}</td>
-            <td data-label="Distance">${race.distance || ''}</td>
-            <td data-label="Date Found">${formatDate(race.date_found)}</td>`;
-          tbody.appendChild(row);
-        });
-        table.appendChild(tbody);
-
-        const tableWrapper = document.createElement('div');
-        tableWrapper.className = 'table-wrapper';
-        tableWrapper.appendChild(table);
-
-        groupDiv.appendChild(tableWrapper);
         groupsEl.appendChild(groupDiv);
       });
     };
 
+    const render = (mode = 'month') => {
+      if (mode === 'province') {
+        renderProvinceView();
+        return;
+      }
+      if (mode === 'category') {
+        renderStandardView(getCategoryBuckets());
+        return;
+      }
+      if (mode === 'all') {
+        renderStandardView(getAllBucket());
+        return;
+      }
+      renderStandardView(getMonthBuckets());
+    };
+
+    const updateStats = () => {
+      statTotal.textContent = races.length.toString();
+      const countryCount = new Set(races.map((race) => race.country || 'Unknown')).size;
+      statCountries.textContent = `${countryCount} ${countryCount === 1 ? 'country' : 'countries'}`;
+      const latestFind = [...races]
+        .filter((race) => race.date_found && race.date_found !== 'Unknown')
+        .sort((a, b) => {
+          const dateA = parseDate(a.date_found);
+          const dateB = parseDate(b.date_found);
+          if (!dateA && !dateB) return 0;
+          if (!dateA) return 1;
+          if (!dateB) return -1;
+          return dateB - dateA;
+        });
+      statLatest.textContent = latestFind.length ? formatDate(latestFind[0].date_found) : '—';
+    };
+
     buttons.forEach((btn) => {
       btn.addEventListener('click', () => {
-        buttons.forEach((b) => b.classList.remove('active'));
+        buttons.forEach((other) => other.classList.remove('active'));
         btn.classList.add('active');
         render(btn.dataset.view);
       });
     });
 
+    updateStats();
     render('month');
   </script>
 </body>
