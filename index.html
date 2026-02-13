@@ -261,7 +261,7 @@
     <header>
       <h1>Thailand Running Race Finder</h1>
       <p>Quickly explore upcoming running events across Thailand by month, race category, or province.</p>
-      <div class="last-updated">Last updated: <span id="update-time">13 Feb 2026, 11:44 Bangkok time</span></div>
+      <div class="last-updated">Last updated: <span id="update-time">13 Feb 2026, 11:46 Bangkok time</span></div>
     </header>
     <div class="controls">
       <button data-view="month" class="active">By Month</button>
@@ -272,7 +272,1228 @@
     <section id="groups"></section>
   </div>
   <script>
-    const races = [{"date": "2026-02-14", "name": "Run Better Together 2026 แม่อายวิทยาคม", "race_type": "running", "location": "สนามโรงเรียนแม่อายวิทยาคม ต.แม่อาย อ.แม่อาย", "province": "Chiang Mai", "distance": "Unknown", "event_url": "https://www.runlah.com/th/i8GRvNUe", "date_found": "2026-02-11"}, {"date": "2026-02-14", "name": "Run Better Together 2026 แม่อายวิทยาคม ก้าวด้วยใจ ก้าวไปด้วยกัน", "race_type": "running", "location": "สนามโรงเรียนแม่อายวิทยาคม ต.แม่อาย อ.แม่อาย", "province": "Chiang Mai", "distance": "", "event_url": "https://www.runlah.com/en/i8GRvNUe", "date_found": "2026-02-11"}, {"date": "2026-02-14", "name": "Samoeng Mini Marathon ครั้งที่ 6", "race_type": "running", "location": "โรงเรียนสะเมิงพิทยาคม", "province": "Chiang Mai", "distance": "Unknown", "event_url": "https://www.runlah.com/th/uT51f1K4", "date_found": "2026-02-11"}, {"date": "2026-02-14", "name": "Samoeng Mini marathon ครั้งที่ 6", "race_type": "running", "location": "โรงเรียนสะเมิงพิทยาคม", "province": "Chiang Mai", "distance": "", "event_url": "https://www.runlah.com/en/uT51f1K4", "date_found": "2026-02-11"}, {"date": "2026-02-14", "name": "Sannameng Healthy Hero 2026", "race_type": "running", "location": "เทศบาลตำบลสันนาเม็ง", "province": "Chiang Mai", "distance": "Unknown", "event_url": "https://www.runlah.com/th/62CopI1k", "date_found": "2026-02-11"}, {"date": "2026-02-14", "name": "ซิลเวอร์รันคลับ ครั้งที่ 4", "race_type": "running", "location": "อุทยาน 100 ปี จุฬาลงกรณ์มหาวิทยาลัย", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/lkPM9KVw", "date_found": "2026-02-11"}, {"date": "2026-02-14", "name": "ซีนิค ฮาล์ฟมาราธอน ปราณบุรี 2026", "race_type": "running", "location": "ปากน้ำปราณบีชพาร์ค ต.ปากน้ำปราณ อ.ปราณบุรี", "province": "Prachuap Khiri Khan", "distance": "", "event_url": "https://www.runlah.com/en/yJDeJcNt", "date_found": "2026-02-11"}, {"date": "2026-02-15", "name": "CMU ATHLETIC EKIDEN RUN 2026", "race_type": "running", "location": "ลานเนินพระพุทธศูนย์วิจัย สาธิตและฝึกอบรมการเกษตรแม่เหียะ (ไร่แม่เหียะ)", "province": "Chiang Mai", "distance": "Ekiden relay", "event_url": "https://www.runlah.com/th/N4hXVh1W", "date_found": "2026-02-11"}, {"date": "2026-02-15", "name": "CMU ATHLETIC EKIDEN RUN 2026", "race_type": "running", "location": "ลานเนินพระพุทธศูนย์วิจัย สาธิตและฝึกอบรมการเกษตรแม่เหียะ (ไร่แม่เหียะ) ", "province": "Chiang Mai", "distance": "", "event_url": "https://www.runlah.com/en/N4hXVh1W", "date_found": "2026-02-11"}, {"date": "2026-02-15", "name": "KPI Democracy RUN 2026", "race_type": "running", "location": "พิพิธภัณฑ์พระบาทสมเด็จพระปกเกล้าเจ้าอยู่หัว", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/9siYSagU", "date_found": "2026-02-11"}, {"date": "2026-02-15", "name": "KhonKaen21 2026", "race_type": "running", "location": "ประตูเมืองขอนแก่น", "province": "Khon Kaen", "distance": "", "event_url": "https://www.runlah.com/en/NAi6pmeY", "date_found": "2026-02-11"}, {"date": "2026-02-15", "name": "Mae Kampong Mini Cross Country 2026", "race_type": "running", "location": "Mae Kampong", "province": "Chiang Mai", "distance": "Cross country", "event_url": "https://www.runlah.com/th/eINad7dE", "date_found": "2026-02-11"}, {"date": "2026-02-15", "name": "Maesai Mountain Run 2026", "race_type": "running", "location": "ลานที่ว่าการอำเภอแม่สาย", "province": "Chiang Rai", "distance": "", "event_url": "https://www.runlah.com/en/GNyZkBc2", "date_found": "2026-02-11"}, {"date": "2026-02-15", "name": "Minimal Trail 2026", "race_type": "running", "location": "Mae Wa National Park, Thoen, Lampang", "province": "Lampang", "distance": "11K / 34K / 52K / 102K", "event_url": "https://patrunning.com/events/minimal-trail-2026/", "date_found": "2026-02-11"}, {"date": "2026-02-15", "name": "RUN FOR LOVE บอกรักที่หนองหลวง", "race_type": "running", "location": "สวนสาธารณะหนองหลวง  อ.เวียงชัย", "province": "Chiang Rai", "distance": "", "event_url": "https://www.runlah.com/en/BEQSXb4c", "date_found": "2026-02-11"}, {"date": "2026-02-15", "name": "Run Alone ... But Not Lonely 2026", "race_type": "running", "location": "สวนหลวง ร.9", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/kllfxqJQ", "date_found": "2026-02-11"}, {"date": "2026-02-15", "name": "Saraphi Mini Marathon #6", "race_type": "running", "location": "Saraphi Municipality Office", "province": "Chiang Mai", "distance": "10K / 5K / 2K", "event_url": "https://www.runlah.com/en/gXwIpyTn", "date_found": "2026-02-13"}, {"date": "2026-02-15", "name": "WAT RAJABOPIT RUN 2026", "race_type": "running", "location": "วัดราชบพิธสถิตมหาสีมารามราชวรวิหาร", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/NOQhvSK5", "date_found": "2026-02-11"}, {"date": "2026-02-15", "name": "ศรีสุนทร ฮาล์ฟมาราธอน 2026", "race_type": "running", "location": "อ่างเก็บน้ำบางเหนียวดำ", "province": "Phuket", "distance": "", "event_url": "https://www.runlah.com/en/qSp1BJ4w", "date_found": "2026-02-11"}, {"date": "2026-02-15", "name": "สารภีมินิมาราธอน ครั้งที่ 6", "race_type": "running", "location": "สำนักงานเทศบาลตำบลสารภี อ.สารภี", "province": "Chiang Mai", "distance": "Mini marathon", "event_url": "https://www.runlah.com/th/gXwIpyTn", "date_found": "2026-02-11"}, {"date": "2026-02-15", "name": "เดินวิ่ง ฮอม ฮัก ปี 6", "race_type": "running", "location": "โรงเรียนชุมชนบ้านอมก๋อย", "province": "Chiang Mai", "distance": "Unknown", "event_url": "https://www.runlah.com/th/PuORlkGp", "date_found": "2026-02-11"}, {"date": "2026-02-15", "name": "เฮง เฮง มินิมาราธอน 2026", "race_type": "running", "location": "สนามวชิรเบญจทัศ (สวนรถไฟ)", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/Iog4BM22", "date_found": "2026-02-11"}, {"date": "2026-02-21", "name": "PHU WIANG ULTRA TRAIL 2026", "race_type": "running", "location": "อุทยานแห่งชาติภูเวียง", "province": "Khon Kaen", "distance": "", "event_url": "https://www.runlah.com/en/docfksft", "date_found": "2026-02-11"}, {"date": "2026-02-21", "name": "เดิน-วิ่ง \"วิถีล้านนา\" เที่ยวชมเมืองเชียงใหม่", "race_type": "running", "location": "ข่วงประตูท่าแพ", "province": "Chiang Mai", "distance": "Unknown", "event_url": "https://www.runlah.com/th/AuatYBHd", "date_found": "2026-02-11"}, {"date": "2026-02-21", "name": "เดิน-วิ่ง “วิถีล้านนา” เที่ยวชมเมืองเชียงใหม่", "race_type": "running", "location": "ข่วงประตูท่าแพ", "province": "Chiang Mai", "distance": "", "event_url": "https://www.runlah.com/en/AuatYBHd", "date_found": "2026-02-11"}, {"date": "2026-02-22", "name": "MEA SPARK RUN 2025", "race_type": "running", "location": "การไฟฟ้านครหลวง วัดเลียบ", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/uEzSON5l", "date_found": "2026-02-11"}, {"date": "2026-02-22", "name": "Plongsan Mini Marathon Run For Kids 2026", "race_type": "running", "location": "โรงเรียนบ้านปล้องส้าน ต.ปล้อง อ.เทิง", "province": "Chiang Rai", "distance": "", "event_url": "https://www.runlah.com/en/OZ7GIQLy", "date_found": "2026-02-11"}, {"date": "2026-02-22", "name": "The Takeoff Run", "race_type": "running", "location": "หาดไม้ขาว", "province": "Phuket", "distance": "", "event_url": "https://www.runlah.com/en/WzHGJtLA", "date_found": "2026-02-11"}, {"date": "2026-02-22", "name": "บ้านเป็ดมินิมาราธอน 2026", "race_type": "running", "location": "บึงหนองโคตร", "province": "Khon Kaen", "distance": "", "event_url": "https://www.runlah.com/en/q8TY6jlg", "date_found": "2026-02-11"}, {"date": "2026-02-28", "name": "Discover Night Run 2026", "race_type": "running", "location": "สวนเฉลิมพระเกียรติ 72 พรรษามหาราชินี (ลานมังกร)", "province": "Phuket", "distance": "", "event_url": "https://www.runlah.com/en/LWa2cF74", "date_found": "2026-02-11"}, {"date": "2026-02-28", "name": "หมอออร์โธฯ ชวนก้าว ช่วย 13 โรงพยาบาล 2026 (Chiang Mai)", "race_type": "running", "location": "Chiang Mai Provincial Administrative Organization Park (ศูนย์ราชการจังหวัดเชียงใหม่)", "province": "Chiang Mai", "distance": "5K charity run", "event_url": "https://ortho.thai.run/event/ORTHO_CMI", "date_found": "2026-02-11"}, {"date": "2026-03-01", "name": "ACT Run for Teacher 2026", "race_type": "running", "location": "สวนพุทธมณฑล สาย 4", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/9FPu7DNN", "date_found": "2026-02-11"}, {"date": "2026-03-01", "name": "Ang Khang KOM Challenge 2026", "race_type": "cycling", "location": "Wiang, Fang District, Chiang Mai", "province": "Chiang Mai", "distance": "40 km / 1,335 m+", "event_url": "https://www.cycloworld.cc/en/gran-fondo/thailand/ang-khang-kom-challenge/37597", "date_found": "2026-02-11"}, {"date": "2026-03-01", "name": "Battle Run 2026 Rabit & Turtle", "race_type": "running", "location": "สวนหลวง ร.9 ประตู 4 (ประตูดาวเรือง)", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/KEceSicy", "date_found": "2026-02-11"}, {"date": "2026-03-01", "name": "DSRU Charity Run  2026", "race_type": "running", "location": "มหาวิทยาลัยรามคำแหง (หัวหมาก)", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/lVuaHZpp", "date_found": "2026-02-11"}, {"date": "2026-03-01", "name": "Pho3nix Kids Triathlon 2026 - Wellington College", "race_type": "triathlon", "location": "Wellington College International School, Bangkok", "province": "Bangkok", "distance": "Sprint, Mini", "event_url": "https://www.gotorace.com/", "date_found": "2026-02-11"}, {"date": "2026-03-01", "name": "Pho3nix Kids Triathlon Thailand 2026 – Wellington College", "race_type": "triathlon", "location": "Wellington College International School, Bangkok", "province": "Bangkok", "distance": "Kids tri/duathlon distances 25-400m swim • 1-10K bike • 400m-3K run", "event_url": "https://pho3nixkidsthailand.com/wellington-college/", "date_found": "2026-02-11"}, {"date": "2026-03-01", "name": "TikTok Shop Run Freshtival  2026", "race_type": "running", "location": "CentralwOrld", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/tl1nRS8H", "date_found": "2026-02-11"}, {"date": "2026-03-01", "name": "ชัก...อยากจะวิ่ง 7", "race_type": "running", "location": "ศูนย์ราชการ ถนนแจ้งวัฒนะ ", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/fCH20dqq", "date_found": "2026-02-11"}, {"date": "2026-03-01", "name": "ซาเลเซียนหัวหินมินิมาราธอน 2026", "race_type": "running", "location": "โรงเรียนหัวหินวิทยาลัย อ.หัวหิน", "province": "Prachuap Khiri Khan", "distance": "", "event_url": "https://www.runlah.com/en/0wu3mBdC", "date_found": "2026-02-11"}, {"date": "2026-03-01", "name": "ดงตาลรัน ครั้งที่ 7", "race_type": "running", "location": "คณะวิศวกรรมศาสตร์ มหาวิทยาลัยเกษตรศาสตร์ บางเขน", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/dtr7", "date_found": "2026-02-11"}, {"date": "2026-03-01", "name": "วังหลวง มินิมาราธอน ครั้งที่ 2", "race_type": "running", "location": "โรงเรียนบ้านวังหลวง อ.ดอยเต่า", "province": "Chiang Mai", "distance": "Mini marathon", "event_url": "https://www.runlah.com/th/apMlTrrI", "date_found": "2026-02-11"}, {"date": "2026-03-01", "name": "วิ่งด้วยกัน Run2Gether 2026", "race_type": "running", "location": "สนามกีฬาแห่งชาติ สนามศุภชลาศัย", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/T8eBwCZR", "date_found": "2026-02-11"}, {"date": "2026-03-07", "name": "Khaoyai-Prachin Ultra 2026", "race_type": "trail", "location": "King Mongkut’s University of Technology North Bangkok (Prachinburi Campus)", "province": "Prachin Buri", "distance": "100K / 60K", "event_url": "https://www.runlah.com/en/kpu2026", "date_found": "2026-02-13"}, {"date": "2026-03-07", "name": "ซิลเวอร์รันคลับ ครั้งที่ 5", "race_type": "running", "location": "อุทยาน 100 ปี จุฬาลงกรณ์มหาวิทยาลัย", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/ONjBKQ2O", "date_found": "2026-02-11"}, {"date": "2026-03-08", "name": "Fahsai Run ร่วมกันก้าว ชาวบริหาร 2026", "race_type": "running", "location": "คณะบริหารธุรกิจ มหาวิทยาลัยเกษตรศาสตร์ บางเขน", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/fahsai2026", "date_found": "2026-02-11"}, {"date": "2026-03-08", "name": "Run for love#15  Love is Sharing", "race_type": "running", "location": "สวนสมเด็จพระนางเจ้าสิริกิติ์ฯ (จตุจักร)", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/15A6AOE1", "date_found": "2026-02-11"}, {"date": "2026-03-08", "name": "ชุมแพมินิมาราธอน ครั้งที่ 1", "race_type": "running", "location": "สำนักงานขนส่งจังหวัดขอนแก่น สาขาอำภอชุมแพ", "province": "Khon Kaen", "distance": "", "event_url": "https://www.runlah.com/en/hJ01fEyX", "date_found": "2026-02-11"}, {"date": "2026-03-08", "name": "วิ่งสร้างเมือง 2026 ตอน เพ็ท-ตัด-เพ็ท", "race_type": "running", "location": "คณะสถาปัตยกรรมศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/dvp9K9va", "date_found": "2026-02-11"}, {"date": "2026-03-14", "name": "พาลูกวิ่งดะ Obstacle on the Beach 2026 : Survival Family", "race_type": "running", "location": "Seapine Golf & Resort Huahin (Seapine Recreation Centre)  อ.หัวหิน", "province": "Prachuap Khiri Khan", "distance": "", "event_url": "https://www.runlah.com/en/8n1PcIGM", "date_found": "2026-02-11"}, {"date": "2026-03-15", "name": "Patong Beach Run 2026", "race_type": "running", "location": "Patong Beach", "province": "Phuket", "distance": "", "event_url": "https://www.runlah.com/en/caTH7xaF", "date_found": "2026-02-11"}, {"date": "2026-03-15", "name": "TOAVH RUN Homes for Hornbills", "race_type": "running", "location": "สวนหลวง ร.๙ – บึงหนองบอน", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/hH4H0kgB", "date_found": "2026-02-11"}, {"date": "2026-03-20", "name": "Thailand Open Masters Swimming Championships 2026", "race_type": "swim", "location": "Sports Authority of Thailand Swimming Pool", "province": "Bangkok", "distance": "Masters meet (Mar 20-22)", "event_url": "https://www.thaiaquatics.or.th/Index/Competition", "date_found": "2026-02-11"}, {"date": "2026-03-21", "name": "Ex-Run Night FUN 2025", "race_type": "running", "location": "อาคารจักรพันธ์เพ็ญศิริ มหาวิทยาลัยเกษตรศาสตร์ บางเขน", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/BDETMYzn", "date_found": "2026-02-11"}, {"date": "2026-03-21", "name": "Muangthai Kids Triathlon 2026 – Sam Roi Yod", "race_type": "triathlon", "location": "DPMRC4 Disaster Unit, Sam Roi Yod Beach, Prachuap Khiri Khan", "province": "Prachuap Khiri Khan", "distance": "Kids tri distances 75-150m swim / 2-13km bike / 1-3km run", "event_url": "https://www.gotorace.com/mtl2026-samroiyod/", "date_found": "2026-02-11"}, {"date": "2026-03-21", "name": "Muangthai Triathlon Eco Hero Super Series 2026 – SAM ROI YOD", "race_type": "triathlon", "location": "DPMRC4 Disaster Unit, Samroiyod Beach", "province": "Prachuap Khiri Khan", "distance": "Standard/Super: 1.5k swim / 40.7k bike / 10k run; Sprint: 0.75k/25.5k/5k; Duathlon: 5k/25.5k/5k; Kids tri", "event_url": "https://www.gotorace.com/mtl2026-samroiyod/", "date_found": "2026-02-11"}, {"date": "2026-03-21", "name": "ห้าหมูนี่ แชริตี้ รัน! 2026", "race_type": "running", "location": "อุทยาน 100 ปี จุฬาลงกรณ์มหาวิทยาลัย", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/5W0JSSJS", "date_found": "2026-02-11"}, {"date": "2026-03-22", "name": "KaChong Trail 2026", "race_type": "running", "location": "Phraya Ratsadanupradit Mahison Phakdi Museum, Kantang District, Trang", "province": "Trang", "distance": "38K / 21K / 7K", "event_url": "https://worldsmarathons.com/marathon/kachong-trail", "date_found": "2026-02-11"}, {"date": "2026-03-22", "name": "Muangthai Triathlon Eco Hero Super Series 2026 – Sam Roi Yod", "race_type": "triathlon", "location": "DPMRC4 Disaster Unit, Sam Roi Yod Beach, Prachuap Khiri Khan", "province": "Prachuap Khiri Khan", "distance": "Standard 1.5/40.7/10 + Sprint 0.75/25.5/5 + Kids & Duathlon", "event_url": "https://www.gotorace.com/mtl2026-samroiyod/", "date_found": "2026-02-11"}, {"date": "2026-03-22", "name": "PALA RUN 5 : 2026", "race_type": "running", "location": "PALA BEACH, T.PALA, A.BANCHANG", "province": "Rayong", "distance": "Unknown", "event_url": "https://www.runlah.com/en/pala26", "date_found": "2026-02-13"}, {"date": "2026-03-22", "name": "ราไวย์ สบาย รัน 2026", "race_type": "running", "location": "แหลมพรหมเทพ ต.ราไวย์ อ.เมือง", "province": "Phuket", "distance": "", "event_url": "https://www.runlah.com/en/nxlA98CJ", "date_found": "2026-02-11"}, {"date": "2026-03-22", "name": "วิ่งหนีหมอ มาทำบุญสร้างโบสต์วัดบัวผัน มินิมาราธอน ครั้งที่ 1", "race_type": "running", "location": "วัดบัวผัน แขวงท่าข้าม เขตบางขุนเทียน", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/XOjNFMZ7", "date_found": "2026-02-11"}, {"date": "2026-03-29", "name": "Black & White and Run 2026", "race_type": "running", "location": "สวนหลวง ร.9", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/mA3Jdbg5", "date_found": "2026-02-11"}, {"date": "2026-03-29", "name": "Oceanman Krabi 2026", "race_type": "open water", "location": "Klong Muang Beach, Krabi", "province": "Krabi", "distance": "10K / 5K / 2K / 500m kids / 3x500m relay", "event_url": "https://oceanmanswim.com/krabi-thailand/", "date_found": "2026-02-11"}, {"date": "2026-03-29", "name": "นครหัวหินรัน 2026", "race_type": "running", "location": "อ่างเก็บน้ำเขาเต่า อ.หัวหิน", "province": "Prachuap Khiri Khan", "distance": "", "event_url": "https://www.runlah.com/en/gJttR1x1", "date_found": "2026-02-11"}, {"date": "2026-03-29", "name": "วิ่งให้โอกาส 2026", "race_type": "running", "location": "Bangkok World สวนสยาม", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/trF13AuN", "date_found": "2026-02-11"}, {"date": "2026-04-04", "name": "ธัญญปุระ คัลเลอร์ รัน 2026", "race_type": "running", "location": "ธัญญปุระ ภูเก็ต", "province": "Phuket", "distance": "", "event_url": "https://www.runlah.com/en/cfr26", "date_found": "2026-02-11"}, {"date": "2026-04-05", "name": "สิงห์เหนือ เสือใต้ Run for Give Minimarathon 3 By ZENCELL", "race_type": "running", "location": "สวนหลวง ร.9", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/16xDGa61", "date_found": "2026-02-11"}, {"date": "2026-04-11", "name": "Laguna Phuket Sunset Beach Run 2026", "race_type": "running", "location": "Xana Beach Club ลากูน่า", "province": "Phuket", "distance": "", "event_url": "https://www.runlah.com/en/gqsTMHYO", "date_found": "2026-02-11"}, {"date": "2026-04-18", "name": "Sawan Rim Rai Ultra Marathon 2026", "race_type": "trail", "location": "Sawan Park (Nong Somboon), Nakhon Sawan", "province": "Nakhon Sawan", "distance": "Ultra", "event_url": "https://www.runlah.com/en/ums2026", "date_found": "2026-02-13"}, {"date": "2026-04-19", "name": "Sakhu Trail Beach Run 2026", "race_type": "running", "location": "สวนสาธารณะหาดในทอน", "province": "Phuket", "distance": "", "event_url": "https://www.runlah.com/en/jCwaloOJ", "date_found": "2026-02-11"}, {"date": "2026-04-25", "name": "Masters Tour of Andaman 2026", "race_type": "cycling", "location": "Natai Beach Resort (Andaman coast)", "province": "Phang Nga", "distance": "Stage race: ITT prologue + ~60km + ~80km road stages", "event_url": "https://masterstourofchiangmai.com/", "date_found": "2026-02-11"}, {"date": "2026-04-26", "name": "Doisuthep Run 2026", "race_type": "running", "location": "Kruba Srivichai Monument, Chiang Mai", "province": "Chiang Mai", "distance": "11K hill run", "event_url": "https://www.runlah.com/en/s1A1pfbg", "date_found": "2026-02-11"}, {"date": "2026-04-26", "name": "เดิน-วิ่งขึ้นดอยตามรอยพระครูบาเจ้าศรีวิชัย 2026", "race_type": "running", "location": "อนุสาวรีย์ครูบาเจ้าศรีวิชัย", "province": "Chiang Mai", "distance": "Trail/Up mountain", "event_url": "https://www.runlah.com/th/s1A1pfbg", "date_found": "2026-02-11"}, {"date": "2026-04-30", "name": "Amazean Jungle Thailand by UTMB 2026", "race_type": "running", "location": "Betong Mongkollit Tunnel, Betong, Yala", "province": "Yala", "distance": "147K / 102K / 55K / 27.9K / 15.8K + fun run", "event_url": "https://thailand.go.th/event-detail/amazean-jungle-thailand-by-utmb", "date_found": "2026-02-11"}, {"date": "2026-05-03", "name": "XRACE OCEAN 2026", "race_type": "obstacle", "location": "Chai Chet Resort, Koh Chang", "province": "Trat", "distance": "Ocean obstacle race", "event_url": "https://xraceasia.com/event/xrace-ocean-2026/", "date_found": "2026-02-12"}, {"date": "2026-05-03", "name": "ศิริราช เดิน-วิ่ง ครั้งที่ 18", "race_type": "running", "location": "โรงพยาบาลศิริราช", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/siriraj18", "date_found": "2026-02-11"}, {"date": "2026-05-10", "name": "Hua Hin Marathon 2026", "race_type": "City marathon", "location": "Wat Khao Krailart, Nong Kae, Hua Hin", "province": "Prachuap Khiri Khan", "distance": "42.195 km / 21 km / 10.5 km / 5 km", "event_url": "https://www.runlah.com/en/huahin2026", "date_found": "2026-02-12"}, {"date": "2026-05-10", "name": "Suanpruek99 10-Hour UltraMarathon 2025", "race_type": "running", "location": "สวนนวมินทร์ภิรมย์ เขตบึงกุ่ม", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/ultra10hrs2026", "date_found": "2026-02-11"}, {"date": "2026-05-10", "name": "หัวหินมาราธอน 2026 (ครั้งที่ 6)", "race_type": "running", "location": "วัดเขาไกรลาศ ต.หนองแก อ.หัวหิน", "province": "Prachuap Khiri Khan", "distance": "", "event_url": "https://www.runlah.com/en/huahin2026", "date_found": "2026-02-11"}, {"date": "2026-05-17", "name": "Rama 8", "race_type": "running", "location": "ลานเอนกประสงค์ใต้สะพานพระราม 8", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/GscLTnfV", "date_found": "2026-02-11"}, {"date": "2026-05-17", "name": "Supersports 10 Mile Run 2026 Presented by Under Armour", "race_type": "running", "location": "centralwOrld", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/YJyQXR1o", "date_found": "2026-02-11"}, {"date": "2026-05-17", "name": "การท่าเรือ มินิมาราธอน ครั้งที่ 13 2569", "race_type": "running", "location": "การท่าเรือแห่งประเทศไทย", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/1vSvhan9", "date_found": "2026-02-11"}, {"date": "2026-05-24", "name": "Bangkok Airways Trat Half Marathon 2026", "race_type": "running", "location": "Trat Provincial Stadium, Bang Phra, Mueang Trat District", "province": "Trat", "distance": "21.1K / 10K / 5K + kids dash", "event_url": "https://www.ahotu.com/event/bangkok-airways-trat-half-marathon", "date_found": "2026-02-11"}, {"date": "2026-05-24", "name": "ชมพูฟ้ารันนิ่ง 2026", "race_type": "running", "location": "โรงเรียนสวนกุหลาบวิทยาลัย", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/UxiqBsuB", "date_found": "2026-02-11"}, {"date": "2026-05-30", "name": "สามร้อยยอด รัน ฟัน เฟส 2026", "race_type": "running", "location": "ชายหาดสามร้อยยอด", "province": "Prachuap Khiri Khan", "distance": "", "event_url": "https://www.runlah.com/en/9nJgVAgK", "date_found": "2026-02-11"}, {"date": "2026-05-31", "name": "Amazing Phrae Marathon 2026", "race_type": "running", "location": "Sam Wai Market, Phrae Municipality", "province": "Phrae", "distance": "42K / 21K / 10K / 5K", "event_url": "https://www.runlah.com/en/kr7N8F8T", "date_found": "2026-02-13"}, {"date": "2026-06-13", "name": "Laguna Phuket Marathon 2026", "race_type": "running", "location": "Laguna Grove, Laguna Phuket", "province": "Phuket", "distance": "", "event_url": "https://www.runlah.com/en/JSDWUMpK", "date_found": "2026-02-11"}, {"date": "2026-06-21", "name": "Bangkok Airways Samui Half Marathon 2026", "race_type": "running", "location": "Phru Chaweng Lake, Bo Phut, Ko Samui District", "province": "Surat Thani", "distance": "21.1K / 10K / 5K + kids dash", "event_url": "https://www.ahotu.com/event/bangkok-airways-samui-half-marathon", "date_found": "2026-02-11"}, {"date": "2026-07-05", "name": "Chiang Mai Half Marathon 2026", "race_type": "running", "location": "7th Infantry Division Camp, Mae Rim", "province": "Chiang Mai", "distance": "21K/10K/5K", "event_url": "https://www.runlah.com/en/eF2t2Iut", "date_found": "2026-02-11"}, {"date": "2026-08-01", "name": "AKHA Trail 2026", "race_type": "running", "location": "โรงเรียนบ้านผาฮี้", "province": "Chiang Rai", "distance": "", "event_url": "https://www.runlah.com/en/6l88DHgy", "date_found": "2026-02-11"}, {"date": "2026-08-16", "name": "Wangpong Trail 2026", "race_type": "trail", "location": "Ban Khlong Nam Khan School, Sap Peub, Wang Pong", "province": "Phetchabun", "distance": "Unknown", "event_url": "https://www.runlah.com/en/wpt2026", "date_found": "2026-02-13"}, {"date": "2026-08-22", "name": "UBR PEAK Challenge 2026", "race_type": "running", "location": "วัดพระบาทภูพานคำ อ.อุบลรัตน์", "province": "Khon Kaen", "distance": "", "event_url": "https://www.runlah.com/en/zbTXfy6r", "date_found": "2026-02-11"}, {"date": "2026-08-23", "name": "Bangkok Airways Sukhothai Half Marathon 2026", "race_type": "running", "location": "Sukhothai Historical Park, Mueang Kao, Mueang Sukhothai District", "province": "Sukhothai", "distance": "21.1K / 10K / 5K + kids dash", "event_url": "https://www.ahotu.com/event/bangkok-airways-sukhothai-half-marathon", "date_found": "2026-02-11"}, {"date": "2026-08-30", "name": "Pho3nix Kids Triathlon Thailand 2026 – Pattana Sports Resort", "race_type": "triathlon", "location": "Pattana Sports Resort, Si Racha, Chonburi", "province": "Chonburi", "distance": "Kids tri & duathlon sets (25-400m swim / 1-10km bike / 0.4-3km run by age)", "event_url": "https://pho3nixkidsthailand.com/pattana-sports/", "date_found": "2026-02-11"}, {"date": "2026-09-05", "name": "Chiang Mai Night Run 2026", "race_type": "running", "location": "Chiang Mai Zoo (Doi Suthep)", "province": "Chiang Mai", "distance": "22K / 10K / 5K", "event_url": "https://www.jogandjoy.com/thailand-running-calender", "date_found": "2026-02-11"}, {"date": "2026-09-07", "name": "Jungle Trail Khao Eto 2026", "race_type": "trail", "location": "Khao Ito Forest Park, Noen Hom, Mueang Prachinburi District", "province": "Prachin Buri", "distance": "50K / 30K / 20K / 10K", "event_url": "https://www.ahotu.com/event/jungle-trail-khao-eto", "date_found": "2026-02-11"}, {"date": "2026-09-27", "name": "Bangkok Airways Chiang Mai Half Marathon 2026", "race_type": "running", "location": "Royal Park Rajapruek, Chiang Mai", "province": "Chiang Mai", "distance": "21.1K / 10K / 5K / 800m Kids", "event_url": "https://www.ahotu.com/event/Bangkok-Airways-Chiang-Mai-Half-Marathon", "date_found": "2026-02-11"}, {"date": "2026-10-10", "name": "Nan Mountain Trail 2026", "race_type": "trail", "location": "Prakit Vejchasak School, San Tha, Na Noi District", "province": "Nan", "distance": "100K / 60K / 30K / 20K / 9K", "event_url": "https://www.ahotu.com/event/nan-mountain-trail", "date_found": "2026-02-11"}, {"date": "2026-10-16", "name": "Masters Tour of Chiang Mai 2026 (14th Edition)", "race_type": "cycling", "location": "Chiang Mai", "province": "Chiang Mai", "distance": "4-day stage race (Oct 16-19)", "event_url": "https://masterstourofchiangmai.com/", "date_found": "2026-02-11"}, {"date": "2026-11-01", "name": "THEP SADET TRAIL 2026", "race_type": "running", "location": "องค์การบริหารส่วนตำบลเทพเสด็จ ต.เทพเสด็จ อ.ดอยสะเก็ด", "province": "Chiang Mai", "distance": "Trail", "event_url": "https://www.runlah.com/th/eYQj8Vza", "date_found": "2026-02-11"}, {"date": "2026-11-01", "name": "THEP SADET TRAIL 2026", "race_type": "running", "location": "องค์การบริหารส่วนตำตลเทพเสด็จ ต.เทพเสด็จ อ.ดอยสะเก็ด", "province": "Chiang Mai", "distance": "", "event_url": "https://www.runlah.com/en/eYQj8Vza", "date_found": "2026-02-11"}, {"date": "2026-11-14", "name": "Pho3nix Kids Triathlon Thailand 2026 – Thanyapura Sports & Health Resort", "race_type": "triathlon", "location": "Thanyapura Sports & Health Resort, Phuket", "province": "Phuket", "distance": "Kids tri & duathlon sets (25-400m swim / 1-10km bike / 0.4-3km run by age)", "event_url": "https://pho3nixkidsthailand.com/thanyapura-sports/", "date_found": "2026-02-11"}, {"date": "2026-11-15", "name": "Bangkok Marathon 2026", "race_type": "Road marathon", "location": "Sanamchai Road, Phra Nakhon", "province": "Bangkok", "distance": "42.195km, 21km, 10km, 5km", "event_url": "https://www.bkkmarathon.com/home", "date_found": "2026-02-11"}, {"date": "2026-11-15", "name": "Laguna Phuket Triathlon 2026", "race_type": "triathlon", "location": "Laguna Grove, Phuket", "province": "Phuket", "distance": "1.8K swim / 55K bike / 12K run (plus sprint & duathlon options)", "event_url": "https://www.lagunaphukettri.com/", "date_found": "2026-02-11"}, {"date": "2026-11-22", "name": "500 Thailand Ultra 2026", "race_type": "Multi-day ultra stage race", "location": "Pai District Office, Pai, Mae Hong Son", "province": "Mae Hong Son", "distance": "500 km / 300 km / 200 km / 100 km (7-day stage format)", "event_url": "https://www.500thailand.com/aboutus/", "date_found": "2026-02-12"}, {"date": "2026-12-13", "name": "Chiang Mai Gran Fondo (GFWT)", "race_type": "cycling", "location": "Chiang Mai", "province": "Chiang Mai", "distance": "120K / 80K / 50K", "event_url": "https://www.granfondoworldtour.com/events", "date_found": "2026-02-11"}, {"date": "2026-12-20", "name": "Chiang Mai Marathon 2026", "race_type": "running", "location": "Tha Phae Gate, Chiang Mai", "province": "Chiang Mai", "distance": "42K / 21K / 10K / 3K", "event_url": "https://www.ahotu.com/event/chiang-mai-marathon", "date_found": "2026-02-11"}, {"date": "2027-01-08", "name": "Ultra Trail Chiang Mai - UTCM 103K", "race_type": "running", "location": "Chiang Dao", "province": "Chiang Mai", "distance": "103K", "event_url": "https://worldsmarathons.com/marathon/ultra-trail-chiang-mai", "date_found": "2026-02-11"}, {"date": "2027-01-08", "name": "Ultra Trail Chiang Mai - UTCM 200K", "race_type": "running", "location": "Chiang Dao", "province": "Chiang Mai", "distance": "200K", "event_url": "https://worldsmarathons.com/marathon/ultra-trail-chiang-mai", "date_found": "2026-02-11"}, {"date": "2027-01-08", "name": "Ultra Trail Chiang Mai - UTCM 76K", "race_type": "running", "location": "Chiang Dao", "province": "Chiang Mai", "distance": "76K", "event_url": "https://worldsmarathons.com/marathon/ultra-trail-chiang-mai", "date_found": "2026-02-11"}, {"date": "2027-01-09", "name": "Ultra Trail Chiang Mai - UTCM 40K", "race_type": "running", "location": "Chiang Dao", "province": "Chiang Mai", "distance": "40K", "event_url": "https://worldsmarathons.com/marathon/ultra-trail-chiang-mai", "date_found": "2026-02-11"}, {"date": "2027-01-10", "name": "Ultra Trail Chiang Mai - UTCM 16K", "race_type": "running", "location": "Chiang Dao", "province": "Chiang Mai", "distance": "16K", "event_url": "https://worldsmarathons.com/marathon/ultra-trail-chiang-mai", "date_found": "2026-02-11"}, {"date": "TBA", "name": "Bangsaen42 Chonburi Marathon 2026", "race_type": "running", "location": "Chonburi", "province": "Chonburi", "distance": "42.195km", "event_url": "https://www.finishers.com/", "date_found": "2026-02-11"}, {"date": "TBA", "name": "Chiangmai Thailand by UTMB 2026", "race_type": "running", "location": "Chiang Mai city & surrounding national parks, Chiang Mai", "province": "Chiang Mai", "distance": "175K / 93K / 50K / 24K / 12K / 10K", "event_url": "https://thailandbyutmb.com/", "date_found": "2026-02-11"}, {"date": "TBA", "name": "IRONMAN 70.3 Bangsaen 2026", "race_type": "triathlon", "location": "Bangsaen Beach & Saen Suk, Mueang Chon Buri", "province": "Chonburi", "distance": "1.9 km swim / 90 km bike / 21.1 km run", "event_url": "https://www.finishers.com/en/event/ironman-70-3-bangsaen-thailand", "date_found": "2026-02-11"}, {"date": "TBA", "name": "Korat Marathon 2026", "race_type": "running", "location": "Nakhon Ratchasima", "province": "Nakhon Ratchasima", "distance": "42.195km, 21km, 10km, 5km", "event_url": "https://www.finishers.com/", "date_found": "2026-02-11"}, {"date": "TBA", "name": "Marathon de Pattaya 2026", "race_type": "running", "location": "Pattaya", "province": "Chonburi", "distance": "42.195km, 21km, 10km", "event_url": "https://www.finishers.com/", "date_found": "2026-02-11"}, {"date": "TBA", "name": "Pho3nix Kids Triathlon Thailand 2026 – Samut Prakan Provincial Stadium", "race_type": "triathlon", "location": "Samut Prakan Provincial Stadium, Samut Prakan", "province": "Samut Prakan", "distance": "Kids tri & duathlon sets (25-400m swim / 1-10km bike / 0.4-3km run by age)", "event_url": "https://pho3nixkidsthailand.com/", "date_found": "2026-02-11"}, {"date": "TBA", "name": "River Kwai International Half Marathon 2026", "race_type": "running", "location": "Kanchanaburi", "province": "Kanchanaburi", "distance": "21km", "event_url": "https://worldsmarathons.com/", "date_found": "2026-02-11"}, {"date": "TBA", "name": "Songkhla Marathon 2026", "race_type": "running", "location": "Songkhla", "province": "Songkhla", "distance": "42.195km, 21km, 10km, 5km", "event_url": "https://worldsmarathons.com/marathon/songkha-international-marathon", "date_found": "2026-02-11"}, {"date": "TBA", "name": "TNF 100 Thailand 2026", "race_type": "running", "location": "Khao Yai, Nakhon Ratchasima", "province": "Nakhon Ratchasima", "distance": "100km, 50km, 25km", "event_url": "https://www.gotorace.com/tnf-100-thailand-2025/", "date_found": "2026-02-11"}]; Sprint: 0.75k/25.5k/5k; Duathlon: 5k/25.5k/5k; Kids tri", "event_url": "https://www.gotorace.com/mtl2026-samroiyod/", "date_found": "2026-02-11"}, {"date": "2026-03-21", "name": "Ex-Run Night FUN 2025", "race_type": "running", "location": "\u0e2d\u0e32\u0e04\u0e32\u0e23\u0e08\u0e31\u0e01\u0e23\u0e1e\u0e31\u0e19\u0e18\u0e4c\u0e40\u0e1e\u0e47\u0e0d\u0e28\u0e34\u0e23\u0e34 \u0e21\u0e2b\u0e32\u0e27\u0e34\u0e17\u0e22\u0e32\u0e25\u0e31\u0e22\u0e40\u0e01\u0e29\u0e15\u0e23\u0e28\u0e32\u0e2a\u0e15\u0e23\u0e4c \u0e1a\u0e32\u0e07\u0e40\u0e02\u0e19", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/BDETMYzn", "date_found": "2026-02-11"}, {"date": "2026-03-21", "name": "\u0e2b\u0e49\u0e32\u0e2b\u0e21\u0e39\u0e19\u0e35\u0e48 \u0e41\u0e0a\u0e23\u0e34\u0e15\u0e35\u0e49 \u0e23\u0e31\u0e19! 2026", "race_type": "running", "location": "\u0e2d\u0e38\u0e17\u0e22\u0e32\u0e19 100 \u0e1b\u0e35 \u0e08\u0e38\u0e2c\u0e32\u0e25\u0e07\u0e01\u0e23\u0e13\u0e4c\u0e21\u0e2b\u0e32\u0e27\u0e34\u0e17\u0e22\u0e32\u0e25\u0e31\u0e22", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/5W0JSSJS", "date_found": "2026-02-11"}, {"date": "2026-03-22", "name": "\u0e23\u0e32\u0e44\u0e27\u0e22\u0e4c \u0e2a\u0e1a\u0e32\u0e22 \u0e23\u0e31\u0e19 2026", "race_type": "running", "location": "\u0e41\u0e2b\u0e25\u0e21\u0e1e\u0e23\u0e2b\u0e21\u0e40\u0e17\u0e1e \u0e15.\u0e23\u0e32\u0e44\u0e27\u0e22\u0e4c \u0e2d.\u0e40\u0e21\u0e37\u0e2d\u0e07", "province": "Phuket", "distance": "", "event_url": "https://www.runlah.com/en/nxlA98CJ", "date_found": "2026-02-11"}, {"date": "2026-03-22", "name": "Muangthai Triathlon Eco Hero Super Series 2026 \u2013 Sam Roi Yod", "race_type": "triathlon", "location": "DPMRC4 Disaster Unit, Sam Roi Yod Beach, Prachuap Khiri Khan", "province": "Prachuap Khiri Khan", "distance": "Standard 1.5/40.7/10 + Sprint 0.75/25.5/5 + Kids & Duathlon", "event_url": "https://www.gotorace.com/mtl2026-samroiyod/", "date_found": "2026-02-11"}, {"date": "2026-03-22", "name": "KaChong Trail 2026", "race_type": "running", "location": "Phraya Ratsadanupradit Mahison Phakdi Museum, Kantang District, Trang", "province": "Trang", "distance": "38K / 21K / 7K", "event_url": "https://worldsmarathons.com/marathon/kachong-trail", "date_found": "2026-02-11"}, {"date": "2026-03-22", "name": "\u0e27\u0e34\u0e48\u0e07\u0e2b\u0e19\u0e35\u0e2b\u0e21\u0e2d \u0e21\u0e32\u0e17\u0e33\u0e1a\u0e38\u0e0d\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e42\u0e1a\u0e2a\u0e15\u0e4c\u0e27\u0e31\u0e14\u0e1a\u0e31\u0e27\u0e1c\u0e31\u0e19 \u0e21\u0e34\u0e19\u0e34\u0e21\u0e32\u0e23\u0e32\u0e18\u0e2d\u0e19 \u0e04\u0e23\u0e31\u0e49\u0e07\u0e17\u0e35\u0e48 1", "race_type": "running", "location": "\u0e27\u0e31\u0e14\u0e1a\u0e31\u0e27\u0e1c\u0e31\u0e19 \u0e41\u0e02\u0e27\u0e07\u0e17\u0e48\u0e32\u0e02\u0e49\u0e32\u0e21 \u0e40\u0e02\u0e15\u0e1a\u0e32\u0e07\u0e02\u0e38\u0e19\u0e40\u0e17\u0e35\u0e22\u0e19", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/XOjNFMZ7", "date_found": "2026-02-11"}, {"date": "2026-03-29", "name": "\u0e19\u0e04\u0e23\u0e2b\u0e31\u0e27\u0e2b\u0e34\u0e19\u0e23\u0e31\u0e19 2026", "race_type": "running", "location": "\u0e2d\u0e48\u0e32\u0e07\u0e40\u0e01\u0e47\u0e1a\u0e19\u0e49\u0e33\u0e40\u0e02\u0e32\u0e40\u0e15\u0e48\u0e32 \u0e2d.\u0e2b\u0e31\u0e27\u0e2b\u0e34\u0e19", "province": "Prachuap Khiri Khan", "distance": "", "event_url": "https://www.runlah.com/en/gJttR1x1", "date_found": "2026-02-11"}, {"date": "2026-03-29", "name": "Oceanman Krabi 2026", "race_type": "open water", "location": "Klong Muang Beach, Krabi", "province": "Krabi", "distance": "10K / 5K / 2K / 500m kids / 3x500m relay", "event_url": "https://oceanmanswim.com/krabi-thailand/", "date_found": "2026-02-11"}, {"date": "2026-03-29", "name": "Black & White and Run 2026", "race_type": "running", "location": "\u0e2a\u0e27\u0e19\u0e2b\u0e25\u0e27\u0e07 \u0e23.9", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/mA3Jdbg5", "date_found": "2026-02-11"}, {"date": "2026-03-29", "name": "\u0e27\u0e34\u0e48\u0e07\u0e43\u0e2b\u0e49\u0e42\u0e2d\u0e01\u0e32\u0e2a 2026", "race_type": "running", "location": "Bangkok World \u0e2a\u0e27\u0e19\u0e2a\u0e22\u0e32\u0e21", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/trF13AuN", "date_found": "2026-02-11"}, {"date": "2026-04-04", "name": "\u0e18\u0e31\u0e0d\u0e0d\u0e1b\u0e38\u0e23\u0e30 \u0e04\u0e31\u0e25\u0e40\u0e25\u0e2d\u0e23\u0e4c \u0e23\u0e31\u0e19 2026", "race_type": "running", "location": "\u0e18\u0e31\u0e0d\u0e0d\u0e1b\u0e38\u0e23\u0e30 \u0e20\u0e39\u0e40\u0e01\u0e47\u0e15", "province": "Phuket", "distance": "", "event_url": "https://www.runlah.com/en/cfr26", "date_found": "2026-02-11"}, {"date": "2026-04-05", "name": "\u0e2a\u0e34\u0e07\u0e2b\u0e4c\u0e40\u0e2b\u0e19\u0e37\u0e2d \u0e40\u0e2a\u0e37\u0e2d\u0e43\u0e15\u0e49 Run for Give Minimarathon 3 By ZENCELL", "race_type": "running", "location": "\u0e2a\u0e27\u0e19\u0e2b\u0e25\u0e27\u0e07 \u0e23.9", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/16xDGa61", "date_found": "2026-02-11"}, {"date": "2026-04-11", "name": "Laguna Phuket Sunset Beach Run 2026", "race_type": "running", "location": "Xana Beach Club \u0e25\u0e32\u0e01\u0e39\u0e19\u0e48\u0e32", "province": "Phuket", "distance": "", "event_url": "https://www.runlah.com/en/gqsTMHYO", "date_found": "2026-02-11"}, {"date": "2026-04-19", "name": "Sakhu Trail Beach Run 2026", "race_type": "running", "location": "\u0e2a\u0e27\u0e19\u0e2a\u0e32\u0e18\u0e32\u0e23\u0e13\u0e30\u0e2b\u0e32\u0e14\u0e43\u0e19\u0e17\u0e2d\u0e19", "province": "Phuket", "distance": "", "event_url": "https://www.runlah.com/en/jCwaloOJ", "date_found": "2026-02-11"}, {"date": "2026-04-25", "name": "Masters Tour of Andaman 2026", "race_type": "cycling", "location": "Natai Beach Resort (Andaman coast)", "province": "Phang Nga", "distance": "Stage race: ITT prologue + ~60km + ~80km road stages", "event_url": "https://masterstourofchiangmai.com/", "date_found": "2026-02-11"}, {"date": "2026-04-26", "name": "\u0e40\u0e14\u0e34\u0e19-\u0e27\u0e34\u0e48\u0e07\u0e02\u0e36\u0e49\u0e19\u0e14\u0e2d\u0e22\u0e15\u0e32\u0e21\u0e23\u0e2d\u0e22\u0e1e\u0e23\u0e30\u0e04\u0e23\u0e39\u0e1a\u0e32\u0e40\u0e08\u0e49\u0e32\u0e28\u0e23\u0e35\u0e27\u0e34\u0e0a\u0e31\u0e22 2026", "race_type": "running", "location": "\u0e2d\u0e19\u0e38\u0e2a\u0e32\u0e27\u0e23\u0e35\u0e22\u0e4c\u0e04\u0e23\u0e39\u0e1a\u0e32\u0e40\u0e08\u0e49\u0e32\u0e28\u0e23\u0e35\u0e27\u0e34\u0e0a\u0e31\u0e22", "province": "Chiang Mai", "distance": "Trail/Up mountain", "event_url": "https://www.runlah.com/th/s1A1pfbg", "date_found": "2026-02-11"}, {"date": "2026-04-26", "name": "Doisuthep Run 2026", "race_type": "running", "location": "Kruba Srivichai Monument, Chiang Mai", "province": "Chiang Mai", "distance": "11K hill run", "event_url": "https://www.runlah.com/en/s1A1pfbg", "date_found": "2026-02-11"}, {"date": "2026-04-30", "name": "Amazean Jungle Thailand by UTMB 2026", "race_type": "running", "location": "Betong Mongkollit Tunnel, Betong, Yala", "province": "Yala", "distance": "147K / 102K / 55K / 27.9K / 15.8K + fun run", "event_url": "https://thailand.go.th/event-detail/amazean-jungle-thailand-by-utmb", "date_found": "2026-02-11"}, {"date": "2026-05-03", "name": "\u0e28\u0e34\u0e23\u0e34\u0e23\u0e32\u0e0a \u0e40\u0e14\u0e34\u0e19-\u0e27\u0e34\u0e48\u0e07 \u0e04\u0e23\u0e31\u0e49\u0e07\u0e17\u0e35\u0e48 18", "race_type": "running", "location": "\u0e42\u0e23\u0e07\u0e1e\u0e22\u0e32\u0e1a\u0e32\u0e25\u0e28\u0e34\u0e23\u0e34\u0e23\u0e32\u0e0a", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/siriraj18", "date_found": "2026-02-11"}, {"date": "2026-05-03", "name": "XRACE OCEAN 2026", "race_type": "obstacle", "location": "Chai Chet Resort, Koh Chang", "province": "Trat", "distance": "Ocean obstacle race", "event_url": "https://xraceasia.com/event/xrace-ocean-2026/", "date_found": "2026-02-12"}, {"date": "2026-05-10", "name": "Suanpruek99 10-Hour UltraMarathon 2025", "race_type": "running", "location": "\u0e2a\u0e27\u0e19\u0e19\u0e27\u0e21\u0e34\u0e19\u0e17\u0e23\u0e4c\u0e20\u0e34\u0e23\u0e21\u0e22\u0e4c \u0e40\u0e02\u0e15\u0e1a\u0e36\u0e07\u0e01\u0e38\u0e48\u0e21", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/ultra10hrs2026", "date_found": "2026-02-11"}, {"date": "2026-05-10", "name": "\u0e2b\u0e31\u0e27\u0e2b\u0e34\u0e19\u0e21\u0e32\u0e23\u0e32\u0e18\u0e2d\u0e19 2026 (\u0e04\u0e23\u0e31\u0e49\u0e07\u0e17\u0e35\u0e48 6)", "race_type": "running", "location": "\u0e27\u0e31\u0e14\u0e40\u0e02\u0e32\u0e44\u0e01\u0e23\u0e25\u0e32\u0e28 \u0e15.\u0e2b\u0e19\u0e2d\u0e07\u0e41\u0e01 \u0e2d.\u0e2b\u0e31\u0e27\u0e2b\u0e34\u0e19", "province": "Prachuap Khiri Khan", "distance": "", "event_url": "https://www.runlah.com/en/huahin2026", "date_found": "2026-02-11"}, {"date": "2026-05-10", "name": "Hua Hin Marathon 2026", "race_type": "City marathon", "location": "Wat Khao Krailart, Nong Kae, Hua Hin", "province": "Prachuap Khiri Khan", "distance": "42.195 km / 21 km / 10.5 km / 5 km", "event_url": "https://www.runlah.com/en/huahin2026", "date_found": "2026-02-12"}, {"date": "2026-05-17", "name": "Rama 8", "race_type": "running", "location": "\u0e25\u0e32\u0e19\u0e40\u0e2d\u0e19\u0e01\u0e1b\u0e23\u0e30\u0e2a\u0e07\u0e04\u0e4c\u0e43\u0e15\u0e49\u0e2a\u0e30\u0e1e\u0e32\u0e19\u0e1e\u0e23\u0e30\u0e23\u0e32\u0e21 8", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/GscLTnfV", "date_found": "2026-02-11"}, {"date": "2026-05-17", "name": "Supersports 10 Mile Run 2026 Presented by Under Armour", "race_type": "running", "location": "centralwOrld", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/YJyQXR1o", "date_found": "2026-02-11"}, {"date": "2026-05-17", "name": "\u0e01\u0e32\u0e23\u0e17\u0e48\u0e32\u0e40\u0e23\u0e37\u0e2d \u0e21\u0e34\u0e19\u0e34\u0e21\u0e32\u0e23\u0e32\u0e18\u0e2d\u0e19 \u0e04\u0e23\u0e31\u0e49\u0e07\u0e17\u0e35\u0e48 13 2569", "race_type": "running", "location": "\u0e01\u0e32\u0e23\u0e17\u0e48\u0e32\u0e40\u0e23\u0e37\u0e2d\u0e41\u0e2b\u0e48\u0e07\u0e1b\u0e23\u0e30\u0e40\u0e17\u0e28\u0e44\u0e17\u0e22", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/1vSvhan9", "date_found": "2026-02-11"}, {"date": "2026-05-24", "name": "Bangkok Airways Trat Half Marathon 2026", "race_type": "running", "location": "Trat Provincial Stadium, Bang Phra, Mueang Trat District", "province": "Trat", "distance": "21.1K / 10K / 5K + kids dash", "event_url": "https://www.ahotu.com/event/bangkok-airways-trat-half-marathon", "date_found": "2026-02-11"}, {"date": "2026-05-24", "name": "\u0e0a\u0e21\u0e1e\u0e39\u0e1f\u0e49\u0e32\u0e23\u0e31\u0e19\u0e19\u0e34\u0e48\u0e07 2026", "race_type": "running", "location": "\u0e42\u0e23\u0e07\u0e40\u0e23\u0e35\u0e22\u0e19\u0e2a\u0e27\u0e19\u0e01\u0e38\u0e2b\u0e25\u0e32\u0e1a\u0e27\u0e34\u0e17\u0e22\u0e32\u0e25\u0e31\u0e22", "province": "Bangkok", "distance": "", "event_url": "https://www.runlah.com/en/UxiqBsuB", "date_found": "2026-02-11"}, {"date": "2026-05-30", "name": "\u0e2a\u0e32\u0e21\u0e23\u0e49\u0e2d\u0e22\u0e22\u0e2d\u0e14 \u0e23\u0e31\u0e19 \u0e1f\u0e31\u0e19 \u0e40\u0e1f\u0e2a 2026", "race_type": "running", "location": "\u0e0a\u0e32\u0e22\u0e2b\u0e32\u0e14\u0e2a\u0e32\u0e21\u0e23\u0e49\u0e2d\u0e22\u0e22\u0e2d\u0e14", "province": "Prachuap Khiri Khan", "distance": "", "event_url": "https://www.runlah.com/en/9nJgVAgK", "date_found": "2026-02-11"}, {"date": "2026-06-13", "name": "Laguna Phuket Marathon 2026", "race_type": "running", "location": "Laguna Grove, Laguna Phuket", "province": "Phuket", "distance": "", "event_url": "https://www.runlah.com/en/JSDWUMpK", "date_found": "2026-02-11"}, {"date": "2026-06-21", "name": "Bangkok Airways Samui Half Marathon 2026", "race_type": "running", "location": "Phru Chaweng Lake, Bo Phut, Ko Samui District", "province": "Surat Thani", "distance": "21.1K / 10K / 5K + kids dash", "event_url": "https://www.ahotu.com/event/bangkok-airways-samui-half-marathon", "date_found": "2026-02-11"}, {"date": "2026-07-05", "name": "Chiang Mai Half Marathon 2026", "race_type": "running", "location": "7th Infantry Division Camp, Mae Rim", "province": "Chiang Mai", "distance": "21K/10K/5K", "event_url": "https://www.runlah.com/en/eF2t2Iut", "date_found": "2026-02-11"}, {"date": "2026-08-01", "name": "AKHA Trail 2026", "race_type": "running", "location": "\u0e42\u0e23\u0e07\u0e40\u0e23\u0e35\u0e22\u0e19\u0e1a\u0e49\u0e32\u0e19\u0e1c\u0e32\u0e2e\u0e35\u0e49", "province": "Chiang Rai", "distance": "", "event_url": "https://www.runlah.com/en/6l88DHgy", "date_found": "2026-02-11"}, {"date": "2026-08-22", "name": "UBR PEAK Challenge 2026", "race_type": "running", "location": "\u0e27\u0e31\u0e14\u0e1e\u0e23\u0e30\u0e1a\u0e32\u0e17\u0e20\u0e39\u0e1e\u0e32\u0e19\u0e04\u0e33 \u0e2d.\u0e2d\u0e38\u0e1a\u0e25\u0e23\u0e31\u0e15\u0e19\u0e4c", "province": "Khon Kaen", "distance": "", "event_url": "https://www.runlah.com/en/zbTXfy6r", "date_found": "2026-02-11"}, {"date": "2026-08-23", "name": "Bangkok Airways Sukhothai Half Marathon 2026", "race_type": "running", "location": "Sukhothai Historical Park, Mueang Kao, Mueang Sukhothai District", "province": "Sukhothai", "distance": "21.1K / 10K / 5K + kids dash", "event_url": "https://www.ahotu.com/event/bangkok-airways-sukhothai-half-marathon", "date_found": "2026-02-11"}, {"date": "2026-08-30", "name": "Pho3nix Kids Triathlon Thailand 2026 \u2013 Pattana Sports Resort", "race_type": "triathlon", "location": "Pattana Sports Resort, Si Racha, Chonburi", "province": "Chonburi", "distance": "Kids tri & duathlon sets (25-400m swim / 1-10km bike / 0.4-3km run by age)", "event_url": "https://pho3nixkidsthailand.com/pattana-sports/", "date_found": "2026-02-11"}, {"date": "2026-09-05", "name": "Chiang Mai Night Run 2026", "race_type": "running", "location": "Chiang Mai Zoo (Doi Suthep)", "province": "Chiang Mai", "distance": "22K / 10K / 5K", "event_url": "https://www.jogandjoy.com/thailand-running-calender", "date_found": "2026-02-11"}, {"date": "2026-09-07", "name": "Jungle Trail Khao Eto 2026", "race_type": "trail", "location": "Khao Ito Forest Park, Noen Hom, Mueang Prachinburi District", "province": "Prachin Buri", "distance": "50K / 30K / 20K / 10K", "event_url": "https://www.ahotu.com/event/jungle-trail-khao-eto", "date_found": "2026-02-11"}, {"date": "2026-09-27", "name": "Bangkok Airways Chiang Mai Half Marathon 2026", "race_type": "running", "location": "Royal Park Rajapruek, Chiang Mai", "province": "Chiang Mai", "distance": "21.1K / 10K / 5K / 800m Kids", "event_url": "https://www.ahotu.com/event/Bangkok-Airways-Chiang-Mai-Half-Marathon", "date_found": "2026-02-11"}, {"date": "2026-10-10", "name": "Nan Mountain Trail 2026", "race_type": "trail", "location": "Prakit Vejchasak School, San Tha, Na Noi District", "province": "Nan", "distance": "100K / 60K / 30K / 20K / 9K", "event_url": "https://www.ahotu.com/event/nan-mountain-trail", "date_found": "2026-02-11"}, {"date": "2026-10-16", "name": "Masters Tour of Chiang Mai 2026 (14th Edition)", "race_type": "cycling", "location": "Chiang Mai", "province": "Chiang Mai", "distance": "4-day stage race (Oct 16-19)", "event_url": "https://masterstourofchiangmai.com/", "date_found": "2026-02-11"}, {"date": "2026-11-01", "name": "THEP SADET TRAIL 2026", "race_type": "running", "location": "\u0e2d\u0e07\u0e04\u0e4c\u0e01\u0e32\u0e23\u0e1a\u0e23\u0e34\u0e2b\u0e32\u0e23\u0e2a\u0e48\u0e27\u0e19\u0e15\u0e33\u0e1a\u0e25\u0e40\u0e17\u0e1e\u0e40\u0e2a\u0e14\u0e47\u0e08 \u0e15.\u0e40\u0e17\u0e1e\u0e40\u0e2a\u0e14\u0e47\u0e08 \u0e2d.\u0e14\u0e2d\u0e22\u0e2a\u0e30\u0e40\u0e01\u0e47\u0e14", "province": "Chiang Mai", "distance": "Trail", "event_url": "https://www.runlah.com/th/eYQj8Vza", "date_found": "2026-02-11"}, {"date": "2026-11-01", "name": "THEP SADET TRAIL 2026", "race_type": "running", "location": "\u0e2d\u0e07\u0e04\u0e4c\u0e01\u0e32\u0e23\u0e1a\u0e23\u0e34\u0e2b\u0e32\u0e23\u0e2a\u0e48\u0e27\u0e19\u0e15\u0e33\u0e15\u0e25\u0e40\u0e17\u0e1e\u0e40\u0e2a\u0e14\u0e47\u0e08 \u0e15.\u0e40\u0e17\u0e1e\u0e40\u0e2a\u0e14\u0e47\u0e08 \u0e2d.\u0e14\u0e2d\u0e22\u0e2a\u0e30\u0e40\u0e01\u0e47\u0e14", "province": "Chiang Mai", "distance": "", "event_url": "https://www.runlah.com/en/eYQj8Vza", "date_found": "2026-02-11"}, {"date": "2026-11-14", "name": "Pho3nix Kids Triathlon Thailand 2026 \u2013 Thanyapura Sports & Health Resort", "race_type": "triathlon", "location": "Thanyapura Sports & Health Resort, Phuket", "province": "Phuket", "distance": "Kids tri & duathlon sets (25-400m swim / 1-10km bike / 0.4-3km run by age)", "event_url": "https://pho3nixkidsthailand.com/thanyapura-sports/", "date_found": "2026-02-11"}, {"date": "2026-11-15", "name": "Laguna Phuket Triathlon 2026", "race_type": "triathlon", "location": "Laguna Grove, Phuket", "province": "Phuket", "distance": "1.8K swim / 55K bike / 12K run (plus sprint & duathlon options)", "event_url": "https://www.lagunaphukettri.com/", "date_found": "2026-02-11"}, {"date": "2026-11-15", "name": "Bangkok Marathon 2026", "race_type": "Road marathon", "location": "Sanamchai Road, Phra Nakhon", "province": "Bangkok", "distance": "42.195km, 21km, 10km, 5km", "event_url": "https://www.bkkmarathon.com/home", "date_found": "2026-02-11"}, {"date": "2026-11-22", "name": "500 Thailand Ultra 2026", "race_type": "Multi-day ultra stage race", "location": "Pai District Office, Pai, Mae Hong Son", "province": "Mae Hong Son", "distance": "500 km / 300 km / 200 km / 100 km (7-day stage format)", "event_url": "https://www.500thailand.com/aboutus/", "date_found": "2026-02-12"}, {"date": "2026-12-13", "name": "Chiang Mai Gran Fondo (GFWT)", "race_type": "cycling", "location": "Chiang Mai", "province": "Chiang Mai", "distance": "120K / 80K / 50K", "event_url": "https://www.granfondoworldtour.com/events", "date_found": "2026-02-11"}, {"date": "2026-12-20", "name": "Chiang Mai Marathon 2026", "race_type": "running", "location": "Tha Phae Gate, Chiang Mai", "province": "Chiang Mai", "distance": "42K / 21K / 10K / 3K", "event_url": "https://www.ahotu.com/event/chiang-mai-marathon", "date_found": "2026-02-11"}, {"date": "2027-01-08", "name": "Ultra Trail Chiang Mai - UTCM 200K", "race_type": "running", "location": "Chiang Dao", "province": "Chiang Mai", "distance": "200K", "event_url": "https://worldsmarathons.com/marathon/ultra-trail-chiang-mai", "date_found": "2026-02-11"}, {"date": "2027-01-08", "name": "Ultra Trail Chiang Mai - UTCM 103K", "race_type": "running", "location": "Chiang Dao", "province": "Chiang Mai", "distance": "103K", "event_url": "https://worldsmarathons.com/marathon/ultra-trail-chiang-mai", "date_found": "2026-02-11"}, {"date": "2027-01-08", "name": "Ultra Trail Chiang Mai - UTCM 76K", "race_type": "running", "location": "Chiang Dao", "province": "Chiang Mai", "distance": "76K", "event_url": "https://worldsmarathons.com/marathon/ultra-trail-chiang-mai", "date_found": "2026-02-11"}, {"date": "2027-01-09", "name": "Ultra Trail Chiang Mai - UTCM 40K", "race_type": "running", "location": "Chiang Dao", "province": "Chiang Mai", "distance": "40K", "event_url": "https://worldsmarathons.com/marathon/ultra-trail-chiang-mai", "date_found": "2026-02-11"}, {"date": "2027-01-10", "name": "Ultra Trail Chiang Mai - UTCM 16K", "race_type": "running", "location": "Chiang Dao", "province": "Chiang Mai", "distance": "16K", "event_url": "https://worldsmarathons.com/marathon/ultra-trail-chiang-mai", "date_found": "2026-02-11"}, {"date": "TBA", "name": "Songkhla Marathon 2026", "race_type": "running", "location": "Songkhla", "province": "Songkhla", "distance": "42.195km, 21km, 10km, 5km", "event_url": "https://worldsmarathons.com/marathon/songkha-international-marathon", "date_found": "2026-02-11"}, {"date": "TBA", "name": "Korat Marathon 2026", "race_type": "running", "location": "Nakhon Ratchasima", "province": "Nakhon Ratchasima", "distance": "42.195km, 21km, 10km, 5km", "event_url": "https://www.finishers.com/", "date_found": "2026-02-11"}, {"date": "TBA", "name": "Bangsaen42 Chonburi Marathon 2026", "race_type": "running", "location": "Chonburi", "province": "Chonburi", "distance": "42.195km", "event_url": "https://www.finishers.com/", "date_found": "2026-02-11"}, {"date": "TBA", "name": "Marathon de Pattaya 2026", "race_type": "running", "location": "Pattaya", "province": "Chonburi", "distance": "42.195km, 21km, 10km", "event_url": "https://www.finishers.com/", "date_found": "2026-02-11"}, {"date": "TBA", "name": "River Kwai International Half Marathon 2026", "race_type": "running", "location": "Kanchanaburi", "province": "Kanchanaburi", "distance": "21km", "event_url": "https://worldsmarathons.com/", "date_found": "2026-02-11"}, {"date": "TBA", "name": "TNF 100 Thailand 2026", "race_type": "running", "location": "Khao Yai, Nakhon Ratchasima", "province": "Nakhon Ratchasima", "distance": "100km, 50km, 25km", "event_url": "https://www.gotorace.com/tnf-100-thailand-2025/", "date_found": "2026-02-11"}, {"date": "TBA", "name": "Pho3nix Kids Triathlon Thailand 2026 \u2013 Samut Prakan Provincial Stadium", "race_type": "triathlon", "location": "Samut Prakan Provincial Stadium, Samut Prakan", "province": "Samut Prakan", "distance": "Kids tri & duathlon sets (25-400m swim / 1-10km bike / 0.4-3km run by age)", "event_url": "https://pho3nixkidsthailand.com/", "date_found": "2026-02-11"}, {"date": "TBA", "name": "Chiangmai Thailand by UTMB 2026", "race_type": "running", "location": "Chiang Mai city & surrounding national parks, Chiang Mai", "province": "Chiang Mai", "distance": "175K / 93K / 50K / 24K / 12K / 10K", "event_url": "https://thailandbyutmb.com/", "date_found": "2026-02-11"}, {"date": "TBA", "name": "IRONMAN 70.3 Bangsaen 2026", "race_type": "triathlon", "location": "Bangsaen Beach & Saen Suk, Mueang Chon Buri", "province": "Chonburi", "distance": "1.9 km swim / 90 km bike / 21.1 km run", "event_url": "https://www.finishers.com/en/event/ironman-70-3-bangsaen-thailand", "date_found": "2026-02-11"}];
+    const races = [
+  {
+    "date": "2026-02-14",
+    "name": "Run Better Together 2026 แม่อายวิทยาคม",
+    "race_type": "running",
+    "location": "สนามโรงเรียนแม่อายวิทยาคม ต.แม่อาย อ.แม่อาย",
+    "province": "Chiang Mai",
+    "distance": "Unknown",
+    "event_url": "https://www.runlah.com/th/i8GRvNUe",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-14",
+    "name": "Samoeng Mini Marathon ครั้งที่ 6",
+    "race_type": "running",
+    "location": "โรงเรียนสะเมิงพิทยาคม",
+    "province": "Chiang Mai",
+    "distance": "Unknown",
+    "event_url": "https://www.runlah.com/th/uT51f1K4",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-14",
+    "name": "Sannameng Healthy Hero 2026",
+    "race_type": "running",
+    "location": "เทศบาลตำบลสันนาเม็ง",
+    "province": "Chiang Mai",
+    "distance": "Unknown",
+    "event_url": "https://www.runlah.com/th/62CopI1k",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-14",
+    "name": "Run Better Together 2026 แม่อายวิทยาคม ก้าวด้วยใจ ก้าวไปด้วยกัน",
+    "race_type": "running",
+    "location": "สนามโรงเรียนแม่อายวิทยาคม ต.แม่อาย อ.แม่อาย",
+    "province": "Chiang Mai",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/i8GRvNUe",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-14",
+    "name": "ซีนิค ฮาล์ฟมาราธอน ปราณบุรี 2026",
+    "race_type": "running",
+    "location": "ปากน้ำปราณบีชพาร์ค ต.ปากน้ำปราณ อ.ปราณบุรี",
+    "province": "Prachuap Khiri Khan",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/yJDeJcNt",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-14",
+    "name": "Samoeng Mini marathon ครั้งที่ 6",
+    "race_type": "running",
+    "location": "โรงเรียนสะเมิงพิทยาคม",
+    "province": "Chiang Mai",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/uT51f1K4",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-14",
+    "name": "ซิลเวอร์รันคลับ ครั้งที่ 4",
+    "race_type": "running",
+    "location": "อุทยาน 100 ปี จุฬาลงกรณ์มหาวิทยาลัย",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/lkPM9KVw",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-15",
+    "name": "CMU ATHLETIC EKIDEN RUN 2026",
+    "race_type": "running",
+    "location": "ลานเนินพระพุทธศูนย์วิจัย สาธิตและฝึกอบรมการเกษตรแม่เหียะ (ไร่แม่เหียะ)",
+    "province": "Chiang Mai",
+    "distance": "Ekiden relay",
+    "event_url": "https://www.runlah.com/th/N4hXVh1W",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-15",
+    "name": "Mae Kampong Mini Cross Country 2026",
+    "race_type": "running",
+    "location": "Mae Kampong",
+    "province": "Chiang Mai",
+    "distance": "Cross country",
+    "event_url": "https://www.runlah.com/th/eINad7dE",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-15",
+    "name": "เดินวิ่ง ฮอม ฮัก ปี 6",
+    "race_type": "running",
+    "location": "โรงเรียนชุมชนบ้านอมก๋อย",
+    "province": "Chiang Mai",
+    "distance": "Unknown",
+    "event_url": "https://www.runlah.com/th/PuORlkGp",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-15",
+    "name": "สารภีมินิมาราธอน ครั้งที่ 6",
+    "race_type": "running",
+    "location": "สำนักงานเทศบาลตำบลสารภี อ.สารภี",
+    "province": "Chiang Mai",
+    "distance": "Mini marathon",
+    "event_url": "https://www.runlah.com/th/gXwIpyTn",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-15",
+    "name": "Maesai Mountain Run 2026",
+    "race_type": "running",
+    "location": "ลานที่ว่าการอำเภอแม่สาย",
+    "province": "Chiang Rai",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/GNyZkBc2",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-15",
+    "name": "RUN FOR LOVE บอกรักที่หนองหลวง",
+    "race_type": "running",
+    "location": "สวนสาธารณะหนองหลวง  อ.เวียงชัย",
+    "province": "Chiang Rai",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/BEQSXb4c",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-15",
+    "name": "ศรีสุนทร ฮาล์ฟมาราธอน 2026",
+    "race_type": "running",
+    "location": "อ่างเก็บน้ำบางเหนียวดำ",
+    "province": "Phuket",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/qSp1BJ4w",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-15",
+    "name": "KhonKaen21 2026",
+    "race_type": "running",
+    "location": "ประตูเมืองขอนแก่น",
+    "province": "Khon Kaen",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/NAi6pmeY",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-15",
+    "name": "Minimal Trail 2026",
+    "race_type": "running",
+    "location": "Mae Wa National Park, Thoen, Lampang",
+    "province": "Lampang",
+    "distance": "11K / 34K / 52K / 102K",
+    "event_url": "https://patrunning.com/events/minimal-trail-2026/",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-15",
+    "name": "CMU ATHLETIC EKIDEN RUN 2026",
+    "race_type": "running",
+    "location": "ลานเนินพระพุทธศูนย์วิจัย สาธิตและฝึกอบรมการเกษตรแม่เหียะ (ไร่แม่เหียะ) ",
+    "province": "Chiang Mai",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/N4hXVh1W",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-15",
+    "name": "KPI Democracy RUN 2026",
+    "race_type": "running",
+    "location": "พิพิธภัณฑ์พระบาทสมเด็จพระปกเกล้าเจ้าอยู่หัว",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/9siYSagU",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-15",
+    "name": "Run Alone ... But Not Lonely 2026",
+    "race_type": "running",
+    "location": "สวนหลวง ร.9",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/kllfxqJQ",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-15",
+    "name": "WAT RAJABOPIT RUN 2026",
+    "race_type": "running",
+    "location": "วัดราชบพิธสถิตมหาสีมารามราชวรวิหาร",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/NOQhvSK5",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-15",
+    "name": "เฮง เฮง มินิมาราธอน 2026",
+    "race_type": "running",
+    "location": "สนามวชิรเบญจทัศ (สวนรถไฟ)",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/Iog4BM22",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-15",
+    "name": "Saraphi Mini Marathon #6",
+    "race_type": "running",
+    "location": "Saraphi Municipality Office",
+    "province": "Chiang Mai",
+    "distance": "10K / 5K / 2K",
+    "event_url": "https://www.runlah.com/en/gXwIpyTn",
+    "date_found": "2026-02-13"
+  },
+  {
+    "date": "2026-02-21",
+    "name": "เดิน-วิ่ง \"วิถีล้านนา\" เที่ยวชมเมืองเชียงใหม่",
+    "race_type": "running",
+    "location": "ข่วงประตูท่าแพ",
+    "province": "Chiang Mai",
+    "distance": "Unknown",
+    "event_url": "https://www.runlah.com/th/AuatYBHd",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-21",
+    "name": "เดิน-วิ่ง “วิถีล้านนา” เที่ยวชมเมืองเชียงใหม่",
+    "race_type": "running",
+    "location": "ข่วงประตูท่าแพ",
+    "province": "Chiang Mai",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/AuatYBHd",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-21",
+    "name": "PHU WIANG ULTRA TRAIL 2026",
+    "race_type": "running",
+    "location": "อุทยานแห่งชาติภูเวียง",
+    "province": "Khon Kaen",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/docfksft",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-22",
+    "name": "The Takeoff Run",
+    "race_type": "running",
+    "location": "หาดไม้ขาว",
+    "province": "Phuket",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/WzHGJtLA",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-22",
+    "name": "บ้านเป็ดมินิมาราธอน 2026",
+    "race_type": "running",
+    "location": "บึงหนองโคตร",
+    "province": "Khon Kaen",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/q8TY6jlg",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-22",
+    "name": "Plongsan Mini Marathon Run For Kids 2026",
+    "race_type": "running",
+    "location": "โรงเรียนบ้านปล้องส้าน ต.ปล้อง อ.เทิง",
+    "province": "Chiang Rai",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/OZ7GIQLy",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-22",
+    "name": "MEA SPARK RUN 2025",
+    "race_type": "running",
+    "location": "การไฟฟ้านครหลวง วัดเลียบ",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/uEzSON5l",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-28",
+    "name": "Discover Night Run 2026",
+    "race_type": "running",
+    "location": "สวนเฉลิมพระเกียรติ 72 พรรษามหาราชินี (ลานมังกร)",
+    "province": "Phuket",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/LWa2cF74",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-02-28",
+    "name": "หมอออร์โธฯ ชวนก้าว ช่วย 13 โรงพยาบาล 2026 (Chiang Mai)",
+    "race_type": "running",
+    "location": "Chiang Mai Provincial Administrative Organization Park (ศูนย์ราชการจังหวัดเชียงใหม่)",
+    "province": "Chiang Mai",
+    "distance": "5K charity run",
+    "event_url": "https://ortho.thai.run/event/ORTHO_CMI",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-01",
+    "name": "วังหลวง มินิมาราธอน ครั้งที่ 2",
+    "race_type": "running",
+    "location": "โรงเรียนบ้านวังหลวง อ.ดอยเต่า",
+    "province": "Chiang Mai",
+    "distance": "Mini marathon",
+    "event_url": "https://www.runlah.com/th/apMlTrrI",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-01",
+    "name": "ซาเลเซียนหัวหินมินิมาราธอน 2026",
+    "race_type": "running",
+    "location": "โรงเรียนหัวหินวิทยาลัย อ.หัวหิน",
+    "province": "Prachuap Khiri Khan",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/0wu3mBdC",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-01",
+    "name": "Pho3nix Kids Triathlon Thailand 2026 – Wellington College",
+    "race_type": "triathlon",
+    "location": "Wellington College International School, Bangkok",
+    "province": "Bangkok",
+    "distance": "Kids tri/duathlon distances 25-400m swim • 1-10K bike • 400m-3K run",
+    "event_url": "https://pho3nixkidsthailand.com/wellington-college/",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-01",
+    "name": "Ang Khang KOM Challenge 2026",
+    "race_type": "cycling",
+    "location": "Wiang, Fang District, Chiang Mai",
+    "province": "Chiang Mai",
+    "distance": "40 km / 1,335 m+",
+    "event_url": "https://www.cycloworld.cc/en/gran-fondo/thailand/ang-khang-kom-challenge/37597",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-01",
+    "name": "Pho3nix Kids Triathlon 2026 - Wellington College",
+    "race_type": "triathlon",
+    "location": "Wellington College International School, Bangkok",
+    "province": "Bangkok",
+    "distance": "Sprint, Mini",
+    "event_url": "https://www.gotorace.com/",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-01",
+    "name": "ACT Run for Teacher 2026",
+    "race_type": "running",
+    "location": "สวนพุทธมณฑล สาย 4",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/9FPu7DNN",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-01",
+    "name": "Battle Run 2026 Rabit & Turtle",
+    "race_type": "running",
+    "location": "สวนหลวง ร.9 ประตู 4 (ประตูดาวเรือง)",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/KEceSicy",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-01",
+    "name": "DSRU Charity Run  2026",
+    "race_type": "running",
+    "location": "มหาวิทยาลัยรามคำแหง (หัวหมาก)",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/lVuaHZpp",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-01",
+    "name": "TikTok Shop Run Freshtival  2026",
+    "race_type": "running",
+    "location": "CentralwOrld",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/tl1nRS8H",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-01",
+    "name": "ชัก...อยากจะวิ่ง 7",
+    "race_type": "running",
+    "location": "ศูนย์ราชการ ถนนแจ้งวัฒนะ ",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/fCH20dqq",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-01",
+    "name": "ดงตาลรัน ครั้งที่ 7",
+    "race_type": "running",
+    "location": "คณะวิศวกรรมศาสตร์ มหาวิทยาลัยเกษตรศาสตร์ บางเขน",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/dtr7",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-01",
+    "name": "วิ่งด้วยกัน Run2Gether 2026",
+    "race_type": "running",
+    "location": "สนามกีฬาแห่งชาติ สนามศุภชลาศัย",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/T8eBwCZR",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-07",
+    "name": "ซิลเวอร์รันคลับ ครั้งที่ 5",
+    "race_type": "running",
+    "location": "อุทยาน 100 ปี จุฬาลงกรณ์มหาวิทยาลัย",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/ONjBKQ2O",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-07",
+    "name": "Khaoyai-Prachin Ultra 2026",
+    "race_type": "trail",
+    "location": "King Mongkut’s University of Technology North Bangkok (Prachinburi Campus)",
+    "province": "Prachin Buri",
+    "distance": "100K / 60K",
+    "event_url": "https://www.runlah.com/en/kpu2026",
+    "date_found": "2026-02-13"
+  },
+  {
+    "date": "2026-03-08",
+    "name": "ชุมแพมินิมาราธอน ครั้งที่ 1",
+    "race_type": "running",
+    "location": "สำนักงานขนส่งจังหวัดขอนแก่น สาขาอำภอชุมแพ",
+    "province": "Khon Kaen",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/hJ01fEyX",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-08",
+    "name": "Fahsai Run ร่วมกันก้าว ชาวบริหาร 2026",
+    "race_type": "running",
+    "location": "คณะบริหารธุรกิจ มหาวิทยาลัยเกษตรศาสตร์ บางเขน",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/fahsai2026",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-08",
+    "name": "Run for love#15  Love is Sharing",
+    "race_type": "running",
+    "location": "สวนสมเด็จพระนางเจ้าสิริกิติ์ฯ (จตุจักร)",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/15A6AOE1",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-08",
+    "name": "วิ่งสร้างเมือง 2026 ตอน เพ็ท-ตัด-เพ็ท",
+    "race_type": "running",
+    "location": "คณะสถาปัตยกรรมศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/dvp9K9va",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-14",
+    "name": "พาลูกวิ่งดะ Obstacle on the Beach 2026 : Survival Family",
+    "race_type": "running",
+    "location": "Seapine Golf & Resort Huahin (Seapine Recreation Centre)  อ.หัวหิน",
+    "province": "Prachuap Khiri Khan",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/8n1PcIGM",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-15",
+    "name": "Patong Beach Run 2026",
+    "race_type": "running",
+    "location": "Patong Beach",
+    "province": "Phuket",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/caTH7xaF",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-15",
+    "name": "TOAVH RUN Homes for Hornbills",
+    "race_type": "running",
+    "location": "สวนหลวง ร.๙ – บึงหนองบอน",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/hH4H0kgB",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-20",
+    "name": "Thailand Open Masters Swimming Championships 2026",
+    "race_type": "swim",
+    "location": "Sports Authority of Thailand Swimming Pool",
+    "province": "Bangkok",
+    "distance": "Masters meet (Mar 20-22)",
+    "event_url": "https://www.thaiaquatics.or.th/Index/Competition",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-21",
+    "name": "Muangthai Kids Triathlon 2026 – Sam Roi Yod",
+    "race_type": "triathlon",
+    "location": "DPMRC4 Disaster Unit, Sam Roi Yod Beach, Prachuap Khiri Khan",
+    "province": "Prachuap Khiri Khan",
+    "distance": "Kids tri distances 75-150m swim / 2-13km bike / 1-3km run",
+    "event_url": "https://www.gotorace.com/mtl2026-samroiyod/",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-21",
+    "name": "Muangthai Triathlon Eco Hero Super Series 2026 – SAM ROI YOD",
+    "race_type": "triathlon",
+    "location": "DPMRC4 Disaster Unit, Samroiyod Beach",
+    "province": "Prachuap Khiri Khan",
+    "distance": "Standard/Super: 1.5k swim / 40.7k bike / 10k run; Sprint: 0.75k/25.5k/5k; Duathlon: 5k/25.5k/5k; Kids tri",
+    "event_url": "https://www.gotorace.com/mtl2026-samroiyod/",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-21",
+    "name": "Ex-Run Night FUN 2025",
+    "race_type": "running",
+    "location": "อาคารจักรพันธ์เพ็ญศิริ มหาวิทยาลัยเกษตรศาสตร์ บางเขน",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/BDETMYzn",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-21",
+    "name": "ห้าหมูนี่ แชริตี้ รัน! 2026",
+    "race_type": "running",
+    "location": "อุทยาน 100 ปี จุฬาลงกรณ์มหาวิทยาลัย",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/5W0JSSJS",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-22",
+    "name": "ราไวย์ สบาย รัน 2026",
+    "race_type": "running",
+    "location": "แหลมพรหมเทพ ต.ราไวย์ อ.เมือง",
+    "province": "Phuket",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/nxlA98CJ",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-22",
+    "name": "Muangthai Triathlon Eco Hero Super Series 2026 – Sam Roi Yod",
+    "race_type": "triathlon",
+    "location": "DPMRC4 Disaster Unit, Sam Roi Yod Beach, Prachuap Khiri Khan",
+    "province": "Prachuap Khiri Khan",
+    "distance": "Standard 1.5/40.7/10 + Sprint 0.75/25.5/5 + Kids & Duathlon",
+    "event_url": "https://www.gotorace.com/mtl2026-samroiyod/",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-22",
+    "name": "KaChong Trail 2026",
+    "race_type": "running",
+    "location": "Phraya Ratsadanupradit Mahison Phakdi Museum, Kantang District, Trang",
+    "province": "Trang",
+    "distance": "38K / 21K / 7K",
+    "event_url": "https://worldsmarathons.com/marathon/kachong-trail",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-22",
+    "name": "วิ่งหนีหมอ มาทำบุญสร้างโบสต์วัดบัวผัน มินิมาราธอน ครั้งที่ 1",
+    "race_type": "running",
+    "location": "วัดบัวผัน แขวงท่าข้าม เขตบางขุนเทียน",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/XOjNFMZ7",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-22",
+    "name": "PALA RUN 5 : 2026",
+    "race_type": "running",
+    "location": "PALA BEACH, T.PALA, A.BANCHANG",
+    "province": "Rayong",
+    "distance": "Unknown",
+    "event_url": "https://www.runlah.com/en/pala26",
+    "date_found": ""
+  },
+  {
+    "date": "2026-03-29",
+    "name": "นครหัวหินรัน 2026",
+    "race_type": "running",
+    "location": "อ่างเก็บน้ำเขาเต่า อ.หัวหิน",
+    "province": "Prachuap Khiri Khan",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/gJttR1x1",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-29",
+    "name": "Oceanman Krabi 2026",
+    "race_type": "open water",
+    "location": "Klong Muang Beach, Krabi",
+    "province": "Krabi",
+    "distance": "10K / 5K / 2K / 500m kids / 3x500m relay",
+    "event_url": "https://oceanmanswim.com/krabi-thailand/",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-29",
+    "name": "Black & White and Run 2026",
+    "race_type": "running",
+    "location": "สวนหลวง ร.9",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/mA3Jdbg5",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-03-29",
+    "name": "วิ่งให้โอกาส 2026",
+    "race_type": "running",
+    "location": "Bangkok World สวนสยาม",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/trF13AuN",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-04-04",
+    "name": "ธัญญปุระ คัลเลอร์ รัน 2026",
+    "race_type": "running",
+    "location": "ธัญญปุระ ภูเก็ต",
+    "province": "Phuket",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/cfr26",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-04-05",
+    "name": "สิงห์เหนือ เสือใต้ Run for Give Minimarathon 3 By ZENCELL",
+    "race_type": "running",
+    "location": "สวนหลวง ร.9",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/16xDGa61",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-04-11",
+    "name": "Laguna Phuket Sunset Beach Run 2026",
+    "race_type": "running",
+    "location": "Xana Beach Club ลากูน่า",
+    "province": "Phuket",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/gqsTMHYO",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-04-18",
+    "name": "Sawan Rim Rai Ultra Marathon 2026",
+    "race_type": "trail",
+    "location": "Sawan Park (Nong Somboon), Nakhon Sawan",
+    "province": "Nakhon Sawan",
+    "distance": "Ultra",
+    "event_url": "https://www.runlah.com/en/ums2026",
+    "date_found": ""
+  },
+  {
+    "date": "2026-04-19",
+    "name": "Sakhu Trail Beach Run 2026",
+    "race_type": "running",
+    "location": "สวนสาธารณะหาดในทอน",
+    "province": "Phuket",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/jCwaloOJ",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-04-25",
+    "name": "Masters Tour of Andaman 2026",
+    "race_type": "cycling",
+    "location": "Natai Beach Resort (Andaman coast)",
+    "province": "Phang Nga",
+    "distance": "Stage race: ITT prologue + ~60km + ~80km road stages",
+    "event_url": "https://masterstourofchiangmai.com/",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-04-26",
+    "name": "เดิน-วิ่งขึ้นดอยตามรอยพระครูบาเจ้าศรีวิชัย 2026",
+    "race_type": "running",
+    "location": "อนุสาวรีย์ครูบาเจ้าศรีวิชัย",
+    "province": "Chiang Mai",
+    "distance": "Trail/Up mountain",
+    "event_url": "https://www.runlah.com/th/s1A1pfbg",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-04-26",
+    "name": "Doisuthep Run 2026",
+    "race_type": "running",
+    "location": "Kruba Srivichai Monument, Chiang Mai",
+    "province": "Chiang Mai",
+    "distance": "11K hill run",
+    "event_url": "https://www.runlah.com/en/s1A1pfbg",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-04-30",
+    "name": "Amazean Jungle Thailand by UTMB 2026",
+    "race_type": "running",
+    "location": "Betong Mongkollit Tunnel, Betong, Yala",
+    "province": "Yala",
+    "distance": "147K / 102K / 55K / 27.9K / 15.8K + fun run",
+    "event_url": "https://thailand.go.th/event-detail/amazean-jungle-thailand-by-utmb",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-05-03",
+    "name": "ศิริราช เดิน-วิ่ง ครั้งที่ 18",
+    "race_type": "running",
+    "location": "โรงพยาบาลศิริราช",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/siriraj18",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-05-03",
+    "name": "XRACE OCEAN 2026",
+    "race_type": "obstacle",
+    "location": "Chai Chet Resort, Koh Chang",
+    "province": "Trat",
+    "distance": "Ocean obstacle race",
+    "event_url": "https://xraceasia.com/event/xrace-ocean-2026/",
+    "date_found": "2026-02-12"
+  },
+  {
+    "date": "2026-05-10",
+    "name": "Suanpruek99 10-Hour UltraMarathon 2025",
+    "race_type": "running",
+    "location": "สวนนวมินทร์ภิรมย์ เขตบึงกุ่ม",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/ultra10hrs2026",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-05-10",
+    "name": "หัวหินมาราธอน 2026 (ครั้งที่ 6)",
+    "race_type": "running",
+    "location": "วัดเขาไกรลาศ ต.หนองแก อ.หัวหิน",
+    "province": "Prachuap Khiri Khan",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/huahin2026",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-05-10",
+    "name": "Hua Hin Marathon 2026",
+    "race_type": "City marathon",
+    "location": "Wat Khao Krailart, Nong Kae, Hua Hin",
+    "province": "Prachuap Khiri Khan",
+    "distance": "42.195 km / 21 km / 10.5 km / 5 km",
+    "event_url": "https://www.runlah.com/en/huahin2026",
+    "date_found": "2026-02-12"
+  },
+  {
+    "date": "2026-05-17",
+    "name": "Rama 8",
+    "race_type": "running",
+    "location": "ลานเอนกประสงค์ใต้สะพานพระราม 8",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/GscLTnfV",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-05-17",
+    "name": "Supersports 10 Mile Run 2026 Presented by Under Armour",
+    "race_type": "running",
+    "location": "centralwOrld",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/YJyQXR1o",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-05-17",
+    "name": "การท่าเรือ มินิมาราธอน ครั้งที่ 13 2569",
+    "race_type": "running",
+    "location": "การท่าเรือแห่งประเทศไทย",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/1vSvhan9",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-05-24",
+    "name": "Bangkok Airways Trat Half Marathon 2026",
+    "race_type": "running",
+    "location": "Trat Provincial Stadium, Bang Phra, Mueang Trat District",
+    "province": "Trat",
+    "distance": "21.1K / 10K / 5K + kids dash",
+    "event_url": "https://www.ahotu.com/event/bangkok-airways-trat-half-marathon",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-05-24",
+    "name": "ชมพูฟ้ารันนิ่ง 2026",
+    "race_type": "running",
+    "location": "โรงเรียนสวนกุหลาบวิทยาลัย",
+    "province": "Bangkok",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/UxiqBsuB",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-05-30",
+    "name": "สามร้อยยอด รัน ฟัน เฟส 2026",
+    "race_type": "running",
+    "location": "ชายหาดสามร้อยยอด",
+    "province": "Prachuap Khiri Khan",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/9nJgVAgK",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-05-31",
+    "name": "Amazing Phrae Marathon 2026",
+    "race_type": "running",
+    "location": "Sam Wai Market, Phrae Municipality",
+    "province": "Phrae",
+    "distance": "42K / 21K / 10K / 5K",
+    "event_url": "https://www.runlah.com/en/kr7N8F8T",
+    "date_found": "2026-02-13"
+  },
+  {
+    "date": "2026-06-13",
+    "name": "Laguna Phuket Marathon 2026",
+    "race_type": "running",
+    "location": "Laguna Grove, Laguna Phuket",
+    "province": "Phuket",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/JSDWUMpK",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-06-21",
+    "name": "Bangkok Airways Samui Half Marathon 2026",
+    "race_type": "running",
+    "location": "Phru Chaweng Lake, Bo Phut, Ko Samui District",
+    "province": "Surat Thani",
+    "distance": "21.1K / 10K / 5K + kids dash",
+    "event_url": "https://www.ahotu.com/event/bangkok-airways-samui-half-marathon",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-07-05",
+    "name": "Chiang Mai Half Marathon 2026",
+    "race_type": "running",
+    "location": "7th Infantry Division Camp, Mae Rim",
+    "province": "Chiang Mai",
+    "distance": "21K/10K/5K",
+    "event_url": "https://www.runlah.com/en/eF2t2Iut",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-08-01",
+    "name": "AKHA Trail 2026",
+    "race_type": "running",
+    "location": "โรงเรียนบ้านผาฮี้",
+    "province": "Chiang Rai",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/6l88DHgy",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-08-16",
+    "name": "Wangpong Trail 2026",
+    "race_type": "trail",
+    "location": "Ban Khlong Nam Khan School, Sap Peub, Wang Pong",
+    "province": "Phetchabun",
+    "distance": "Unknown",
+    "event_url": "https://www.runlah.com/en/wpt2026",
+    "date_found": ""
+  },
+  {
+    "date": "2026-08-22",
+    "name": "UBR PEAK Challenge 2026",
+    "race_type": "running",
+    "location": "วัดพระบาทภูพานคำ อ.อุบลรัตน์",
+    "province": "Khon Kaen",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/zbTXfy6r",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-08-23",
+    "name": "Bangkok Airways Sukhothai Half Marathon 2026",
+    "race_type": "running",
+    "location": "Sukhothai Historical Park, Mueang Kao, Mueang Sukhothai District",
+    "province": "Sukhothai",
+    "distance": "21.1K / 10K / 5K + kids dash",
+    "event_url": "https://www.ahotu.com/event/bangkok-airways-sukhothai-half-marathon",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-08-30",
+    "name": "Pho3nix Kids Triathlon Thailand 2026 – Pattana Sports Resort",
+    "race_type": "triathlon",
+    "location": "Pattana Sports Resort, Si Racha, Chonburi",
+    "province": "Chonburi",
+    "distance": "Kids tri & duathlon sets (25-400m swim / 1-10km bike / 0.4-3km run by age)",
+    "event_url": "https://pho3nixkidsthailand.com/pattana-sports/",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-09-05",
+    "name": "Chiang Mai Night Run 2026",
+    "race_type": "running",
+    "location": "Chiang Mai Zoo (Doi Suthep)",
+    "province": "Chiang Mai",
+    "distance": "22K / 10K / 5K",
+    "event_url": "https://www.jogandjoy.com/thailand-running-calender",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-09-07",
+    "name": "Jungle Trail Khao Eto 2026",
+    "race_type": "trail",
+    "location": "Khao Ito Forest Park, Noen Hom, Mueang Prachinburi District",
+    "province": "Prachin Buri",
+    "distance": "50K / 30K / 20K / 10K",
+    "event_url": "https://www.ahotu.com/event/jungle-trail-khao-eto",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-09-27",
+    "name": "Bangkok Airways Chiang Mai Half Marathon 2026",
+    "race_type": "running",
+    "location": "Royal Park Rajapruek, Chiang Mai",
+    "province": "Chiang Mai",
+    "distance": "21.1K / 10K / 5K / 800m Kids",
+    "event_url": "https://www.ahotu.com/event/Bangkok-Airways-Chiang-Mai-Half-Marathon",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-10-10",
+    "name": "Nan Mountain Trail 2026",
+    "race_type": "trail",
+    "location": "Prakit Vejchasak School, San Tha, Na Noi District",
+    "province": "Nan",
+    "distance": "100K / 60K / 30K / 20K / 9K",
+    "event_url": "https://www.ahotu.com/event/nan-mountain-trail",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-10-16",
+    "name": "Masters Tour of Chiang Mai 2026 (14th Edition)",
+    "race_type": "cycling",
+    "location": "Chiang Mai",
+    "province": "Chiang Mai",
+    "distance": "4-day stage race (Oct 16-19)",
+    "event_url": "https://masterstourofchiangmai.com/",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-11-01",
+    "name": "THEP SADET TRAIL 2026",
+    "race_type": "running",
+    "location": "องค์การบริหารส่วนตำบลเทพเสด็จ ต.เทพเสด็จ อ.ดอยสะเก็ด",
+    "province": "Chiang Mai",
+    "distance": "Trail",
+    "event_url": "https://www.runlah.com/th/eYQj8Vza",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-11-01",
+    "name": "THEP SADET TRAIL 2026",
+    "race_type": "running",
+    "location": "องค์การบริหารส่วนตำตลเทพเสด็จ ต.เทพเสด็จ อ.ดอยสะเก็ด",
+    "province": "Chiang Mai",
+    "distance": "",
+    "event_url": "https://www.runlah.com/en/eYQj8Vza",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-11-14",
+    "name": "Pho3nix Kids Triathlon Thailand 2026 – Thanyapura Sports & Health Resort",
+    "race_type": "triathlon",
+    "location": "Thanyapura Sports & Health Resort, Phuket",
+    "province": "Phuket",
+    "distance": "Kids tri & duathlon sets (25-400m swim / 1-10km bike / 0.4-3km run by age)",
+    "event_url": "https://pho3nixkidsthailand.com/thanyapura-sports/",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-11-15",
+    "name": "Laguna Phuket Triathlon 2026",
+    "race_type": "triathlon",
+    "location": "Laguna Grove, Phuket",
+    "province": "Phuket",
+    "distance": "1.8K swim / 55K bike / 12K run (plus sprint & duathlon options)",
+    "event_url": "https://www.lagunaphukettri.com/",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-11-15",
+    "name": "Bangkok Marathon 2026",
+    "race_type": "Road marathon",
+    "location": "Sanamchai Road, Phra Nakhon",
+    "province": "Bangkok",
+    "distance": "42.195km, 21km, 10km, 5km",
+    "event_url": "https://www.bkkmarathon.com/home",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-11-22",
+    "name": "500 Thailand Ultra 2026",
+    "race_type": "Multi-day ultra stage race",
+    "location": "Pai District Office, Pai, Mae Hong Son",
+    "province": "Mae Hong Son",
+    "distance": "500 km / 300 km / 200 km / 100 km (7-day stage format)",
+    "event_url": "https://www.500thailand.com/aboutus/",
+    "date_found": "2026-02-12"
+  },
+  {
+    "date": "2026-12-13",
+    "name": "Chiang Mai Gran Fondo (GFWT)",
+    "race_type": "cycling",
+    "location": "Chiang Mai",
+    "province": "Chiang Mai",
+    "distance": "120K / 80K / 50K",
+    "event_url": "https://www.granfondoworldtour.com/events",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2026-12-20",
+    "name": "Chiang Mai Marathon 2026",
+    "race_type": "running",
+    "location": "Tha Phae Gate, Chiang Mai",
+    "province": "Chiang Mai",
+    "distance": "42K / 21K / 10K / 3K",
+    "event_url": "https://www.ahotu.com/event/chiang-mai-marathon",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2027-01-08",
+    "name": "Ultra Trail Chiang Mai - UTCM 200K",
+    "race_type": "running",
+    "location": "Chiang Dao",
+    "province": "Chiang Mai",
+    "distance": "200K",
+    "event_url": "https://worldsmarathons.com/marathon/ultra-trail-chiang-mai",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2027-01-08",
+    "name": "Ultra Trail Chiang Mai - UTCM 103K",
+    "race_type": "running",
+    "location": "Chiang Dao",
+    "province": "Chiang Mai",
+    "distance": "103K",
+    "event_url": "https://worldsmarathons.com/marathon/ultra-trail-chiang-mai",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2027-01-08",
+    "name": "Ultra Trail Chiang Mai - UTCM 76K",
+    "race_type": "running",
+    "location": "Chiang Dao",
+    "province": "Chiang Mai",
+    "distance": "76K",
+    "event_url": "https://worldsmarathons.com/marathon/ultra-trail-chiang-mai",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2027-01-09",
+    "name": "Ultra Trail Chiang Mai - UTCM 40K",
+    "race_type": "running",
+    "location": "Chiang Dao",
+    "province": "Chiang Mai",
+    "distance": "40K",
+    "event_url": "https://worldsmarathons.com/marathon/ultra-trail-chiang-mai",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "2027-01-10",
+    "name": "Ultra Trail Chiang Mai - UTCM 16K",
+    "race_type": "running",
+    "location": "Chiang Dao",
+    "province": "Chiang Mai",
+    "distance": "16K",
+    "event_url": "https://worldsmarathons.com/marathon/ultra-trail-chiang-mai",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "TBA",
+    "name": "Songkhla Marathon 2026",
+    "race_type": "running",
+    "location": "Songkhla",
+    "province": "Songkhla",
+    "distance": "42.195km, 21km, 10km, 5km",
+    "event_url": "https://worldsmarathons.com/marathon/songkha-international-marathon",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "TBA",
+    "name": "Korat Marathon 2026",
+    "race_type": "running",
+    "location": "Nakhon Ratchasima",
+    "province": "Nakhon Ratchasima",
+    "distance": "42.195km, 21km, 10km, 5km",
+    "event_url": "https://www.finishers.com/",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "TBA",
+    "name": "Bangsaen42 Chonburi Marathon 2026",
+    "race_type": "running",
+    "location": "Chonburi",
+    "province": "Chonburi",
+    "distance": "42.195km",
+    "event_url": "https://www.finishers.com/",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "TBA",
+    "name": "Marathon de Pattaya 2026",
+    "race_type": "running",
+    "location": "Pattaya",
+    "province": "Chonburi",
+    "distance": "42.195km, 21km, 10km",
+    "event_url": "https://www.finishers.com/",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "TBA",
+    "name": "River Kwai International Half Marathon 2026",
+    "race_type": "running",
+    "location": "Kanchanaburi",
+    "province": "Kanchanaburi",
+    "distance": "21km",
+    "event_url": "https://worldsmarathons.com/",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "TBA",
+    "name": "TNF 100 Thailand 2026",
+    "race_type": "running",
+    "location": "Khao Yai, Nakhon Ratchasima",
+    "province": "Nakhon Ratchasima",
+    "distance": "100km, 50km, 25km",
+    "event_url": "https://www.gotorace.com/tnf-100-thailand-2025/",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "TBA",
+    "name": "Pho3nix Kids Triathlon Thailand 2026 – Samut Prakan Provincial Stadium",
+    "race_type": "triathlon",
+    "location": "Samut Prakan Provincial Stadium, Samut Prakan",
+    "province": "Samut Prakan",
+    "distance": "Kids tri & duathlon sets (25-400m swim / 1-10km bike / 0.4-3km run by age)",
+    "event_url": "https://pho3nixkidsthailand.com/",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "TBA",
+    "name": "Chiangmai Thailand by UTMB 2026",
+    "race_type": "running",
+    "location": "Chiang Mai city & surrounding national parks, Chiang Mai",
+    "province": "Chiang Mai",
+    "distance": "175K / 93K / 50K / 24K / 12K / 10K",
+    "event_url": "https://thailandbyutmb.com/",
+    "date_found": "2026-02-11"
+  },
+  {
+    "date": "TBA",
+    "name": "IRONMAN 70.3 Bangsaen 2026",
+    "race_type": "triathlon",
+    "location": "Bangsaen Beach & Saen Suk, Mueang Chon Buri",
+    "province": "Chonburi",
+    "distance": "1.9 km swim / 90 km bike / 21.1 km run",
+    "event_url": "https://www.finishers.com/en/event/ironman-70-3-bangsaen-thailand",
+    "date_found": "2026-02-11"
+  }
+];
 
     const groupsEl = document.getElementById('groups');
     const buttons = document.querySelectorAll('.controls button');
