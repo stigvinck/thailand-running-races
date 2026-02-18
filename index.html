@@ -282,7 +282,7 @@
     <header>
       <h1>Southeast Asia Race Finder</h1>
       <p>Molty scans trusted calendars and organizer portals across <strong>Thailand and Vietnam</strong> so Stig can see every confirmed 2026 endurance race – grouped by month, category, or <strong>Country → Province/Region</strong>.</p>
-      <div class="last-updated">Last updated: <span id="update-time">16 Feb 2026, 05:20 Bangkok time</span></div>
+      <div class="last-updated">Last updated: <span id="update-time">18 Feb 2026, 07:15 Bangkok time</span></div>
       <div class="stats">
         <div class="stat-card">
           <span>Races tracked</span>
@@ -309,37 +309,103 @@
   <script>
     const races = [
   {
-    "name": "Standard Chartered Hong Kong Marathon 2026",
-    "date": "2026-01-18",
+    "name": "Bali Mountain Marathon",
+    "date": "2026-01-10",
+    "location": "Bedugul",
+    "province": "Bali",
+    "country": "Indonesia",
+    "race_type": "running",
+    "distance": "trail",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "Cebu Marathon 2026",
+    "date": "2026-01-11",
+    "location": "Cebu City",
+    "province": "Cebu",
+    "country": "Philippines",
+    "race_type": "running",
+    "distance": "42K/21K/10K",
+    "event_url": "https://worldsmarathons.com/marathon/cebu-marathon",
+    "date_found": "2026-02-17"
+  },
+  {
+    "name": "Hong Kong 100 Ultra Trail 2026",
+    "date": "2026-01-17",
     "location": "Hong Kong",
     "province": "Hong Kong",
     "country": "Hong Kong",
     "race_type": "running",
-    "distance": "marathon",
-    "event_url": null,
-    "date_found": "2026-02-15"
+    "distance": "103K/56K/33K",
+    "event_url": "https://www.finishers.com/en/event/hong-kong-100",
+    "date_found": "2026-02-17"
   },
   {
-    "name": "Vietnam Trail Marathon 2026",
+    "name": "Standard Chartered Hong Kong Marathon",
+    "date": "2026-01-18",
+    "location": "Hong Kong",
+    "province": "Hong Kong Island",
+    "country": "Hong Kong",
+    "race_type": "running",
+    "distance": "full",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "Standard Chartered Hong Kong Marathon 2026",
+    "date": "2026-01-18",
+    "location": "Tsim Sha Tsui to Victoria Park",
+    "province": "Hong Kong",
+    "country": "Hong Kong",
+    "race_type": "running",
+    "distance": "42K/21K/10K",
+    "event_url": "https://worldsmarathons.com/marathon/hong-kong-marathon",
+    "date_found": "2026-02-17"
+  },
+  {
+    "name": "Gammon China Coast Marathon 2026",
+    "date": "2026-01-25",
+    "location": "Hong Kong",
+    "province": "Hong Kong",
+    "country": "Hong Kong",
+    "race_type": "running",
+    "distance": "42K/21K/10K",
+    "event_url": "https://www.finishers.com/en/event/gammon-china-coast-marathon-1",
+    "date_found": "2026-02-17"
+  },
+  {
+    "name": "Vietnam Trail Marathon",
     "date": "2026-01-31",
     "location": "Moc Chau",
     "province": "Son La",
     "country": "Vietnam",
     "race_type": "running",
-    "distance": "trail",
+    "distance": "21km",
     "event_url": null,
-    "date_found": "2026-02-15"
+    "date_found": "2026-02-18"
   },
   {
-    "name": "MetaSprint Series Aquathlon 2026",
-    "date": "2026-02-01",
-    "location": "Sentosa",
-    "province": "Singapore",
-    "country": "Singapore",
-    "race_type": "aquathlon",
-    "distance": "sprint",
-    "event_url": null,
-    "date_found": "2026-02-15"
+    "name": "Vietnam Trail Marathon 2026",
+    "date": "2026-01-31",
+    "location": "Moc Chau, Son La",
+    "province": "Son La",
+    "country": "Vietnam",
+    "race_type": "running",
+    "distance": "70K/42K/21K/10K/5K",
+    "event_url": "https://vietnamtrailseries.com/trail-marathon/",
+    "date_found": "2026-02-17"
+  },
+  {
+    "name": "AirFly Trail Race 2026",
+    "date": "2026-02-15",
+    "location": "Hong Kong",
+    "province": "Hong Kong",
+    "country": "Hong Kong",
+    "race_type": "running",
+    "distance": "30K/20K",
+    "event_url": "https://www.finishers.com/en/event/airfly-trail-race",
+    "date_found": "2026-02-17"
   },
   {
     "name": "เดิน-วิ่ง \"วิถีล้านนา\" เที่ยวชมเมืองเชียงใหม่",
@@ -496,6 +562,160 @@
     "date_found": "2026-02-14"
   },
   {
+    "name": "MetaSprint Aquathlon 2026",
+    "date": "2026-02-22",
+    "location": "Singapore",
+    "province": "Singapore",
+    "country": "Singapore",
+    "race_type": "triathlon",
+    "distance": "Aquathlon",
+    "event_url": "https://www.metasprintseries.com",
+    "date_found": "2026-02-16"
+  },
+  {
+    "name": "Ayala Philippine Marathon",
+    "date": "2026-02-22",
+    "location": "Makati City",
+    "province": "Metro Manila",
+    "country": "Philippines",
+    "race_type": "running",
+    "distance": "full",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "Cagsawa Half Marathon 2026",
+    "date": "2026-02-22",
+    "location": "Cagsawa Ruins, Daraga, Albay",
+    "province": null,
+    "country": "Philippines",
+    "race_type": "running",
+    "distance": "3K/5K/10K/21K",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "Bulacan Half Marathon 2026",
+    "date": "2026-02-22",
+    "location": "Walter Mart Plaridel, Pulilan, Bulacan",
+    "province": null,
+    "country": "Philippines",
+    "race_type": "running",
+    "distance": "5K/10K/21K",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "Treasure Island Anniversary Fun Run 2026",
+    "date": "2026-02-22",
+    "location": "Cebu Business Park, Cebu City",
+    "province": null,
+    "country": "Philippines",
+    "race_type": "running",
+    "distance": "3K/7.5K/12K/21K",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "Passi City Duathlon 2026",
+    "date": "2026-02-22",
+    "location": "Passi City, Iloilo",
+    "province": null,
+    "country": "Philippines",
+    "race_type": "duathlon",
+    "distance": "5K-20K-5K",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "Run For Luck Baguio 2026",
+    "date": "2026-02-22",
+    "location": "Session Road, Baguio City, Benguet",
+    "province": null,
+    "country": "Philippines",
+    "race_type": "running",
+    "distance": "3K/5K/10K",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "Takbo Para Sayo PCS Diamond Fun Run 2026",
+    "date": "2026-02-22",
+    "location": "Bridgetowne Central Park, Pasig, Metro Manila",
+    "province": null,
+    "country": "Philippines",
+    "race_type": "running",
+    "distance": "1K/3K/5K/10K",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "RUN FUR FUN 2026",
+    "date": "2026-02-22",
+    "location": "Pinaglabanan Shrine, San Juan, Metro Manila",
+    "province": null,
+    "country": "Philippines",
+    "race_type": "running",
+    "distance": "500M/1K",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "Coca Cola Run Valentines Special 2026",
+    "date": "2026-02-22",
+    "location": "ER Supermall Grounds, Mati City, Davao Oriental",
+    "province": null,
+    "country": "Philippines",
+    "race_type": "running",
+    "distance": "6K/12K",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "MEC FUN RUN 2026",
+    "date": "2026-02-22",
+    "location": "Brgy. Dela Paz, Antipolo City, Rizal",
+    "province": null,
+    "country": "Philippines",
+    "race_type": "running",
+    "distance": "1K/3K/5K/10K/15K",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "Watsons x Unilab Share the Alaga Run 2026",
+    "date": "2026-02-22",
+    "location": "SM MOA Complex, Pasay City",
+    "province": null,
+    "country": "Philippines",
+    "race_type": "running",
+    "distance": "1K/3K/5K/10K",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "Tatmok Marathon 2026",
+    "date": "2026-02-22",
+    "location": "Tat Mok National Park, Phetchabun",
+    "province": "Phetchabun",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "42K/21K/10K",
+    "event_url": "https://www.runlah.com/en/ttm2025_2",
+    "date_found": "2026-02-17"
+  },
+  {
+    "name": "Raleigh Challenge Wilson Trail 2026",
+    "date": "2026-02-22",
+    "location": "Hong Kong",
+    "province": "Hong Kong",
+    "country": "Hong Kong",
+    "race_type": "running",
+    "distance": "156K/78K/50K/28K/15K",
+    "event_url": "https://www.finishers.com/en/event/raleigh-challenge-wilson-trail-virtual-race",
+    "date_found": "2026-02-17"
+  },
+  {
     "name": "Discover Night Run 2026",
     "date": "2026-02-28",
     "location": "สวนเฉลิมพระเกียรติ 72 พรรษามหาราชินี (ลานมังกร)",
@@ -516,6 +736,39 @@
     "distance": "5K charity run",
     "event_url": "https://ortho.thai.run/event/ORTHO_CMI",
     "date_found": "2026-02-11"
+  },
+  {
+    "name": "All Women Ultramarathon 10th Edition 2026",
+    "date": "2026-02-28",
+    "location": "Nustar Resort Cebu, Cebu City",
+    "province": null,
+    "country": "Philippines",
+    "race_type": "running",
+    "distance": "50K",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "UPLIFT 2026",
+    "date": "2026-02-28",
+    "location": "CLARK Parade Grounds, Angeles City, Pampanga",
+    "province": null,
+    "country": "Philippines",
+    "race_type": "running",
+    "distance": "3K/5K/10K",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "One Panda Fam Run 2026",
+    "date": "2026-02-28",
+    "location": "Marikina Sports Complex, Marikina, Metro Manila",
+    "province": null,
+    "country": "Philippines",
+    "race_type": "running",
+    "distance": "3K/5K/10K",
+    "event_url": null,
+    "date_found": "2026-02-18"
   },
   {
     "name": "วังหลวง มินิมาราธอน ครั้งที่ 2",
@@ -683,6 +936,61 @@
     "date_found": "2026-02-15"
   },
   {
+    "name": "Pho3nix Kids Triathlon Thailand 2026 @ Wellington College",
+    "date": "2026-03-01",
+    "location": "Bangkok",
+    "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "triathlon",
+    "distance": "Kids distances",
+    "event_url": "https://pho3nixkidsthailand.com/wellington-college/",
+    "date_found": "2026-02-16"
+  },
+  {
+    "name": "MILO Marathon Pasay Leg",
+    "date": "2026-03-01",
+    "location": "Pasay City",
+    "province": "Metro Manila",
+    "country": "Philippines",
+    "race_type": "running",
+    "distance": "full",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "Sante Trilogy Run Asia Iloilo Leg 1 2026",
+    "date": "2026-03-01",
+    "location": "Iloilo City",
+    "province": null,
+    "country": "Philippines",
+    "race_type": "running",
+    "distance": "5K/10K/16K",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "KinetixSports Legacy Run 2026",
+    "date": "2026-03-01",
+    "location": "Azuela Cove, Davao City, Davao Del Sur",
+    "province": null,
+    "country": "Philippines",
+    "race_type": "running",
+    "distance": "5K/10K/21K",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "Takbo Para Sa Turismo 2026",
+    "date": "2026-03-01",
+    "location": "PAGCOR Event Center, Naga City, Camarines Sur",
+    "province": null,
+    "country": "Philippines",
+    "race_type": "running",
+    "distance": "3K/5K/10K/21K/42K",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
     "name": "Brăh Yàng Trail Summit 2026",
     "date": "2026-03-05",
     "location": "Di Linh Highlands",
@@ -725,6 +1033,17 @@
     "distance": "100K / 60K",
     "event_url": "https://www.runlah.com/en/kpu2026",
     "date_found": "2026-02-13"
+  },
+  {
+    "name": "PF SUB1 10K Challenge 2026",
+    "date": "2026-03-07",
+    "location": "Vermosa, Cavite City",
+    "province": null,
+    "country": "Philippines",
+    "race_type": "running",
+    "distance": "10K",
+    "event_url": null,
+    "date_found": "2026-02-18"
   },
   {
     "name": "ชุมแพมินิมาราธอน ครั้งที่ 1",
@@ -848,6 +1167,61 @@
     "date_found": "2026-02-15"
   },
   {
+    "name": "WrkPod Half Marathon 2026",
+    "date": "2026-03-08",
+    "location": "Pantawan 1 Boulevard, Dumaguete City, Negros Oriental",
+    "province": null,
+    "country": "Philippines",
+    "race_type": "running",
+    "distance": "6K/12K/21K",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "HeartBeat Run 2026",
+    "date": "2026-03-08",
+    "location": "Filinvest City, Muntinlupa, Metro Manila",
+    "province": null,
+    "country": "Philippines",
+    "race_type": "running",
+    "distance": "3K/5K/10K/16K",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "Admirals Run 2026",
+    "date": "2026-03-08",
+    "location": "Parqal, Aseana City, Paranaque, Metro Manila",
+    "province": null,
+    "country": "Philippines",
+    "race_type": "running",
+    "distance": "1K/3K/5K/10K",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "Davao City Half-Marathon 2026",
+    "date": "2026-03-08",
+    "location": "Davao City",
+    "province": null,
+    "country": "Philippines",
+    "race_type": "running",
+    "distance": "5K/10K",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "Bac Ninh Legacy Marathon 2026",
+    "date": "2026-03-08",
+    "location": "Bac Ninh",
+    "province": "Bac Ninh",
+    "country": "Vietnam",
+    "race_type": "running",
+    "distance": "42K/21K/10K",
+    "event_url": "https://worldsmarathons.com/marathon/bac-ninh-legacy-marathon",
+    "date_found": "2026-02-17"
+  },
+  {
     "name": "Ha Giang Discovery Marathon & Ultra Trail 2026",
     "date": "2026-03-13",
     "location": "Meo Vac & Dong Van Karst Plateau",
@@ -857,6 +1231,17 @@
     "distance": "Discovery 21/12/6 km + Trail 25/42/55/70 km",
     "event_url": "https://actiup.net/en/event/ha-giang-discovery-marathon-2026",
     "date_found": "2026-02-13"
+  },
+  {
+    "name": "Ha Giang Discovery Marathon 2026",
+    "date": "2026-03-13",
+    "location": "Meo Vac, Dong Van",
+    "province": "Ha Giang",
+    "country": "Vietnam",
+    "race_type": "running",
+    "distance": "42K/21K/10K",
+    "event_url": "https://worldsmarathons.com/marathon/ha-giang-discovery-marathon",
+    "date_found": "2026-02-17"
   },
   {
     "name": "พาลูกวิ่งดะ Obstacle on the Beach 2026 : Survival Family",
@@ -967,6 +1352,61 @@
     "distance": "marathon",
     "event_url": null,
     "date_found": "2026-02-15"
+  },
+  {
+    "name": "Trail des Orchidees 2026",
+    "date": "2026-03-15",
+    "location": "Chiang Dao",
+    "province": "Chiang Mai",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "90km, 50km",
+    "event_url": "https://www.finishers.com/en/event/trail-des-orchidees-2",
+    "date_found": "2026-02-16"
+  },
+  {
+    "name": "Lam Dong Trail 2026",
+    "date": "2026-03-15",
+    "location": "Da Lat",
+    "province": "Lam Dong",
+    "country": "Vietnam",
+    "race_type": "running",
+    "distance": "75km, 45km, 25km, 15km, 5km",
+    "event_url": "https://www.finishers.com/en/event/lam-dong-trail",
+    "date_found": "2026-02-16"
+  },
+  {
+    "name": "MetaSprint Duathlon 2026",
+    "date": "2026-03-15",
+    "location": "Singapore",
+    "province": "Singapore",
+    "country": "Singapore",
+    "race_type": "triathlon",
+    "distance": "Duathlon",
+    "event_url": "https://www.metasprintseries.com",
+    "date_found": "2026-02-16"
+  },
+  {
+    "name": "Pocari Sweat Run Indonesia 2026",
+    "date": "2026-03-15",
+    "location": "Jakarta",
+    "province": null,
+    "country": "Indonesia",
+    "race_type": "running",
+    "distance": "5K/10K/21K",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "Hong Kong Streetathon 2026",
+    "date": "2026-03-15",
+    "location": "Central Harbourfront, Hong Kong",
+    "province": null,
+    "country": "Hong Kong",
+    "race_type": "running",
+    "distance": "5K/10K/21K",
+    "event_url": null,
+    "date_found": "2026-02-18"
   },
   {
     "name": "Thailand Open Masters Swimming Championships 2026",
@@ -1145,6 +1585,50 @@
     "date_found": "2026-02-14"
   },
   {
+    "name": "Muangthai Triathlon Eco Hero Super Series 2026",
+    "date": "2026-03-22",
+    "location": "Sam Roi Yod",
+    "province": "Prachuap Khiri Khan",
+    "country": "Thailand",
+    "race_type": "triathlon",
+    "distance": "Sprint, Olympic",
+    "event_url": "https://www.gotorace.com/mtl2026-samroiyod/",
+    "date_found": "2026-02-16"
+  },
+  {
+    "name": "Da Nang International Marathon",
+    "date": "2026-03-22",
+    "location": "Da Nang",
+    "province": "Da Nang",
+    "country": "Vietnam",
+    "race_type": "running",
+    "distance": "full",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "New Balance Run Run Malaysia 2026",
+    "date": "2026-03-22",
+    "location": "Kuala Lumpur",
+    "province": null,
+    "country": "Malaysia",
+    "race_type": "running",
+    "distance": "5K/10K/21K",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "Danang International Marathon 2026",
+    "date": "2026-03-22",
+    "location": "Bien Dong Park, Da Nang",
+    "province": "Da Nang",
+    "country": "Vietnam",
+    "race_type": "running",
+    "distance": "42K/21K/10K",
+    "event_url": "https://worldsmarathons.com/marathon/danang-international-marathon",
+    "date_found": "2026-02-17"
+  },
+  {
     "name": "Vietnam FesTRIval Lam Dong 2026",
     "date": "2026-03-28",
     "location": "Bau Trang Lake, Lam Dong",
@@ -1222,6 +1706,28 @@
     "date_found": "2026-02-15"
   },
   {
+    "name": "MetaSprint Triathlon 2026",
+    "date": "2026-03-29",
+    "location": "Singapore",
+    "province": "Singapore",
+    "country": "Singapore",
+    "race_type": "triathlon",
+    "distance": "Sprint, Olympic",
+    "event_url": "https://www.metasprintseries.com",
+    "date_found": "2026-02-16"
+  },
+  {
+    "name": "MetaSprint Series Triathlon 2026",
+    "date": "2026-03-29",
+    "location": "East Coast Park",
+    "province": "Singapore",
+    "country": "Singapore",
+    "race_type": "triathlon",
+    "distance": "Sprint",
+    "event_url": "https://www.metasport.com.sg/events/",
+    "date_found": "2026-02-17"
+  },
+  {
     "name": "ธัญญปุระ คัลเลอร์ รัน 2026",
     "date": "2026-04-04",
     "location": "ธัญญปุระ ภูเก็ต",
@@ -1266,6 +1772,39 @@
     "date_found": "2026-02-13"
   },
   {
+    "name": "2XU Compression Run Singapore 2026",
+    "date": "2026-04-05",
+    "location": "F1 Pit Building & Marina Bay",
+    "province": "Singapore",
+    "country": "Singapore",
+    "race_type": "running",
+    "distance": "21K/10K",
+    "event_url": "https://worldsmarathons.com/marathon/2xu-compression-run-singapore",
+    "date_found": "2026-02-17"
+  },
+  {
+    "name": "Cybercity Half Marathon 2026",
+    "date": "2026-04-05",
+    "location": "Cyberjaya City Centre",
+    "province": "Selangor",
+    "country": "Malaysia",
+    "race_type": "running",
+    "distance": "21K/10K",
+    "event_url": "https://worldsmarathons.com/marathon/cybercity-half-marathon",
+    "date_found": "2026-02-17"
+  },
+  {
+    "name": "VnExpress Marathon Hue 2026",
+    "date": "2026-04-06",
+    "location": "Hue City",
+    "province": null,
+    "country": "Vietnam",
+    "race_type": "running",
+    "distance": "5K/10K/21K/42K",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
     "name": "Laguna Phuket Sunset Beach Run 2026",
     "date": "2026-04-11",
     "location": "Xana Beach Club ลากูน่า",
@@ -1299,6 +1838,17 @@
     "date_found": "2026-02-14"
   },
   {
+    "name": "Miri Marathon 2026",
+    "date": "2026-04-12",
+    "location": "Taman Bulatan Miri",
+    "province": "Sarawak",
+    "country": "Malaysia",
+    "race_type": "running",
+    "distance": "42K/21K/10K",
+    "event_url": "https://worldsmarathons.com/marathon/miri-marathon",
+    "date_found": "2026-02-17"
+  },
+  {
     "name": "Sawan Rim Rai Ultra Marathon 2026",
     "date": "2026-04-18",
     "location": "Sawan Park (Nong Somboon), Nakhon Sawan",
@@ -1321,6 +1871,17 @@
     "date_found": "2026-02-13"
   },
   {
+    "name": "Danao City International Ultra Trail 2026",
+    "date": "2026-04-18",
+    "location": "Danao City",
+    "province": "Cebu",
+    "country": "Philippines",
+    "race_type": "running",
+    "distance": "50K/25K",
+    "event_url": "https://worldsmarathons.com/marathon/danao-city-international-ultra-trail",
+    "date_found": "2026-02-17"
+  },
+  {
     "name": "Sakhu Trail Beach Run 2026",
     "date": "2026-04-19",
     "location": "สวนสาธารณะหาดในทอน",
@@ -1341,6 +1902,17 @@
     "distance": "Half/10K/5K",
     "event_url": "https://www.pinoyfitness.com/",
     "date_found": "2026-02-13"
+  },
+  {
+    "name": "ITB Ultra Marathon 2026",
+    "date": "2026-04-19",
+    "location": "Bandung",
+    "province": null,
+    "country": "Indonesia",
+    "race_type": "running",
+    "distance": "42K/75K/100K",
+    "event_url": null,
+    "date_found": "2026-02-18"
   },
   {
     "name": "Masters Tour of Andaman 2026",
@@ -1374,6 +1946,17 @@
     "distance": "Marathon/Half/10K/5K",
     "event_url": "https://www.pinoyfitness.com/",
     "date_found": "2026-02-13"
+  },
+  {
+    "name": "Singapore T100 Triathlon 2026",
+    "date": "2026-04-25",
+    "location": "Marina Bay Street Circuit",
+    "province": "Singapore",
+    "country": "Singapore",
+    "race_type": "triathlon",
+    "distance": "100K",
+    "event_url": "https://worldsmarathons.com/triathlon/singapore-t100-triathlon",
+    "date_found": "2026-02-17"
   },
   {
     "name": "เดิน-วิ่งขึ้นดอยตามรอยพระครูบาเจ้าศรีวิชัย 2026",
@@ -1462,6 +2045,17 @@
     "distance": "40 km Sportive / 20 km Straits / 40 km Foldie + kids & Brompton categories",
     "event_url": "https://www.singaporetravelhub.com/events/ocbc-cycle-singapore/",
     "date_found": "2026-02-13"
+  },
+  {
+    "name": "OCBC Cycle Singapore 2026",
+    "date": "2026-05-09",
+    "location": "Kallang & CBD Circuit",
+    "province": "Singapore",
+    "country": "Singapore",
+    "race_type": "cycling",
+    "distance": "Sportive",
+    "event_url": "https://worldsmarathons.com/cycling/ocbc-cycle-singapore",
+    "date_found": "2026-02-17"
   },
   {
     "name": "Suanpruek99 10-Hour UltraMarathon 2025",
@@ -1596,6 +2190,28 @@
     "date_found": "2026-02-15"
   },
   {
+    "name": "HATYAi21 2026",
+    "date": "2026-05-10",
+    "location": "Hat Yai",
+    "province": "Songkhla",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "21.0975km",
+    "event_url": "https://aims-worldrunning.org/races/10425.html",
+    "date_found": "2026-02-16"
+  },
+  {
+    "name": "Hua Hin Marathon 2026",
+    "date": "2026-05-10",
+    "location": "Wat Khao Krailart, Hua Hin",
+    "province": "Prachuap Khiri Khan",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "42K/21K/10K",
+    "event_url": "https://www.runlah.com/en/huahin2026",
+    "date_found": "2026-02-17"
+  },
+  {
     "name": "Rama 8",
     "date": "2026-05-17",
     "location": "ลานเอนกประสงค์ใต้สะพานพระราม 8",
@@ -1629,6 +2245,17 @@
     "date_found": "2026-02-11"
   },
   {
+    "name": "Stanley Dragon Boat Warm-up 2026",
+    "date": "2026-05-23",
+    "location": "Stanley",
+    "province": "Hong Kong Island",
+    "country": "Hong Kong",
+    "race_type": "dragon boat",
+    "distance": "Standard",
+    "event_url": "https://www.dragonboat.org.hk/",
+    "date_found": "2026-02-16"
+  },
+  {
     "name": "Bangkok Airways Trat Half Marathon 2026",
     "date": "2026-05-24",
     "location": "Trat Provincial Stadium, Bang Phra, Mueang Trat District",
@@ -1649,6 +2276,17 @@
     "distance": "",
     "event_url": "https://www.runlah.com/en/UxiqBsuB",
     "date_found": "2026-02-11"
+  },
+  {
+    "name": "HomeTeamNS REAL Run 2026",
+    "date": "2026-05-24",
+    "location": "HomeTeamNS Bedok Reservoir, Singapore",
+    "province": null,
+    "country": "Singapore",
+    "race_type": "running",
+    "distance": "5K/10K/21K",
+    "event_url": null,
+    "date_found": "2026-02-18"
   },
   {
     "name": "สามร้อยยอด รัน ฟัน เฟส 2026",
@@ -1706,6 +2344,28 @@
     "date_found": "2026-02-13"
   },
   {
+    "name": "Khao Kho Marathon 2026",
+    "date": "2026-05-31",
+    "location": "B.N. Farm, Phetchabun",
+    "province": "Phetchabun",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "42K/21K/10K",
+    "event_url": "https://www.runlah.com/en/kho26",
+    "date_found": "2026-02-17"
+  },
+  {
+    "name": "Amazing Phrae Marathon 2026",
+    "date": "2026-05-31",
+    "location": "Sam Wai Market, Phrae",
+    "province": "Phrae",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "42K/21K/10K",
+    "event_url": "https://www.runlah.com/en/kr7N8F8T",
+    "date_found": "2026-02-17"
+  },
+  {
     "name": "IRONMAN 70.3 Subic Bay Philippines 2026",
     "date": "2026-06-07",
     "location": "Remy Field & SBMA roads, Subic Bay",
@@ -1750,6 +2410,28 @@
     "date_found": "2026-02-14"
   },
   {
+    "name": "Laguna Phuket Marathon 2026",
+    "date": "2026-06-13",
+    "location": "Laguna Grove, Phuket",
+    "province": "Phuket",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "42K/21K/10K",
+    "event_url": "https://www.runlah.com/en/JSDWUMpK",
+    "date_found": "2026-02-17"
+  },
+  {
+    "name": "Laguna Phuket Marathon 2026",
+    "date": "2026-06-14",
+    "location": "Phuket",
+    "province": "Phuket",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "42.195km, 21.0975km, 10km, 5km",
+    "event_url": "https://phuketmarathon.com/",
+    "date_found": "2026-02-16"
+  },
+  {
     "name": "MesaStila 100 2026",
     "date": "2026-06-15",
     "location": "Magelang",
@@ -1759,6 +2441,28 @@
     "distance": "120K/75K/50K/25K/12K",
     "event_url": "https://www.finishers.com/en/event/mesastila-100",
     "date_found": "2026-02-13"
+  },
+  {
+    "name": "Korat Marathon 2026",
+    "date": "2026-06-15",
+    "location": "Nakhon Ratchasima",
+    "province": "Nakhon Ratchasima",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "42.195km, 21.0975km, 10km, 5km",
+    "event_url": "https://worldsmarathons.com/marathon/korat-marathon",
+    "date_found": "2026-02-16"
+  },
+  {
+    "name": "VnExpress Marathon Nha Trang 2026",
+    "date": "2026-06-15",
+    "location": "Nha Trang",
+    "province": null,
+    "country": "Vietnam",
+    "race_type": "running",
+    "distance": "5K/10K/21K/42K",
+    "event_url": null,
+    "date_found": "2026-02-18"
   },
   {
     "name": "Stanley International Dragon Boat Championships 2026",
@@ -1783,6 +2487,17 @@
     "date_found": "2026-02-15"
   },
   {
+    "name": "Vietnam Ultra Marathon 2026",
+    "date": "2026-06-20",
+    "location": "Moc Chau",
+    "province": "Son La",
+    "country": "Vietnam",
+    "race_type": "running",
+    "distance": "100km, 70km, 50km, 25km, 10km",
+    "event_url": "https://vietnamtrailseries.com/ultra-marathon/",
+    "date_found": "2026-02-16"
+  },
+  {
     "name": "Bangkok Airways Samui Half Marathon 2026",
     "date": "2026-06-21",
     "location": "Phru Chaweng Lake, Bo Phut, Ko Samui District",
@@ -1805,6 +2520,50 @@
     "date_found": "2026-02-13"
   },
   {
+    "name": "Bangsaen42 Chonburi Marathon 2026",
+    "date": "2026-06-21",
+    "location": "Chonburi",
+    "province": "Chonburi",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "42.195km",
+    "event_url": "https://worldsmarathons.com/marathon/bangsaen42-chonburi-marathon",
+    "date_found": "2026-02-16"
+  },
+  {
+    "name": "Laguna Phuket Marathon",
+    "date": "2026-06-21",
+    "location": "Phuket",
+    "province": "Phuket",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "full",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "Phuket Marathon 2026",
+    "date": "2026-06-21",
+    "location": "Laguna Phuket",
+    "province": null,
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "5K/10K/21K/42K",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "Amazing Kamphaeng Phet Marathon 2026",
+    "date": "2026-06-21",
+    "location": "Kamphaeng Phet District Office",
+    "province": "Kamphaeng Phet",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "42K/21K/10K",
+    "event_url": "https://www.runlah.com/en/7jIwcoTE",
+    "date_found": "2026-02-17"
+  },
+  {
     "name": "Chiang Mai Half Marathon 2026",
     "date": "2026-07-05",
     "location": "7th Infantry Division Camp, Mae Rim",
@@ -1816,6 +2575,17 @@
     "date_found": "2026-02-11"
   },
   {
+    "name": "Hong Kong Dragon Boat Short Course 2026",
+    "date": "2026-07-05",
+    "location": "Stanley",
+    "province": "Hong Kong Island",
+    "country": "Hong Kong",
+    "race_type": "dragon boat",
+    "distance": "Short Course",
+    "event_url": "https://www.dragonboat.org.hk/",
+    "date_found": "2026-02-16"
+  },
+  {
     "name": "IRONMAN 70.3 Desaru Coast 2026",
     "date": "2026-07-12",
     "location": "Desaru Coast",
@@ -1825,6 +2595,17 @@
     "distance": "70.3",
     "event_url": null,
     "date_found": "2026-02-15"
+  },
+  {
+    "name": "Uttaradit Marathon 2026",
+    "date": "2026-07-12",
+    "location": "Phraya Phichai Dap Hak Monument",
+    "province": "Uttaradit",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "42K/21K/10K",
+    "event_url": "https://www.runlah.com/en/Mt4qbvbb",
+    "date_found": "2026-02-17"
   },
   {
     "name": "Cameron Ultra Trail (CULTRA) 2026",
@@ -1860,6 +2641,17 @@
     "date_found": "2026-02-15"
   },
   {
+    "name": "Korat Marathon",
+    "date": "2026-07-19",
+    "location": "Nakhon Ratchasima",
+    "province": "Nakhon Ratchasima",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "full",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
     "name": "Pattaya Marathon 2026",
     "date": "2026-07-20",
     "location": "Pattaya",
@@ -1880,6 +2672,61 @@
     "distance": "marathon, half",
     "event_url": "https://worldsmarathons.com",
     "date_found": "2026-02-14"
+  },
+  {
+    "name": "MILO Marathon Manila 2026",
+    "date": "2026-07-26",
+    "location": "Manila",
+    "province": "Metro Manila",
+    "country": "Philippines",
+    "race_type": "running",
+    "distance": "42.195km, 21.0975km",
+    "event_url": "https://www.milo.com.ph",
+    "date_found": "2026-02-16"
+  },
+  {
+    "name": "Pattaya Marathon",
+    "date": "2026-07-26",
+    "location": "Pattaya",
+    "province": "Chonburi",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "full",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "Great Eastern Women Run 2026",
+    "date": "2026-07-26",
+    "location": "The Promontory, Marina Bay, Singapore",
+    "province": null,
+    "country": "Singapore",
+    "race_type": "running",
+    "distance": "5K/10K/21K",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "Yala Marathon 2026",
+    "date": "2026-07-26",
+    "location": "Yala Municipal Stadium",
+    "province": "Yala",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "42K/21K/10K",
+    "event_url": "https://www.runlah.com/en/Uz58wkrN",
+    "date_found": "2026-02-17"
+  },
+  {
+    "name": "Great Eastern Women Run 2026",
+    "date": "2026-07-26",
+    "location": "Marina Bay",
+    "province": "Singapore",
+    "country": "Singapore",
+    "race_type": "running",
+    "distance": "21K/10K",
+    "event_url": "https://worldsmarathons.com/marathon/great-eastern-women-run",
+    "date_found": "2026-02-17"
   },
   {
     "name": "Korat Marathon 2026",
@@ -1904,6 +2751,17 @@
     "date_found": "2026-02-11"
   },
   {
+    "name": "Nong Khai Running Festival 2026",
+    "date": "2026-08-01",
+    "location": "Wat Champa Thong, Nong Khai",
+    "province": "Nong Khai",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "42K/21K/10K",
+    "event_url": "https://www.runlah.com/en/OJGat5Oh",
+    "date_found": "2026-02-17"
+  },
+  {
     "name": "MILO Marathon Davao 2026",
     "date": "2026-08-02",
     "location": "Davao City",
@@ -1924,6 +2782,17 @@
     "distance": "marathon",
     "event_url": null,
     "date_found": "2026-02-15"
+  },
+  {
+    "name": "Speed 42 2026",
+    "date": "2026-08-08",
+    "location": "Kasetsart University Kamphaeng Saen",
+    "province": "Nakhon Pathom",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "42K/21K",
+    "event_url": "https://www.runlah.com/en/xON9Owpp",
+    "date_found": "2026-02-17"
   },
   {
     "name": "Khao Kho Run Through Mist Marathon 2026",
@@ -1957,6 +2826,17 @@
     "distance": "marathon",
     "event_url": null,
     "date_found": "2026-02-15"
+  },
+  {
+    "name": "Khao Kho Run Through Mist Marathon 2026",
+    "date": "2026-08-09",
+    "location": "Sea of Fog viewpoint, Khao Kho",
+    "province": "Phetchabun",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "42K/21K/10K",
+    "event_url": "https://www.runlah.com/en/kkrtmm2026",
+    "date_found": "2026-02-17"
   },
   {
     "name": "Manila Marathon 2026",
@@ -2069,6 +2949,17 @@
     "date_found": "2026-02-14"
   },
   {
+    "name": "Songkhla Marathon 2026",
+    "date": "2026-08-22",
+    "location": "Samila Beach, Songkhla",
+    "province": "Songkhla",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "42K/21K/10K/5K",
+    "event_url": "https://www.runlah.com/en/ZlRIu9Ca",
+    "date_found": "2026-02-17"
+  },
+  {
     "name": "Bangkok Airways Sukhothai Half Marathon 2026",
     "date": "2026-08-23",
     "location": "Sukhothai Historical Park, Mueang Kao, Mueang Sukhothai District",
@@ -2114,6 +3005,39 @@
   },
   {
     "name": "Bali Marathon 2026",
+    "date": "2026-08-23",
+    "location": "Gianyar",
+    "province": "Bali",
+    "country": "Indonesia",
+    "race_type": "running",
+    "distance": "42.195km, 21.0975km, 10km",
+    "event_url": "https://www.maybank.co.id",
+    "date_found": "2026-02-16"
+  },
+  {
+    "name": "Maybank Marathon Bali",
+    "date": "2026-08-23",
+    "location": "Gianyar",
+    "province": "Bali",
+    "country": "Indonesia",
+    "race_type": "running",
+    "distance": "full",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "Songkhla Marathon",
+    "date": "2026-08-23",
+    "location": "Songkhla",
+    "province": "Songkhla",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "full",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "Bali Marathon 2026",
     "date": "2026-08-24",
     "location": "Bali",
     "province": "Bali",
@@ -2155,6 +3079,17 @@
     "distance": "22K / 10K / 5K",
     "event_url": "https://www.jogandjoy.com/thailand-running-calender",
     "date_found": "2026-02-11"
+  },
+  {
+    "name": "Chiang Mai Night Run 2026",
+    "date": "2026-09-05",
+    "location": "Chiang Mai Zoo, Doi Suthep",
+    "province": null,
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "5K/10K",
+    "event_url": null,
+    "date_found": "2026-02-18"
   },
   {
     "name": "MILO Marathon Cebu 2026",
@@ -2289,6 +3224,28 @@
     "date_found": "2026-02-14"
   },
   {
+    "name": "Vietnam Mountain Marathon",
+    "date": "2026-09-17",
+    "location": "Sapa",
+    "province": "Lao Cai",
+    "country": "Vietnam",
+    "race_type": "running",
+    "distance": "100 miles",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "Vietnam Mountain Marathon 2026",
+    "date": "2026-09-17",
+    "location": "Sapa, Lao Cai",
+    "province": "Lao Cai",
+    "country": "Vietnam",
+    "race_type": "running",
+    "distance": "100M/100K/70K/50K/21K/10K",
+    "event_url": "https://vietnamtrailseries.com/mountain-marathon/",
+    "date_found": "2026-02-17"
+  },
+  {
     "name": "Powerman Malaysia 2026",
     "date": "2026-09-18",
     "location": "Dataran Putrajaya, Precinct 3",
@@ -2298,6 +3255,28 @@
     "distance": "Classic & Short run-bike-run formats (age-group & elite waves)",
     "event_url": "https://www.bernama.com/en/news.php?id=2518468",
     "date_found": "2026-02-13"
+  },
+  {
+    "name": "Powerman Malaysia 2026",
+    "date": "2026-09-18",
+    "location": "Dataran Putrajaya",
+    "province": "Putrajaya",
+    "country": "Malaysia",
+    "race_type": "duathlon",
+    "distance": "Full/Half",
+    "event_url": "https://worldsmarathons.com/duathlon/powerman-malaysia",
+    "date_found": "2026-02-17"
+  },
+  {
+    "name": "Vietnam Mountain Marathon 2026",
+    "date": "2026-09-19",
+    "location": "Sapa",
+    "province": "Lao Cai",
+    "country": "Vietnam",
+    "race_type": "running",
+    "distance": "100 miles, 100km, 70km, 50km, 21km, 10km",
+    "event_url": "https://vietnamtrailseries.com/mountain-marathon/",
+    "date_found": "2026-02-16"
   },
   {
     "name": "MILO Marathon Dumaguete 2026",
@@ -2388,6 +3367,17 @@
     "date_found": "2026-02-15"
   },
   {
+    "name": "IRONMAN Vietnam 2026",
+    "date": "2026-10-04",
+    "location": "Da Nang",
+    "province": "Da Nang",
+    "country": "Vietnam",
+    "race_type": "triathlon",
+    "distance": "Full",
+    "event_url": "https://www.ironman.com/races/im-vietnam",
+    "date_found": "2026-02-17"
+  },
+  {
     "name": "Hanoi International Heritage Marathon 2026",
     "date": "2026-10-05",
     "location": "Hanoi",
@@ -2441,6 +3431,28 @@
     "distance": "marathon",
     "event_url": null,
     "date_found": "2026-02-15"
+  },
+  {
+    "name": "Kuala Lumpur Standard Chartered Marathon 2026",
+    "date": "2026-10-11",
+    "location": "Kuala Lumpur",
+    "province": null,
+    "country": "Malaysia",
+    "race_type": "running",
+    "distance": "5K/10K/21K/42K",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "MesaStila 100",
+    "date": "2026-10-15",
+    "location": "Magelang",
+    "province": "Central Java",
+    "country": "Indonesia",
+    "race_type": "running",
+    "distance": "120km",
+    "event_url": null,
+    "date_found": "2026-02-18"
   },
   {
     "name": "Masters Tour of Chiang Mai 2026 (14th Edition)",
@@ -2542,6 +3554,17 @@
     "date_found": "2026-02-15"
   },
   {
+    "name": "Jakarta Marathon 2026",
+    "date": "2026-10-25",
+    "location": "Jakarta",
+    "province": "Jakarta",
+    "country": "Indonesia",
+    "race_type": "running",
+    "distance": "42.195km, 21.0975km, 10km",
+    "event_url": "https://worldsmarathons.com/marathon/jakarta-marathon",
+    "date_found": "2026-02-16"
+  },
+  {
     "name": "THEP SADET TRAIL 2026",
     "date": "2026-11-01",
     "location": "องค์การบริหารส่วนตำบลเทพเสด็จ ต.เทพเสด็จ อ.ดอยสะเก็ด",
@@ -2630,6 +3653,17 @@
     "date_found": "2026-02-15"
   },
   {
+    "name": "Hanoi Marathon Heritage Race",
+    "date": "2026-11-08",
+    "location": "Hanoi",
+    "province": "Hanoi",
+    "country": "Vietnam",
+    "race_type": "running",
+    "distance": "full",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
     "name": "Ultra Trail Chiang Mai (UTCM) 2026",
     "date": "2026-11-13",
     "location": "Chiang Mai",
@@ -2639,6 +3673,17 @@
     "distance": "100K, 75K, 40K, 16K",
     "event_url": "https://worldsmarathons.com",
     "date_found": "2026-02-14"
+  },
+  {
+    "name": "Oxfam Trailwalker Hong Kong 2026",
+    "date": "2026-11-13",
+    "location": "Sai Kung to Yuen Long",
+    "province": null,
+    "country": "Hong Kong",
+    "race_type": "running",
+    "distance": "100K team",
+    "event_url": null,
+    "date_found": "2026-02-18"
   },
   {
     "name": "Pho3nix Kids Triathlon Thailand 2026 – Thanyapura Sports & Health Resort",
@@ -2773,6 +3818,17 @@
     "date_found": "2026-02-15"
   },
   {
+    "name": "Halong Bay Heritage Marathon",
+    "date": "2026-11-22",
+    "location": "Halong",
+    "province": "Quang Ninh",
+    "country": "Vietnam",
+    "race_type": "running",
+    "distance": "full",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
     "name": "Quezon City Marathon 2026",
     "date": "2026-11-23",
     "location": "Quezon City",
@@ -2804,6 +3860,28 @@
     "distance": "marathon",
     "event_url": null,
     "date_found": "2026-02-15"
+  },
+  {
+    "name": "Rock n Roll Manila",
+    "date": "2026-11-29",
+    "location": "Manila",
+    "province": "Metro Manila",
+    "country": "Philippines",
+    "race_type": "running",
+    "distance": "full",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "Bangkok Marathon",
+    "date": "2026-11-29",
+    "location": "Bangkok",
+    "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "full",
+    "event_url": null,
+    "date_found": "2026-02-18"
   },
   {
     "name": "Bangkok Marathon 2026",
@@ -2894,6 +3972,39 @@
     "date_found": "2026-02-15"
   },
   {
+    "name": "Standard Chartered Singapore Marathon",
+    "date": "2026-12-06",
+    "location": "Singapore",
+    "province": "Singapore",
+    "country": "Singapore",
+    "race_type": "running",
+    "distance": "full",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "Amazing Thailand Marathon Bangkok",
+    "date": "2026-12-06",
+    "location": "Bangkok",
+    "province": "Bangkok",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "full",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
+    "name": "Techcombank Ho Chi Minh City International Marathon 2026",
+    "date": "2026-12-06",
+    "location": "Ho Chi Minh City",
+    "province": null,
+    "country": "Vietnam",
+    "race_type": "running",
+    "distance": "5K/10K/21K/42K",
+    "event_url": null,
+    "date_found": "2026-02-18"
+  },
+  {
     "name": "Chiang Mai Gran Fondo (GFWT)",
     "date": "2026-12-13",
     "location": "Chiang Mai",
@@ -2927,6 +4038,28 @@
     "date_found": "2026-02-15"
   },
   {
+    "name": "Bangsaen42 Chonburi Marathon 2026",
+    "date": "2026-12-13",
+    "location": "Bang Saen Beach",
+    "province": "Chonburi",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "42K",
+    "event_url": "https://worldsmarathons.com/marathon/bangsaen42-chonburi-marathon",
+    "date_found": "2026-02-17"
+  },
+  {
+    "name": "Penang Bridge International Marathon 2026",
+    "date": "2026-12-13",
+    "location": "Penang Bridge",
+    "province": "Penang",
+    "country": "Malaysia",
+    "race_type": "running",
+    "distance": "42K/21K/10K",
+    "event_url": "https://worldsmarathons.com/marathon/penang-bridge-international-marathon",
+    "date_found": "2026-02-17"
+  },
+  {
     "name": "Chiang Mai Marathon 2026",
     "date": "2026-12-20",
     "location": "Tha Phae Gate, Chiang Mai",
@@ -2947,6 +4080,17 @@
     "distance": "marathon, half, 10K, 5K",
     "event_url": "https://chiangmaimarathon.com",
     "date_found": "2026-02-14"
+  },
+  {
+    "name": "Bangsaen21 2026",
+    "date": "2026-12-20",
+    "location": "Bangsaen",
+    "province": "Chonburi",
+    "country": "Thailand",
+    "race_type": "running",
+    "distance": "21.0975km",
+    "event_url": "https://aims-worldrunning.org/races/10154.html",
+    "date_found": "2026-02-16"
   },
   {
     "name": "Ultra Trail Chiang Mai - UTCM 200K",
@@ -3013,6 +4157,28 @@
     "distance": "marathon, half, 10K",
     "event_url": "https://www.hkmarathon.com",
     "date_found": "2026-02-14"
+  },
+  {
+    "name": "Vietnam Ultra Marathon 2026",
+    "date": "2027-01-10",
+    "location": "Sapa, Lao Cai",
+    "province": "Lao Cai",
+    "country": "Vietnam",
+    "race_type": "running",
+    "distance": "100M/100K/70K",
+    "event_url": "https://vietnamtrailseries.com/ultra-marathon/",
+    "date_found": "2026-02-17"
+  },
+  {
+    "name": "Standard Chartered Hong Kong Marathon 2027",
+    "date": "2027-01-18",
+    "location": "Hong Kong",
+    "province": "Hong Kong",
+    "country": "Hong Kong",
+    "race_type": "running",
+    "distance": "42.195km, 21.0975km, 10km",
+    "event_url": "https://www.hkmarathon.com",
+    "date_found": "2026-02-16"
   },
   {
     "name": "Bangsaen42 Chonburi Marathon 2026",
